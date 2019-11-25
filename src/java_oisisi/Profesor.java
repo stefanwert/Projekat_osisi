@@ -1,5 +1,5 @@
 package java_oisisi;
 
-public class proba {
+public class Profesor {
 
 }
