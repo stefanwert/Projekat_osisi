@@ -1,4 +1,4 @@
-package java_oisisi;
+package model;
 
 import java.util.*;
 import java.sql.Date;

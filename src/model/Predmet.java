@@ -1,4 +1,5 @@
-package java_oisisi;
+package model;
+import java.util.*;
 
 public class Predmet {
 	String sifraPredmeta;
@@ -6,5 +7,5 @@ public class Predmet {
 	int semestar;
 	int godinaStudija;
 	Profesor profesor;
-	//fali jos spisak sutdenata 
+	List<Student> listaStudenata;
 }
