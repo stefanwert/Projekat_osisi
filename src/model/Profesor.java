@@ -15,10 +15,10 @@ public class Profesor {
 	String brLicneKarte;
 	String titula;
 	String zvanje;
-	List<String> ListaPredmeta;
+	List<Predmet> ListaPredmeta;
 	
 	public Profesor(String ime, String prezime, Date datum, String adresaStanovanja, String kontaktTel, String email,
-			String adresaKancelarije, String brLicneKarte, String titula, String zvanje, List<String> listaPredmeta) {
+			String adresaKancelarije, String brLicneKarte, String titula, String zvanje, List<Predmet> listaPredmeta) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -113,11 +113,11 @@ public class Profesor {
 		this.zvanje = zvanje;
 	}
 
-	public List<String> getListaPredmeta() {
+	public List<Predmet> getListaPredmeta() {
 		return ListaPredmeta;
 	}
 
-	public void setListaPredmeta(List<String> listaPredmeta) {
+	public void setListaPredmeta(List<Predmet> listaPredmeta) {
 		ListaPredmeta = listaPredmeta;
 	} 
 	
