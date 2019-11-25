@@ -1,6 +1,6 @@
 package model;
 import java.util.*;
-
+//jel hoce sad
 public class Predmet {
 	String sifraPredmeta;
 	String nazivPredmeta;

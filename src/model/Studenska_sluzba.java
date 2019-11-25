@@ -1,6 +1,6 @@
 package model;
 import java.util.*;
-
+//jel hoce sad
 public class Studenska_sluzba {
 	List<Student> listaStudenata=new ArrayList<Student>();
 	List<Predmet> listaPredmeta=new ArrayList<Predmet>();
@@ -15,14 +15,12 @@ public class Studenska_sluzba {
 		Predmet p=new Predmet( sifraPredmeta,  nazivPredmeta,  semestar,  godinaStudija,  profesor, listaStudenata);
 		listaPredmeta.add(p);
 	}
-	boolean obrisi_predmet(String sifraPredmeta) {
+	void obrisi_predmet(String sifraPredmeta) {
 		for (Predmet predmet : listaPredmeta) {
 			if(sifraPredmeta.equals(predmet.getSifraPredmeta())) {
 				listaPredmeta.remove(predmet);
-				return true;
 			}
 		}
-		return false;
 	}
 	void izmeni_predmet(String sifraPredmeta, String nazivPredmeta, int semestar, int godinaStudija, Profesor profesor,List<Student> listaStudenata,Predmet stari) {
 		stari.setSifraPredmeta(sifraPredmeta);
