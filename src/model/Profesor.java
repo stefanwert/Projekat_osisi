@@ -32,6 +32,7 @@ public class Profesor {
 		this.zvanje = zvanje;
 		ListaPredmeta = listaPredmeta;
 	}
+	public Profesor() {};
 
 	public String getIme() {
 		return ime;

@@ -6,7 +6,7 @@ import model.Predmet;
 import model.Student;
 import model.Student.Status;
 
-public class Student_kontroler {
+public class StudentKontroler {
 	
 	void dodaj_studenta(String ime, String prezime, Date datum_rodjenja, String adresa_stanovanja, String kontakt_telefon,
 			String email, String broj_indeksa, Date datum_upisa, int trenutna_godina, Status status,

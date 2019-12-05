@@ -8,11 +8,16 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import model.Predmet;
+import model.Profesor;
+import kontroler.*;
 public class MyToolbar extends JToolBar{
 	/**
 	 * 
@@ -33,6 +38,13 @@ public class MyToolbar extends JToolBar{
 		btnNew.setToolTipText("Add");
 		btnNew.setIcon(new ImageIcon("images/addbtn.png"));
 		btnNew.setBorderPainted(false);
+		btnNew.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PredmetKontroler.getInstance().dodaj_predmet("sifra_pr", "naziv",1,2,new Profesor(), null);
+			}
+		});
 		
 		
 		JButton btnEdit=new JButton();
@@ -40,13 +52,29 @@ public class MyToolbar extends JToolBar{
 		btnEdit.setBackground(Color.white);
 		btnEdit.setIcon(new ImageIcon("images/editbtn.png"));
 		btnEdit.setBorderPainted(false);
+		btnEdit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PredmetKontroler.getInstance().izmeni_predmet(MainFrame.getTabel().getSelectedRow());
+				
+			}
+		});
 		
 		JButton btnDelete=new JButton();
 		btnDelete.setToolTipText("Delete");
 		btnDelete.setBackground(Color.white);
 		btnDelete.setIcon(new ImageIcon("images/removebtn.png"));
 		btnDelete.setBorderPainted(false);
-
+		btnDelete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PredmetKontroler.getInstance().obrisi_predmet(MainFrame.getTabel().getSelectedRow());
+				
+			}
+		});
+		
 		JPanel left=new JPanel();
 		left.setBackground(Color.white);
 	    left.add(btnNew);
