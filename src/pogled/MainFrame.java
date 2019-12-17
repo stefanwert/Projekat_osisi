@@ -21,6 +21,7 @@ import javax.swing.table.TableModel;
 import model.Predmet;
 import model.StudenskaSluzba;
 
+
 public class MainFrame extends JFrame{
 	
 	private static JTable tabelaPredmeta;
@@ -46,9 +47,13 @@ public class MainFrame extends JFrame{
 	setLocationRelativeTo(null);
 	setBackground(Color.LIGHT_GRAY);
 	
+	MyMenuBar menu = new MyMenuBar();
+	this.setJMenuBar(menu);
+	
 	MyToolbar toolbar = new MyToolbar();
 	toolbar.setBackground(Color.white);
 	add(toolbar,BorderLayout.NORTH);
+	
 	
 	/*String[][] data = { 
             { "sifra","naz","2","2","vidakovic"},
