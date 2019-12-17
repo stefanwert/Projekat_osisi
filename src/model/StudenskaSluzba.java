@@ -4,6 +4,8 @@ import java.util.*;
 import javax.swing.table.TableModel;
 import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 
+import pogled.MainFrame;
+
 public class StudenskaSluzba {
 	List<Student> listaStudenata=new ArrayList<Student>();
 	List<Predmet> listaPredmeta=new ArrayList<Predmet>();
@@ -94,17 +96,22 @@ public class StudenskaSluzba {
 		}	
 		return false;	
 	}
-	public void izmeniPredmet(String sifraPredmeta, String nazivPredmeta, int semestar, int godinaStudija, Profesor profesor,List<Student> listaStudenata) {
+	public void izmeniPredmet(String sifraPredmeta, String nazivPredmeta, int semestar, int godinaStudija) {
+		boolean jedistven=true;
 		for (Predmet predmet : listaPredmeta) {
-			if(predmet.getSifraPredmeta()==sifraPredmeta) {
-				predmet.setNazivPredmeta(nazivPredmeta);
-				predmet.setSemestar(semestar);
-				predmet.setGodinaStudija(godinaStudija);
-				predmet.setProfesor(profesor);
-				predmet.setListaStudenata(listaStudenata);
+			if(predmet.getSifraPredmeta().equals(sifraPredmeta)) {
+				jedistven=false;
 			}
 		}
-		
+		if(jedistven) {
+			int i =MainFrame.getTabel().getSelectedRow();
+			listaPredmeta.get(i).setSifraPredmeta(sifraPredmeta);
+			listaPredmeta.get(i).setNazivPredmeta(nazivPredmeta);
+			listaPredmeta.get(i).setSemestar(semestar);
+			listaPredmeta.get(i).setGodinaStudija(godinaStudija);
+		}
+		else
+			System.out.println("pokuslai ste da promenite kljuc u kljuc koji vec postoji");
 	}
 	
 	

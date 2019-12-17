@@ -34,7 +34,7 @@ public class PredmetKontroler {
 		}
 		// za sad se menja samo godina na 11
 		Predmet p=StudenskaSluzba.getInstance().getRowPredmeta(rowSelectedIndex);
-		StudenskaSluzba.getInstance().izmeniPredmet(p.getSifraPredmeta(), p.getNazivPredmeta(), 11,p.getGodinaStudija(),p.getProfesor(), p.getListaStudenata());
+		StudenskaSluzba.getInstance().izmeniPredmet(p.getSifraPredmeta(), p.getNazivPredmeta(), 11,p.getGodinaStudija());
 	}
 	
 }

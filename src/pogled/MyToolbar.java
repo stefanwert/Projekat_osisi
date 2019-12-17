@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import ActionListener.ActionListenerAdd;
+import ActionListener.ActionListenerEdit;
 import model.Predmet;
 import model.Profesor;
 import kontroler.*;
@@ -48,7 +49,7 @@ public class MyToolbar extends JToolBar{
 		btnEdit.setBackground(Color.white);
 		btnEdit.setIcon(new ImageIcon("images/editbtn.png"));
 		btnEdit.setBorderPainted(false);
-		//dodati action listener
+		btnEdit.addActionListener(new ActionListenerEdit());
 		
 		JButton btnDelete=new JButton();
 		btnDelete.setToolTipText("Delete");

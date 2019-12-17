@@ -82,6 +82,7 @@ public class MainFrame extends JFrame{
 	private void prikaziTabeluIgraca() {
 		tabbedPane=new JTabbedPane();
 		tabelaPredmeta=new PredmetJTable();
+		tabelaPredmeta.setAutoCreateRowSorter(true);
 		JScrollPane scrollpanePredmet=new JScrollPane(tabelaPredmeta);
 		
 		tabbedPane.addTab("Predmet",scrollpanePredmet);

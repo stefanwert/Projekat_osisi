@@ -11,6 +11,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.LayoutManager;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -19,32 +21,35 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ActionListener.ActionListenerPotvrdiAdd;
+import ActionListener.ActionListenerPotvrdiEdit;
 import model.StudenskaSluzba;
+import pogled.MainFrame;
 
-public class AddDialogPredmet extends JDialog {
+public class DialogPredmet extends JDialog {
 
 	private static final long serialVersionUID = -4938172737691424918L;
 	static private JTextField txtsifra;
 	static private JTextField txtNazivPr;
 	static private JTextField txtSemestar;
 	static private JTextField txtGodinaStudjia;
+	static private JButton ok;
 	
-	private static AddDialogPredmet instance =null;
+	private static DialogPredmet instance =null;
 	
-	public static AddDialogPredmet getInstance() {
+	public static DialogPredmet getInstance() {
 		if(instance==null) {
-			instance=new AddDialogPredmet();
+			instance=new DialogPredmet();
 		}
 		return instance;
 	}
 	public static void removeInstance() {
 		instance=null;
 	}
-	private AddDialogPredmet(){
-		instance=new AddDialogPredmet();
+	private DialogPredmet(){
+		instance=new DialogPredmet();
 	}
 	
-	public AddDialogPredmet(Frame parent, String title, boolean modal) {
+	public DialogPredmet(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		instance=this;
 		setSize(350,350);
@@ -137,9 +142,17 @@ public class AddDialogPredmet extends JDialog {
 		gbtxtGodinaStudjia.insets=new Insets(0, 5, 0, 0);
 		p.add(txtGodinaStudjia,gbtxtGodinaStudjia);
 		
-		JButton ok=new JButton("POTVRDA");
+		ok=new JButton("POTVRDA");
 		ok.addActionListener(new ActionListenerPotvrdiAdd());
 		JButton odustani=new JButton("ODUSTANI");
+		odustani.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				DialogPredmet.getInstance().dispose();
+				
+			}
+		});
 		JPanel btnPanel=new JPanel();
 		btnPanel.add(ok,BorderLayout.EAST);
 		btnPanel.add(odustani,BorderLayout.WEST);
@@ -165,19 +178,31 @@ public class AddDialogPredmet extends JDialog {
 		gbOdustani.insets=new Insets(0, 0, 10, 0);
 		p.add(odustani,gbOdustani);
 	}
-	static  public String readtxtsifra() {
+	
+	static public void setTxtFilds() {
+		int i =MainFrame.getTabel().getSelectedRow();
+		txtsifra.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 0));
+		txtNazivPr.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 1));
+		txtSemestar.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 2));
+		txtGodinaStudjia.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 3));
+		ok.removeActionListener(ok.getActionListeners()[0]);
+		ok.addActionListener(new ActionListenerPotvrdiEdit());
+		
+	}
+	
+	static public String readtxtsifra() {
 		return txtsifra.getText();
 	}
 	
-	static  public String readtxtNazivPr() {
+	static public String readtxtNazivPr() {
 		return txtNazivPr.getText();
 	}
 	
-	static  public String readtxtSemestar() {
+	static public String readtxtSemestar() {
 		return txtSemestar.getText();
 	}
 	
-	static  public String readtxtGodinaStudjia() {
+	static public String readtxtGodinaStudjia() {
 		return txtGodinaStudjia.getText();
 	}
 }
