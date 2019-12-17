@@ -17,6 +17,7 @@ import javax.swing.*;
 
 import ActionListener.ActionListenerAdd;
 import ActionListener.ActionListenerEdit;
+import ActionListener.ActionListenerRemove;
 import model.Predmet;
 import model.Profesor;
 import kontroler.*;
@@ -52,6 +53,7 @@ public class MyToolbar extends JToolBar{
 		btnEdit.addActionListener(new ActionListenerEdit());
 		
 		JButton btnDelete=new JButton();
+		btnDelete.addActionListener(new ActionListenerRemove());
 		btnDelete.setToolTipText("Delete");
 		btnDelete.setBackground(Color.white);
 		btnDelete.setIcon(new ImageIcon("images/removebtn.png"));

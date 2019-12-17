@@ -96,6 +96,12 @@ public class StudenskaSluzba {
 		}	
 		return false;	
 	}
+	
+	public boolean izbrisiPredmet(int i) {
+		listaPredmeta.remove(i);
+		return true;
+	}
+	
 	public void izmeniPredmet(String sifraPredmeta, String nazivPredmeta, int semestar, int godinaStudija) {
 		boolean jedistven=true;
 		for (Predmet predmet : listaPredmeta) {
