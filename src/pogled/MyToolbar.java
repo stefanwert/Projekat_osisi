@@ -15,6 +15,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import ActionListener.ActionListenerAdd;
 import model.Predmet;
 import model.Profesor;
 import kontroler.*;
@@ -34,17 +35,12 @@ public class MyToolbar extends JToolBar{
 		setLayout(new BorderLayout());
 		
 		JButton btnNew=new JButton();
+		btnNew.addActionListener(new ActionListenerAdd());
 		btnNew.setBackground(Color.white);
 		btnNew.setToolTipText("Add");
 		btnNew.setIcon(new ImageIcon("images/addbtn.png"));
 		btnNew.setBorderPainted(false);
-		btnNew.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				PredmetKontroler.getInstance().dodaj_predmet("sifra_pr", "naziv",1,2,new Profesor(), null);
-			}
-		});
+
 		
 		
 		JButton btnEdit=new JButton();
@@ -52,28 +48,14 @@ public class MyToolbar extends JToolBar{
 		btnEdit.setBackground(Color.white);
 		btnEdit.setIcon(new ImageIcon("images/editbtn.png"));
 		btnEdit.setBorderPainted(false);
-		btnEdit.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				PredmetKontroler.getInstance().izmeni_predmet(MainFrame.getTabel().getSelectedRow());
-				
-			}
-		});
+		//dodati action listener
 		
 		JButton btnDelete=new JButton();
 		btnDelete.setToolTipText("Delete");
 		btnDelete.setBackground(Color.white);
 		btnDelete.setIcon(new ImageIcon("images/removebtn.png"));
 		btnDelete.setBorderPainted(false);
-		btnDelete.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				PredmetKontroler.getInstance().obrisi_predmet(MainFrame.getTabel().getSelectedRow());
-				
-			}
-		});
+		//dodati action listener
 		
 		JPanel left=new JPanel();
 		left.setBackground(Color.white);
@@ -96,14 +78,6 @@ public class MyToolbar extends JToolBar{
 		right.setBackground(Color.white);
 		right.add(tf);
 		right.add(btnSearch);
-		
-//		add(btnNew);
-//		add(btnEdit);
-//		add(btnDelete);
-//		add(tf);
-//		add(btnSearch);
-		//add(btnDelete,WEST);
-		//add(tf,EAST);
 		
 		
 		add(left,BorderLayout.WEST);

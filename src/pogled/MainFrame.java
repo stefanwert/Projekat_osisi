@@ -11,6 +11,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -23,8 +24,17 @@ import model.StudenskaSluzba;
 public class MainFrame extends JFrame{
 	
 	private static JTable tabelaPredmeta;
+	private static MainFrame instance=null;
+	private JTabbedPane tabbedPane=null;
 	
-	public MainFrame(){
+	public static MainFrame getInstance() {
+		if(instance==null) {
+			instance=new MainFrame();
+		}
+		return instance;
+	}
+	
+	private MainFrame(){
 	Toolkit kit = Toolkit.getDefaultToolkit();
 	Dimension screenSize= kit.getScreenSize();
 	int screenHeight=screenSize.height;
@@ -65,27 +75,25 @@ public class MainFrame extends JFrame{
 	}
 	
 	private void prikaziTabeluIgraca() {
-		JTabbedPane tabbedPanePredmet=new JTabbedPane();
+		tabbedPane=new JTabbedPane();
 		tabelaPredmeta=new PredmetJTable();
 		JScrollPane scrollpanePredmet=new JScrollPane(tabelaPredmeta);
 		
-		tabbedPanePredmet.addTab("Predmet",scrollpanePredmet);
-		//tabbedPanePredmet.addTab("Profesor",null);
-		add(tabbedPanePredmet,BorderLayout.CENTER);
-		
-		azurirajPrikaz(null,-1);
+		tabbedPane.addTab("Predmet",scrollpanePredmet);
+		System.out.println(tabbedPane.indexOfTab("Predmet"));
+		JPanel pan=new JPanel();
+		pan.setBackground(Color.red);
+		tabbedPane.addTab("Profesor",pan);
+		add(tabbedPane,BorderLayout.CENTER);
+		azurirajPrikaz();
 		
 	}
 	
-	public void azurirajPrikaz(String akcija,int vrednost) {
+	public JTabbedPane getTabbedPane() {
+		return tabbedPane;
+	}
+	public void azurirajPrikaz() {
 		PredmetTableModel model=(PredmetTableModel) tabelaPredmeta.getModel();
-		if(akcija != null) {
-			if (akcija.toUpperCase().trim().equals("DODAT")) {
-				//model.igracDodat();
-			} else if (akcija.toUpperCase().trim().equals("UKLONJEN")) {
-				//model.igracUklonjen(vrednost);
-			}
-		}
 		model.fireTableDataChanged();
 		validate();
 	}
