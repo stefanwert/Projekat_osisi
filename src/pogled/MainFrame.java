@@ -25,6 +25,7 @@ import model.StudenskaSluzba;
 public class MainFrame extends JFrame{
 	
 	private static JTable tabelaPredmeta;
+	private static JTable tabelaStudenata;
 	private static MainFrame instance=null;
 	private JTabbedPane tabbedPane=null;
 	
@@ -41,11 +42,12 @@ public class MainFrame extends JFrame{
 	int screenHeight=screenSize.height;
 	int screenWidth=screenSize.width;
 	
-	setSize(screenWidth*3/4,screenHeight*3/4);
+	setSize(screenWidth*3/5,screenHeight*3/5);
 	setTitle("Studentska sluzba");
 	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	setLocationRelativeTo(null);
-	setBackground(Color.LIGHT_GRAY);
+	setLayout(new BorderLayout(10,10));
+	setBackground(Color.WHITE);
 	
 	MyMenuBar menu = new MyMenuBar();
 	this.setJMenuBar(menu);
@@ -53,6 +55,9 @@ public class MainFrame extends JFrame{
 	MyToolbar toolbar = new MyToolbar();
 	toolbar.setBackground(Color.white);
 	add(toolbar,BorderLayout.NORTH);
+	
+	MyStatusBar statusbar = new MyStatusBar();
+	add(statusbar,BorderLayout.SOUTH);
 	
 	
 	/*String[][] data = { 
@@ -81,16 +86,23 @@ public class MainFrame extends JFrame{
 	
 	private void prikaziTabeluIgraca() {
 		tabbedPane=new JTabbedPane();
+		
+		tabelaStudenata=new StudentJTable();
+		tabelaStudenata.setAutoCreateRowSorter(true);
+		JScrollPane scrollpaneStudent=new JScrollPane(tabelaStudenata);
+		tabbedPane.addTab("Studenti",scrollpaneStudent);
+		System.out.println(tabbedPane.indexOfTab("Studenti"));
+
+		JPanel pan=new JPanel();
+		pan.setBackground(Color.WHITE);
+		tabbedPane.addTab("Profesori",pan);
+		add(tabbedPane,BorderLayout.CENTER);
+		
 		tabelaPredmeta=new PredmetJTable();
 		tabelaPredmeta.setAutoCreateRowSorter(true);
 		JScrollPane scrollpanePredmet=new JScrollPane(tabelaPredmeta);
-		
-		tabbedPane.addTab("Predmet",scrollpanePredmet);
-		System.out.println(tabbedPane.indexOfTab("Predmet"));
-		JPanel pan=new JPanel();
-		pan.setBackground(Color.red);
-		tabbedPane.addTab("Profesor",pan);
-		add(tabbedPane,BorderLayout.CENTER);
+		tabbedPane.addTab("Predmeti",scrollpanePredmet);
+		System.out.println(tabbedPane.indexOfTab("Predmeti"));
 		azurirajPrikaz();
 		
 	}

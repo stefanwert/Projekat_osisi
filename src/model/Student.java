@@ -11,32 +11,32 @@ public class Student
 	}
 	private String ime;
     private String prezime;
-    private Date datum_rodjenja;
-    private String adresa_stanovanja;
-    private String kontakt_telefon;
+    private Date datumRodjenja;
+    private String adresaStanovanja;
+    private String kontaktTelefon;
     private String email;
-    private String broj_indeksa;
-    private Date datum_upisa;
-    private int trenutna_godina;
+    private String brojIndeksa;
+    private Date datumUpisa;
+    private int trenutnaGodina;
     private Status status;
-    private double prosecna_ocena;
+    private double prosecnaOcena;
     private List<Predmet> listaPredmeta;
     
-	public Student(String ime, String prezime, Date datum_rodjenja, String adresa_stanovanja, String kontakt_telefon,
-			String email, String broj_indeksa, Date datum_upisa, int trenutna_godina, Status status,
-			double prosecna_ocena, List<Predmet> listaPredmeta) {
+	public Student(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,
+			String email, String brojIndeksa, Date datumUpisa, int trenutnaGodina, Status status,
+			double prosecnaOcena, List<Predmet> listaPredmeta) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
-		this.datum_rodjenja = datum_rodjenja;
-		this.adresa_stanovanja = adresa_stanovanja;
-		this.kontakt_telefon = kontakt_telefon;
+		this.datumRodjenja = datumRodjenja;
+		this.adresaStanovanja = adresaStanovanja;
+		this.kontaktTelefon = kontaktTelefon;
 		this.email = email;
-		this.broj_indeksa = broj_indeksa;
-		this.datum_upisa = datum_upisa;
-		this.trenutna_godina = trenutna_godina;
+		this.brojIndeksa = brojIndeksa;
+		this.datumUpisa = datumUpisa;
+		this.trenutnaGodina = trenutnaGodina;
 		this.status = status;
-		this.prosecna_ocena = prosecna_ocena;
+		this.prosecnaOcena = prosecnaOcena;
 		this.listaPredmeta = listaPredmeta;
 	}
 
@@ -56,28 +56,28 @@ public class Student
 		this.prezime = prezime;
 	}
 
-	public Date getDatum_rodjenja() {
-		return datum_rodjenja;
+	public Date getDatumRodjenja() {
+		return datumRodjenja;
 	}
 
-	public void setDatum_rodjenja(Date datum_rodjenja) {
-		this.datum_rodjenja = datum_rodjenja;
+	public void setDatumRodjenja(Date datum_rodjenja) {
+		this.datumRodjenja = datum_rodjenja;
 	}
 
-	public String getAdresa_stanovanja() {
-		return adresa_stanovanja;
+	public String getAdresaStanovanja() {
+		return adresaStanovanja;
 	}
 
-	public void setAdresa_stanovanja(String adresa_stanovanja) {
-		this.adresa_stanovanja = adresa_stanovanja;
+	public void setAdresaStanovanja(String adresa_stanovanja) {
+		this.adresaStanovanja = adresa_stanovanja;
 	}
 
-	public String getKontakt_telefon() {
-		return kontakt_telefon;
+	public String getKontaktTelefon() {
+		return kontaktTelefon;
 	}
 
-	public void setKontakt_telefon(String kontakt_telefon) {
-		this.kontakt_telefon = kontakt_telefon;
+	public void setKontaktTelefon(String kontakt_telefon) {
+		this.kontaktTelefon = kontakt_telefon;
 	}
 
 	public String getEmail() {
@@ -88,28 +88,28 @@ public class Student
 		this.email = email;
 	}
 
-	public String getBroj_indeksa() {
-		return broj_indeksa;
+	public String getBrojIndeksa() {
+		return brojIndeksa;
 	}
 
-	public void setBroj_indeksa(String broj_indeksa) {
-		this.broj_indeksa = broj_indeksa;
+	public void setBrojIndeksa(String broj_indeksa) {
+		this.brojIndeksa = broj_indeksa;
 	}
 
-	public Date getDatum_upisa() {
-		return datum_upisa;
+	public Date getDatumUpisa() {
+		return datumUpisa;
 	}
 
-	public void setDatum_upisa(Date datum_upisa) {
-		this.datum_upisa = datum_upisa;
+	public void setDatumUpisa(Date datum_upisa) {
+		this.datumUpisa = datum_upisa;
 	}
 
-	public int getTrenutna_godina() {
-		return trenutna_godina;
+	public int getTrenutnaGodina() {
+		return trenutnaGodina;
 	}
 
-	public void setTrenutna_godina(int trenutna_godina) {
-		this.trenutna_godina = trenutna_godina;
+	public void setTrenutnaGodina(int trenutna_godina) {
+		this.trenutnaGodina = trenutna_godina;
 	}
 
 	public Status getStatus() {
@@ -120,12 +120,12 @@ public class Student
 		this.status = status;
 	}
 
-	public double getProsecna_ocena() {
-		return prosecna_ocena;
+	public double getProsecnaOcena() {
+		return prosecnaOcena;
 	}
 
-	public void setProsecna_ocena(double prosecna_ocena) {
-		this.prosecna_ocena = prosecna_ocena;
+	public void setProsecnaOcena(double prosecna_ocena) {
+		this.prosecnaOcena = prosecna_ocena;
 	}
 
 	public List<Predmet> getListaPredmeta() {

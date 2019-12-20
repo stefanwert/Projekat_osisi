@@ -22,7 +22,7 @@ public class StudentKontroler {
 	{
 		for(Student student : listaStudenata)
 		{
-			if(broj_indeksa.equals(student.getBroj_indeksa()))
+			if(broj_indeksa.equals(student.getBrojIndeksa()))
 			{
 				listaStudenata.remove(student);
 			}
@@ -35,21 +35,23 @@ public class StudentKontroler {
 	{
 		stari.setIme(ime);
 		stari.setPrezime(prezime);
-		stari.setDatum_rodjenja(datum_rodjenja);
-		stari.setAdresa_stanovanja(adresa_stanovanja);
-		stari.setKontakt_telefon(kontakt_telefon);
+		stari.setDatumRodjenja(datum_rodjenja);
+		stari.setAdresaStanovanja(adresa_stanovanja);
+		stari.setKontaktTelefon(kontakt_telefon);
 		stari.setEmail(email);
-		stari.setBroj_indeksa(broj_indeksa);
-		stari.setDatum_upisa(datum_upisa);
-		stari.setTrenutna_godina(trenutna_godina);
+		stari.setBrojIndeksa(broj_indeksa);
+		stari.setDatumUpisa(datum_upisa);
+		stari.setTrenutnaGodina(trenutna_godina);
 		stari.setStatus(status);
-		stari.setProsecna_ocena(prosecna_ocena);
+		stari.setProsecnaOcena(prosecna_ocena);
 		stari.setListaPredmeta(listaPredmeta);
 	}
 	
 	void pretrazi_studenta(String kriterijum_pretrage)
 	{
 		//String parts[] = kriterijum_pretrage.split(";");
+		//String index[] = parts[2].split(":");
+		//String br_indx = index[1];
 	}
 	
 }

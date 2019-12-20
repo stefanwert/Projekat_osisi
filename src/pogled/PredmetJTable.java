@@ -10,6 +10,7 @@ import javax.swing.table.TableCellRenderer;
 public class PredmetJTable extends JTable {
 
 	private static final long serialVersionUID = 253246876241413223L;
+	public static final Color LIGHT_BLUE = new Color(100,205,255);
 
 	public PredmetJTable() {
 		this.setRowSelectionAllowed(true);
@@ -24,7 +25,7 @@ public class PredmetJTable extends JTable {
 		Component c = super.prepareRenderer(renderer, row, column);
 		// selektovani red ce imati drugaciju boju od ostalih
 		if (isRowSelected(row)) {
-			c.setBackground(Color.LIGHT_GRAY);
+			c.setBackground(LIGHT_BLUE);
 		} else {
 			c.setBackground(Color.WHITE);
 		}

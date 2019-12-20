@@ -1,8 +1,6 @@
 package model;
-import java.util.*;
-
-import javax.swing.table.TableModel;
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
+import java.util.ArrayList;
+import java.util.List;
 
 import pogled.MainFrame;
 
@@ -12,6 +10,7 @@ public class StudenskaSluzba {
 	List<Profesor> listaProfesora=new ArrayList<Profesor>();
 	
 	private List<String> kolonePredmeta;
+	private List<String> koloneStudenata;
 	
 	private static StudenskaSluzba instance =null;
 	
@@ -26,6 +25,10 @@ public class StudenskaSluzba {
 		return listaPredmeta;
 	}
 	
+	public List<Student> getListStudenata() {
+		return listaStudenata;
+	}
+	
 	private StudenskaSluzba() {
 		kolonePredmeta=new ArrayList<String>();
 		kolonePredmeta.add("Sifra predmeta");
@@ -38,7 +41,20 @@ public class StudenskaSluzba {
 "123", "123", "Redovni profesor vandredni dekan", "asdf", null), null);
 		p.setNazivPredmeta("dgsasdfgafd");
 		listaPredmeta.add(p);
+		
+		koloneStudenata = new ArrayList<String>();
+		koloneStudenata.add("Index");
+		koloneStudenata.add("Ime");
+		koloneStudenata.add("Prezime");
+		koloneStudenata.add("Godina studija");
+		koloneStudenata.add("Status");
+		koloneStudenata.add("Prosek");
+		Student s = new Student("Nemanja","Tamindzija",new java.sql.Date(1997),"adresa","066/123-456","nemanja.tam@gmail.com",
+				"RA242-2018",new java.sql.Date(2018),3,Student.Status.B,7.5,listaPredmeta);
+		listaStudenata.add(s);
+		
 	}
+	
 	
 	public String getColumnNamePredmeta(int i) {
 		return kolonePredmeta.get(i);
@@ -77,6 +93,47 @@ public class StudenskaSluzba {
 			return null;
 		}
 	}
+	
+	public String getColumnNameStudenata(int i) {
+		return koloneStudenata.get(i);
+	}
+	
+	public int getColumCountStudenata() {
+		return koloneStudenata.size();
+	}
+	
+	public List<Student> getStudent(){
+		return listaStudenata;
+	}
+	
+	public void setStudent(List<Student> studenti) {
+		this.listaStudenata=studenti;
+	}
+	
+	public Student getRowStudenata(int rowIndex) {
+		return this.listaStudenata.get(rowIndex);
+	}
+	
+	public String getValueAtStudent(int row,int column) {
+		Student student=this.listaStudenata.get(row);
+		switch (column) {
+		case 0:
+			return student.getBrojIndeksa();
+		case 1:
+			return student.getIme();
+		case 2:
+			return student.getPrezime();
+		case 3:
+			return Integer.toString(student.getTrenutnaGodina());
+		case 4:
+			return student.getStatus().toString();
+		case 5:
+			return Double.toString(student.getProsecnaOcena());
+		default:
+			return null;
+		}
+	}
+	
 	
 	public boolean dodajPredmet(Predmet p) {
 		for (Predmet predmet : listaPredmeta) {
