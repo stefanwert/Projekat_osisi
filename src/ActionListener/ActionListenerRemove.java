@@ -11,7 +11,7 @@ public class ActionListenerRemove implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==0) {
+		if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			try {
 				int i=MainFrame.getInstance().getTabel().getSelectedRow();
 				StudenskaSluzba.getInstance().izbrisiPredmet(i);
@@ -20,10 +20,10 @@ public class ActionListenerRemove implements ActionListener{
 			}
 			
 		}
-		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==1) {
+		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==0) {
 		//ovde ide studentov 
 		}
-		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
+		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==1) {
 		//ovde ide za profesora
 		//tabovi moraju biti dodavani u ovom redosledu
 		}
