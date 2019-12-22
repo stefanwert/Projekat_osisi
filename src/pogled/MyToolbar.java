@@ -18,6 +18,7 @@ import javax.swing.*;
 import ActionListener.ActionListenerAdd;
 import ActionListener.ActionListenerEdit;
 import ActionListener.ActionListenerRemove;
+import ActionListener.ActionListenerSearch;
 import model.Predmet;
 import model.Profesor;
 import kontroler.*;
@@ -74,6 +75,7 @@ public class MyToolbar extends JToolBar{
 		JButton btnSearch =new JButton();
 		btnSearch.setToolTipText("Search");
 		btnSearch.setBackground(Color.white);
+		btnSearch.addActionListener(new ActionListenerSearch());
 		btnSearch.setIcon(new ImageIcon("images/loopbtn.png"));
 		btnSearch.setBorderPainted(false);
 

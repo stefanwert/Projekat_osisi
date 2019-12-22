@@ -2,6 +2,7 @@ package ActionListener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 import dialog.DialogPredmet;
 import kontroler.PredmetKontroler;
@@ -9,11 +10,11 @@ import model.Predmet;
 import model.Profesor;
 import model.StudenskaSluzba;
 
-public class ActionListenerPotvrdiAdd implements ActionListener{
+public class ActionListenerPotvrdiAddPredmet implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Profesor pro= new Profesor("profa", "profic", new java.sql.Date(23), "novi safd", "nema", "ne'am jbg","123", "123", "Redovni profesor vandredni dekan", "asdf", null);
+		Profesor pro= new Profesor("profa", "profic", new Date(), "novi safd", "nema", "ne'am jbg","123", "123", "Redovni profesor vandredni dekan", "asdf", null);
 		
 		
 		try {

@@ -20,7 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import ActionListener.ActionListenerPotvrdiAdd;
+import ActionListener.ActionListenerPotvrdiAddPredmet;
 import ActionListener.ActionListenerPotvrdiEdit;
 import model.StudenskaSluzba;
 import pogled.MainFrame;
@@ -217,7 +217,7 @@ public class DialogStudent extends JDialog {
 	
 		
 		ok=new JButton("Potvrda");
-		ok.addActionListener(new ActionListenerPotvrdiAdd());
+		ok.addActionListener(new ActionListenerPotvrdiAddPredmet());//ovde moras svoj listener promenio sam mu ime da ne mislis da radi za sve 
 		JButton odustani=new JButton("Odustani");
 		odustani.addActionListener(new ActionListener() {
 			

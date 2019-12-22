@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ActionListener.ActionListenerPotvrdiAdd;
+import ActionListener.ActionListenerPotvrdiAddPredmet;
 import ActionListener.ActionListenerPotvrdiEdit;
 import model.Predmet;
 import model.StudenskaSluzba;
@@ -144,7 +144,7 @@ public class DialogPredmet extends JDialog {
 		p.add(txtGodinaStudjia,gbtxtGodinaStudjia);
 		
 		ok=new JButton("POTVRDA");
-		ok.addActionListener(new ActionListenerPotvrdiAdd());
+		ok.addActionListener(new ActionListenerPotvrdiAddPredmet());
 		JButton odustani=new JButton("ODUSTANI");
 		odustani.addActionListener(new ActionListener() {
 			
