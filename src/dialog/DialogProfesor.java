@@ -2,7 +2,6 @@ package dialog;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridBagConstraints;
@@ -11,49 +10,50 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import ActionListener.ActionListenerPotvrdiAddPredmet;
+import ActionListener.ActionListenerPotvrdiAdd;
 import ActionListener.ActionListenerPotvrdiEdit;
 import model.StudenskaSluzba;
 import pogled.MainFrame;
 
-public class DialogStudent extends JDialog {
-	
+public class DialogProfesor extends JDialog {
+
 	static private JTextField txtIme;
 	static private JTextField txtPrezime;
 	static private JTextField txtDatumRodjenja;
 	static private JTextField txtAdresaStanovanja;
 	static private JTextField txtBrojTelefona;
-	static private JTextField txtBrojIndeksa;
+	static private JTextField txtEmail;
+	static private JTextField txtAdresaKancelarije;
+	static private JTextField txtBrojLicneKarte;
+	static private JTextField txtTitula;
+	static private JTextField txtZvanje;
 	static private JButton ok;
 	
- private static DialogStudent instance =null;
+ private static DialogProfesor instance =null;
 	
-	public static DialogStudent getInstance() {
+	public static DialogProfesor getInstance() {
 		if(instance==null) {
-			instance=new DialogStudent();
+			instance=new DialogProfesor();
 		}
 		return instance;
 	}
 	public static void removeInstance() {
 		instance=null;
 	}
-	private DialogStudent(){
-		instance=new DialogStudent();
+	private DialogProfesor(){
+		instance=new DialogProfesor();
 	}
 	
-	public DialogStudent(Frame parent, String title, boolean modal) {
+	public DialogProfesor(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		instance=this;
-		setSize(470,420);
+		setSize(440,500);
 		setLocationRelativeTo(parent);
 		
 		setLayout(new BorderLayout());
@@ -75,21 +75,17 @@ public class DialogStudent extends JDialog {
 		lblAdresaStanovanja.setFont(new Font("Adresa stanovanja:",Font.PLAIN,18));
 		JLabel lblBrojTelefona=new JLabel("Broj telefona:");
 		lblBrojTelefona.setFont(new Font("Broj telefona:",Font.PLAIN,18));
-		JLabel lblBrojIndeksa=new JLabel("Broj indeksa:");
-		lblBrojIndeksa.setFont(new Font("Broj indeksa:",Font.PLAIN,18));
-		JLabel lblTrenutnaGodinaStudija=new JLabel("Trenutna godina studija:");
-		lblTrenutnaGodinaStudija.setFont(new Font("Trenutna godina studija:",Font.PLAIN,18));
-		String[] godinaStudija = { " I(prva)"," II(druga)"," III(treca)"," IV(cetvrta)"};
-	    final JComboBox<String> cb = new JComboBox<String>(godinaStudija);
-	    cb.setVisible(true);
-		JRadioButton budzet = new JRadioButton("Budzet");
-		budzet.setFont(new Font("Budzet:",Font.PLAIN,18));
-		JRadioButton samofinansiranje = new JRadioButton("Samofinansiranje");
-		samofinansiranje.setFont(new Font("Samofinansiranje:",Font.PLAIN,18));
-		// grupa regulise da samo jedan RadioButton može biti èekiran
-		ButtonGroup status = new ButtonGroup();
-		status.add(budzet);
-		status.add(samofinansiranje);
+		JLabel lblEmail=new JLabel("E-mail:");
+		lblEmail.setFont(new Font("Email:",Font.PLAIN,18));
+		JLabel lblAdresaKancelarije=new JLabel("Adresa kancelarije:");
+		lblAdresaKancelarije.setFont(new Font("Adresa kancelarije:",Font.PLAIN,18));
+		JLabel lblBrojLicneKarte=new JLabel("Broj licne karte:");
+		lblBrojLicneKarte.setFont(new Font("Broj licne karte:",Font.PLAIN,18));
+		JLabel lblTitula=new JLabel("Titula:");
+		lblTitula.setFont(new Font("Titula:",Font.PLAIN,18));
+		JLabel lblZvanje=new JLabel("Zvanje:");
+		lblZvanje.setFont(new Font("Zvanje:",Font.PLAIN,18));
+		
 		
 		txtIme=new JTextField();
 		txtIme.setPreferredSize(new Dimension(250,25));
@@ -101,8 +97,17 @@ public class DialogStudent extends JDialog {
 		txtAdresaStanovanja.setPreferredSize(new Dimension(250,25));
 		txtBrojTelefona=new JTextField();
 		txtBrojTelefona.setPreferredSize(new Dimension(250,25));
-		txtBrojIndeksa=new JTextField();
-		txtBrojIndeksa.setPreferredSize(new Dimension(250,25));
+		txtEmail=new JTextField();
+		txtEmail.setPreferredSize(new Dimension(250,25));
+		txtAdresaKancelarije=new JTextField();
+		txtAdresaKancelarije.setPreferredSize(new Dimension(250,25));
+		txtBrojLicneKarte=new JTextField();
+		txtBrojLicneKarte.setPreferredSize(new Dimension(250,25));
+		txtTitula=new JTextField();
+		txtTitula.setPreferredSize(new Dimension(250,25));
+		txtZvanje=new JTextField();
+		txtZvanje.setPreferredSize(new Dimension(250,25));
+		
 		
 		GridBagConstraints gblblIme=new GridBagConstraints();
 		gblblIme.gridx=0;
@@ -176,48 +181,81 @@ public class DialogStudent extends JDialog {
 		gbtxtBrojTelefona.weightx=100;
 		panel.add(txtBrojTelefona,gbtxtBrojTelefona);
 		
-		GridBagConstraints gblblBrojIndeksa=new GridBagConstraints();
-		gblblBrojIndeksa.gridx=0;
-		gblblBrojIndeksa.gridy=5;
-		gblblBrojIndeksa.insets=new Insets(10, 0, 5, 0);
-		gblblBrojIndeksa.anchor=GridBagConstraints.CENTER;
-		panel.add(lblBrojIndeksa,gblblBrojIndeksa);
-		GridBagConstraints gbtxtBrojIndeksa=new GridBagConstraints();
-		gbtxtBrojIndeksa.gridx=1;
-		gbtxtBrojIndeksa.gridy=5;
-		gbtxtBrojIndeksa.insets=new Insets(10, 0, 5, 0);
-		gbtxtBrojIndeksa.anchor=GridBagConstraints.WEST;
-		gbtxtBrojIndeksa.weightx=100;
-		panel.add(txtBrojIndeksa,gbtxtBrojIndeksa);
+		GridBagConstraints gblblEmail=new GridBagConstraints();
+		gblblEmail.gridx=0;
+		gblblEmail.gridy=5;
+		gblblEmail.insets=new Insets(10, 0, 5, 0);
+		gblblEmail.anchor=GridBagConstraints.CENTER;
+		panel.add(lblEmail,gblblEmail);
+		GridBagConstraints gbtxtEmail=new GridBagConstraints();
+		gbtxtEmail.gridx=1;
+		gbtxtEmail.gridy=5;
+		gbtxtEmail.insets=new Insets(10, 0, 5, 0);
+		gbtxtEmail.anchor=GridBagConstraints.WEST;
+		gbtxtEmail.weightx=100;
+		gbtxtEmail.weighty=0;
+		panel.add(txtEmail,gbtxtEmail);
 		
-		GridBagConstraints gblblTrenutnaGodinaStudija=new GridBagConstraints();
-		gblblTrenutnaGodinaStudija.gridx=0;
-		gblblTrenutnaGodinaStudija.gridy=6;
-		gblblTrenutnaGodinaStudija.insets=new Insets(10, 10, 5, 0);
-		gblblTrenutnaGodinaStudija.anchor=GridBagConstraints.CENTER;
-		panel.add(lblTrenutnaGodinaStudija,gblblTrenutnaGodinaStudija);
-		GridBagConstraints gbtxtcb=new GridBagConstraints();
-		gbtxtcb.gridx=1;
-		gbtxtcb.gridy=6;
-		gbtxtcb.insets=new Insets(10, 5, 5, 0);
-		gbtxtcb.anchor=GridBagConstraints.CENTER;
-		panel.add(cb,gbtxtcb);
+		GridBagConstraints gblblAdresaKancelarije=new GridBagConstraints();
+		gblblAdresaKancelarije.gridx=0;
+		gblblAdresaKancelarije.gridy=6;
+		gblblAdresaKancelarije.insets=new Insets(10, 5, 5, 0);
+		gblblAdresaKancelarije.anchor=GridBagConstraints.CENTER;
+		panel.add(lblAdresaKancelarije,gblblAdresaKancelarije);
+		GridBagConstraints gbtxtAdresaKancelarije=new GridBagConstraints();
+		gbtxtAdresaKancelarije.gridx=1;
+		gbtxtAdresaKancelarije.gridy=6;
+		gbtxtAdresaKancelarije.insets=new Insets(10, 0, 5, 0);
+		gbtxtAdresaKancelarije.anchor=GridBagConstraints.WEST;
+		gbtxtAdresaKancelarije.weightx=100;
+		panel.add(txtAdresaKancelarije,gbtxtAdresaKancelarije);
 		
-		GridBagConstraints gbBudzet=new GridBagConstraints();
-		gbBudzet.gridx=0;
-		gbBudzet.gridy=7;
-		gbBudzet.insets=new Insets(10, 0, 5, 0);
-		panel.add(budzet,gbBudzet);
+		GridBagConstraints gblblBrojLicneKarte=new GridBagConstraints();
+		gblblBrojLicneKarte.gridx=0;
+		gblblBrojLicneKarte.gridy=7;
+		gblblBrojLicneKarte.insets=new Insets(10, 0, 5, 0);
+		gblblBrojLicneKarte.anchor=GridBagConstraints.CENTER;
+		panel.add(lblBrojLicneKarte,gblblBrojLicneKarte);
+		GridBagConstraints gbtxtBrojLicneKarte=new GridBagConstraints();
+		gbtxtBrojLicneKarte.gridx=1;
+		gbtxtBrojLicneKarte.gridy=7;
+		gbtxtBrojLicneKarte.insets=new Insets(10, 0, 5, 0);
+		gbtxtBrojLicneKarte.anchor=GridBagConstraints.WEST;
+		gbtxtBrojLicneKarte.weightx=100;
+		panel.add(txtBrojLicneKarte,gbtxtBrojLicneKarte);
 		
-		GridBagConstraints gbSamofinansiranje=new GridBagConstraints();
-		gbSamofinansiranje.gridx=1;
-		gbSamofinansiranje.gridy=7;
-		gbSamofinansiranje.insets=new Insets(10, 0, 5, 0);
-		panel.add(samofinansiranje,gbSamofinansiranje);
+		GridBagConstraints gblblTitula=new GridBagConstraints();
+		gblblTitula.gridx=0;
+		gblblTitula.gridy=8;
+		gblblTitula.insets=new Insets(10, 0, 5, 0);
+		gblblTitula.anchor=GridBagConstraints.CENTER;
+		panel.add(lblTitula,gblblTitula);
+		GridBagConstraints gbtxtTitula=new GridBagConstraints();
+		gbtxtTitula.gridx=1;
+		gbtxtTitula.gridy=8;
+		gbtxtTitula.insets=new Insets(10, 0, 5, 0);
+		gbtxtTitula.anchor=GridBagConstraints.WEST;
+		gbtxtTitula.weightx=100;
+		gbtxtTitula.weighty=0;
+		panel.add(txtTitula,gbtxtTitula);
+		
+		GridBagConstraints gblblZvanje=new GridBagConstraints();
+		gblblZvanje.gridx=0;
+		gblblZvanje.gridy=9;
+		gblblZvanje.insets=new Insets(10, 0, 5, 0);
+		gblblZvanje.anchor=GridBagConstraints.CENTER;
+		panel.add(lblZvanje,gblblZvanje);
+		GridBagConstraints gbtxtZvanje=new GridBagConstraints();
+		gbtxtZvanje.gridx=1;
+		gbtxtZvanje.gridy=9;
+		gbtxtZvanje.insets=new Insets(10, 0, 5, 0);
+		gbtxtZvanje.anchor=GridBagConstraints.WEST;
+		gbtxtZvanje.weightx=100;
+		gbtxtZvanje.weighty=0;
+		panel.add(txtZvanje,gbtxtZvanje);
 	
-		
 		ok=new JButton("Potvrda");
-		ok.addActionListener(new ActionListenerPotvrdiAddPredmet());//ovde moras svoj listener promenio sam mu ime da ne mislis da radi za sve 
+		ok.addActionListener(new ActionListenerPotvrdiAdd());
 		JButton odustani=new JButton("Odustani");
 		odustani.addActionListener(new ActionListener() {
 			
@@ -247,9 +285,8 @@ public class DialogStudent extends JDialog {
 	
 	static public void setTxtFilds() {
 		int i =MainFrame.getTabelStudenta().getSelectedRow();
-		txtBrojIndeksa.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 0));
-		txtIme.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 1));
-		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 2));
+		txtIme.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 0));
+		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 1));
 		
 		ok.removeActionListener(ok.getActionListeners()[0]);
 		ok.addActionListener(new ActionListenerPotvrdiEdit());
@@ -276,8 +313,4 @@ public class DialogStudent extends JDialog {
 		return txtBrojTelefona.getText();
 	}
 	
-	static public String readtxtBrojIndeksa() {
-		return txtBrojIndeksa.getText();
-	}
-
 }
