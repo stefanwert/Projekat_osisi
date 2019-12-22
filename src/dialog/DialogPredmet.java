@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 
 import ActionListener.ActionListenerPotvrdiAdd;
 import ActionListener.ActionListenerPotvrdiEdit;
+import model.Predmet;
 import model.StudenskaSluzba;
 import pogled.MainFrame;
 
@@ -180,7 +181,15 @@ public class DialogPredmet extends JDialog {
 	}
 	
 	static public void setTxtFilds() {
-		int i =MainFrame.getTabel().getSelectedRow();
+		int i =MainFrame.getTabelPredmeta().getSelectedRow();
+		String s=(String)MainFrame.getInstance().getTabelPredmeta().getValueAt(i, 0);
+		i=0;
+		for (Predmet predmet : StudenskaSluzba.getInstance().getListPredmeta()) {
+			if(s.equals(predmet.getSifraPredmeta())) {
+				break;
+			}
+			i++;
+		}
 		txtsifra.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 0));
 		txtNazivPr.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 1));
 		txtSemestar.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 2));

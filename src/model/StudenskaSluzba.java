@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import pogled.MainFrame;
@@ -11,6 +12,7 @@ public class StudenskaSluzba {
 	
 	private List<String> kolonePredmeta;
 	private List<String> koloneStudenata;
+	private List<String> koloneProfesora;
 	
 	private static StudenskaSluzba instance =null;
 	
@@ -27,6 +29,10 @@ public class StudenskaSluzba {
 	
 	public List<Student> getListStudenata() {
 		return listaStudenata;
+	}
+	
+	public List<Profesor> getListProfesora() {
+		return listaProfesora;
 	}
 	
 	private StudenskaSluzba() {
@@ -53,8 +59,113 @@ public class StudenskaSluzba {
 				"RA242-2018",new java.sql.Date(2018),3,Student.Status.B,7.5,listaPredmeta);
 		listaStudenata.add(s);
 		
+		koloneProfesora= new ArrayList<String>();
+		koloneProfesora.add("Ime");
+		koloneProfesora.add("Prezime");
+		koloneProfesora.add("Datum");
+		koloneProfesora.add("Adresa stanovanja");
+		koloneProfesora.add("Kontakt telefon");
+		koloneProfesora.add("Email");
+		koloneProfesora.add("Adresa kancelarije");
+		koloneProfesora.add("Broj licne karte");
+		koloneProfesora.add("Titula");
+		koloneProfesora.add("Zvanje");
+		listaProfesora.add(new Profesor("stefan","petrovic",new Date(200,2,1),"adresa","tel","email","adresaKan","ovoJeKljuc","titula","zvanje",null));
 	}
 	
+	//za profesora deo
+	
+	public String getColumnNameProfesora(int i) {
+		return koloneProfesora.get(i);
+	}
+	
+	public int getColumCountProfesora() {
+		return koloneProfesora.size();
+	}
+	public Profesor getRowProfesora(int rowIndex) {
+		return this.listaProfesora.get(rowIndex);
+	}
+	
+	public String getValueAtProfesor(int row,int column) {
+		Profesor profesor=this.getRowProfesora(row);
+		switch (column) {
+		case 0:
+			return profesor.getIme();
+		case 1:
+			return profesor.getPrezime();
+		case 2:
+			return String.format("%d %d %d", profesor.getDatum().getDay(),profesor.getDatum().getMonth(),profesor.getDatum().getYear());
+		case 3:
+			return profesor.getAdresaStanovanja();
+		case 4:
+			return profesor.getKontaktTel();
+		case 5:
+			return profesor.getEmail();
+		case 6:
+			return profesor.getAdresaKancelarije();
+		case 7:
+			return profesor.getBrLicneKarte();
+		case 8:
+			return profesor.getTitula();
+		case 9:
+			return profesor.getZvanje();
+		default:
+			return null;
+		}
+	}
+	
+	public boolean dodajProfesora(Profesor p) {
+		for (Profesor profesor : listaProfesora) {
+			if(profesor.getBrLicneKarte().equals(p.getBrLicneKarte()))
+				return false;
+		}
+		listaProfesora.add(p);
+		return true;
+	}
+	
+	public boolean izbrisiProfesora(String brLicKarte) {
+		for (Profesor profesor : listaProfesora) {
+			if(profesor.getBrLicneKarte().equals(brLicKarte)) {
+				listaProfesora.remove(profesor);
+				return true;
+			}	
+		}	
+		return false;	
+	}
+	
+	public boolean izbrisiProfesora(int i) {
+		listaProfesora.remove(i);
+		return true;
+	}
+	
+	public void izmeniProfesora(String ime, String prezime, Date datum, String adresaStanovanja, String kontaktTel, String email,
+			String adresaKancelarije, String brLicneKarte, String titula, String zvanje) {
+		boolean jedistven=true;
+		for (Profesor profesor : listaProfesora) {
+			if(profesor.getBrLicneKarte().equals(brLicneKarte)) {
+				jedistven=false;
+			}
+		}
+		
+		int i =MainFrame.getTabelProfesora().getSelectedRow();
+		if(jedistven) {
+			listaProfesora.get(i).setBrLicneKarte(brLicneKarte);
+		}
+		else
+			System.out.println("pokuslai ste da promenite kljuc u kljuc koji vec postoji");
+		listaProfesora.get(i).setIme(ime);
+		listaProfesora.get(i).setPrezime(prezime);
+		listaProfesora.get(i).setDatum(datum);
+		listaProfesora.get(i).setAdresaStanovanja(adresaStanovanja);
+		listaProfesora.get(i).setKontaktTel(kontaktTel);
+		listaProfesora.get(i).setEmail(email);
+		listaProfesora.get(i).setAdresaKancelarije(adresaKancelarije);
+		listaProfesora.get(i).setTitula(titula);
+		listaProfesora.get(i).setZvanje(zvanje);
+		
+		
+	}
+	//kraj profesroa
 	
 	public String getColumnNamePredmeta(int i) {
 		return kolonePredmeta.get(i);
@@ -64,9 +175,9 @@ public class StudenskaSluzba {
 		return kolonePredmeta.size();
 	}
 	
-	public List<Predmet> getPremet(){
+	/*public List<Predmet> getPremet(){
 		return listaPredmeta;
-	}
+	}*/
 	
 	public void setPredmet(List<Predmet> predmeti) {
 		this.listaPredmeta=predmeti;
@@ -88,7 +199,7 @@ public class StudenskaSluzba {
 		case 3:
 			return Integer.toString(predmet.getGodinaStudija());
 		case 4:
-			return predmet.getProfesor().getIme()+predmet.getProfesor().getPrezime();
+			return predmet.getProfesor().getIme()+" "+predmet.getProfesor().getPrezime();
 		default:
 			return null;
 		}
@@ -137,7 +248,7 @@ public class StudenskaSluzba {
 	
 	public boolean dodajPredmet(Predmet p) {
 		for (Predmet predmet : listaPredmeta) {
-			if(predmet.sifraPredmeta==p.sifraPredmeta)
+			if(predmet.getSifraPredmeta().equals(p.getSifraPredmeta()))
 				return false;
 		}
 		listaPredmeta.add(p);
@@ -166,15 +277,16 @@ public class StudenskaSluzba {
 				jedistven=false;
 			}
 		}
+		int i =MainFrame.getTabelPredmeta().getSelectedRow();
 		if(jedistven) {
-			int i =MainFrame.getTabel().getSelectedRow();
 			listaPredmeta.get(i).setSifraPredmeta(sifraPredmeta);
-			listaPredmeta.get(i).setNazivPredmeta(nazivPredmeta);
-			listaPredmeta.get(i).setSemestar(semestar);
-			listaPredmeta.get(i).setGodinaStudija(godinaStudija);
+			
 		}
 		else
 			System.out.println("pokuslai ste da promenite kljuc u kljuc koji vec postoji");
+		listaPredmeta.get(i).setNazivPredmeta(nazivPredmeta);
+		listaPredmeta.get(i).setSemestar(semestar);
+		listaPredmeta.get(i).setGodinaStudija(godinaStudija);
 	}
 	
 	

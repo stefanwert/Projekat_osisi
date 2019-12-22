@@ -26,6 +26,7 @@ public class MainFrame extends JFrame{
 	
 	private static JTable tabelaPredmeta;
 	private static JTable tabelaStudenata;
+	private static JTable tabelaProfesora; 
 	private static MainFrame instance=null;
 	private JTabbedPane tabbedPane=null;
 	
@@ -59,64 +60,56 @@ public class MainFrame extends JFrame{
 	MyStatusBar statusbar = new MyStatusBar();
 	add(statusbar,BorderLayout.SOUTH);
 	
-	
-	/*String[][] data = { 
-            { "sifra","naz","2","2","vidakovic"},
-            { "sifra","naz","24","3","perisic"}
-        }; 
-	String[] columnNames = new String[5];
-	for(int i=0;i<StudenskaSluzba.getInstance().getColumCountPredmeta();i++)
-		columnNames[i]=StudenskaSluzba.getInstance().getColumnNamePredmeta(i);
-	
-	tabelaPredmeta=new JTable(data,columnNames);
-	tabelaPredmeta.setBounds(30, 40, 200, 300); 
-	JScrollPane sp=new JScrollPane(tabelaPredmeta);
-	
-	
-	JTabbedPane q=new JTabbedPane();
-	q.addTab("prvi", sp);
-	add(q,BorderLayout.CENTER);*/
-	
-	
-	prikaziTabeluIgraca();
-	
+	prikaziTabele();
 	
 	setVisible(true);
 	}
 	
-	private void prikaziTabeluIgraca() {
+	private void prikaziTabele() {
 		tabbedPane=new JTabbedPane();
 		
 		tabelaStudenata=new StudentJTable();
 		tabelaStudenata.setAutoCreateRowSorter(true);
 		JScrollPane scrollpaneStudent=new JScrollPane(tabelaStudenata);
 		tabbedPane.addTab("Studenti",scrollpaneStudent);
-		System.out.println(tabbedPane.indexOfTab("Studenti"));
 
-		JPanel pan=new JPanel();
-		pan.setBackground(Color.WHITE);
-		tabbedPane.addTab("Profesori",pan);
+//		JPanel pan=new JPanel();
+		tabelaProfesora=new ProfesorJTable();
+		tabelaProfesora.setAutoCreateRowSorter(true);
+		JScrollPane scrollpaneProfesor=new JScrollPane(tabelaProfesora);
+		tabbedPane.addTab("Profesori",scrollpaneProfesor);
+		
 		add(tabbedPane,BorderLayout.CENTER);
 		
 		tabelaPredmeta=new PredmetJTable();
 		tabelaPredmeta.setAutoCreateRowSorter(true);
 		JScrollPane scrollpanePredmet=new JScrollPane(tabelaPredmeta);
 		tabbedPane.addTab("Predmeti",scrollpanePredmet);
-		System.out.println(tabbedPane.indexOfTab("Predmeti"));
-		azurirajPrikaz();
 		
+		azurirajPrikaz();
 	}
 	
 	public JTabbedPane getTabbedPane() {
 		return tabbedPane;
 	}
+	
 	public void azurirajPrikaz() {
 		PredmetTableModel model=(PredmetTableModel) tabelaPredmeta.getModel();
 		model.fireTableDataChanged();
+		ProfesorTableModel model2=(ProfesorTableModel) tabelaProfesora.getModel();
+		model2.fireTableDataChanged();
+		
+		//ovde dodaj i za studenta
 		validate();
 	}
 	
-	public static JTable getTabel() {
+	public static JTable getTabelPredmeta() {
 		return tabelaPredmeta;
+	}
+	public static JTable getTabelProfesora() {
+		return tabelaProfesora;
+	}
+	public static JTable getTabelStudenta() {
+		return tabelaStudenata;
 	}
 }

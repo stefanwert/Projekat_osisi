@@ -17,11 +17,6 @@ public class PredmetTableModel extends AbstractTableModel{
 
 
 	@Override
-	public Class<?> getColumnClass(int columnIndex) {
-		return String.class;
-	}
-
-	@Override
 	public int getColumnCount() {
 		return StudenskaSluzba.getInstance().getColumCountPredmeta();
 	}
@@ -47,7 +42,7 @@ public class PredmetTableModel extends AbstractTableModel{
 	}
 
 
-	@Override
+	/*@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		Predmet predmet= StudenskaSluzba.getInstance().getListPredmeta().get(rowIndex);
 		switch (columnIndex) {
@@ -63,6 +58,6 @@ public class PredmetTableModel extends AbstractTableModel{
 			 predmet.getProfesor();
 		
 		}
-	}
+	}*/
 
 }
