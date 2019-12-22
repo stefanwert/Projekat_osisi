@@ -59,7 +59,6 @@ public class MyMenuBar extends JMenuBar {
 		add(file);
 		add(edit);
 		add(help);
-
 	}
 	
 }

@@ -237,7 +237,6 @@ public class DialogStudent extends JDialog {
 		gbok.insets=new Insets(15, 0, 0, 0);
 		panel.add(ok,gbok);
 		
-		
 		GridBagConstraints gbOdustani=new GridBagConstraints();
 		gbOdustani.gridx=1;
 		gbOdustani.gridy=10;
