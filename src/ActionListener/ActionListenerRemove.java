@@ -13,19 +13,8 @@ public class ActionListenerRemove implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
-			try {
-				int i=MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
-				System.out.println(i);
-				String s=(String)MainFrame.getInstance().getTabelPredmeta().getValueAt(i, 0);
-				//StudenskaSluzba.getInstance().izbrisiPredmet(s);
-				PredmetKontroler.getInstance().obrisiPredmet(s);
-			} catch (Exception e2) {
-				System.out.println("niste selektovali vrstu");
-			}
-			
-		}
-		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==0) {
+	
+		if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==0) {
 		//ovde ide studentov 
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==1) {
@@ -38,6 +27,18 @@ public class ActionListenerRemove implements ActionListener{
 			} catch (Exception e2) {
 				System.out.println("niste selektovali vrstu u tabeli profesor");
 			}
+		}
+		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
+			try {
+				int i=MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
+				System.out.println(i);
+				String s=(String)MainFrame.getInstance().getTabelPredmeta().getValueAt(i, 0);
+				//StudenskaSluzba.getInstance().izbrisiPredmet(s);
+				PredmetKontroler.getInstance().obrisiPredmet(s);
+			} catch (Exception e2) {
+				System.out.println("niste selektovali vrstu");
+			}
+			
 		}
 		
 		

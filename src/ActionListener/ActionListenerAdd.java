@@ -18,6 +18,7 @@ public class ActionListenerAdd implements ActionListener {
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==1) {
 			//ovde ide dialog za profesora
 			//tabovi moraju biti dodavani u ovom redosledu
+			
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			DialogPredmet d=new DialogPredmet(MainFrame.getInstance(),"DODAJ PREDMET",true);
