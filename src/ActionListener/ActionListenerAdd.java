@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import dialog.DialogPredmet;
+import dialog.DialogProfesor;
 import dialog.DialogStudent;
 import pogled.MainFrame;
 
@@ -16,9 +17,8 @@ public class ActionListenerAdd implements ActionListener {
 			ds.setVisible(true);
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==1) {
-			//ovde ide dialog za profesora
-			//tabovi moraju biti dodavani u ovom redosledu
-			
+			DialogProfesor dp = new DialogProfesor(MainFrame.getInstance(),"Dodaj profesora",true);
+			dp.setVisible(true);
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			DialogPredmet d=new DialogPredmet(MainFrame.getInstance(),"DODAJ PREDMET",true);
