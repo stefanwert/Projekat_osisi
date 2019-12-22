@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import dialog.DialogPredmet;
+import kontroler.PredmetKontroler;
+import kontroler.ProfesorKontroler;
 import model.StudenskaSluzba;
 import pogled.MainFrame;
 
@@ -13,10 +15,11 @@ public class ActionListenerRemove implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			try {
-				int i=MainFrame.getInstance().getTabel().getSelectedRow();
-				String s=(String)MainFrame.getInstance().getTabel().getValueAt(i, 0);
-				System.out.println(s);
-				StudenskaSluzba.getInstance().izbrisiPredmet(s);
+				int i=MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
+				System.out.println(i);
+				String s=(String)MainFrame.getInstance().getTabelPredmeta().getValueAt(i, 0);
+				//StudenskaSluzba.getInstance().izbrisiPredmet(s);
+				PredmetKontroler.getInstance().obrisiPredmet(s);
 			} catch (Exception e2) {
 				System.out.println("niste selektovali vrstu");
 			}
@@ -26,8 +29,15 @@ public class ActionListenerRemove implements ActionListener{
 		//ovde ide studentov 
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==1) {
-		//ovde ide za profesora
-		//tabovi moraju biti dodavani u ovom redosledu
+			try {
+				int i=MainFrame.getInstance().getTabelProfesora().getSelectedRow();
+				System.out.println(i);
+				String s=(String)MainFrame.getInstance().getTabelProfesora().getValueAt(i, 7);
+				System.out.println(s);
+				ProfesorKontroler.getInstance().obrisiProfesora(s);
+			} catch (Exception e2) {
+				System.out.println("niste selektovali vrstu u tabeli profesor");
+			}
 		}
 		
 		

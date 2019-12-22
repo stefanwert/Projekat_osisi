@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import dialog.DialogPredmet;
+import kontroler.PredmetKontroler;
 import model.Predmet;
 import model.Profesor;
 import model.StudenskaSluzba;
@@ -20,8 +21,9 @@ public class ActionListenerPotvrdiAdd implements ActionListener{
 			String naz=DialogPredmet.getInstance().readtxtNazivPr();
 			int sem= Integer.parseInt(DialogPredmet.getInstance().readtxtSemestar());
 			int god=Integer.parseInt(DialogPredmet.getInstance().readtxtGodinaStudjia());
-			Predmet p=new Predmet(sif,naz,sem,god,pro,null);
-			StudenskaSluzba.getInstance().dodajPredmet(p);
+			//Predmet p=new Predmet(sif,naz,sem,god,pro,null);
+			//StudenskaSluzba.getInstance().dodajPredmet(p);
+			PredmetKontroler.getInstance().dodajPredmet(sif, naz, sem, god, pro, null);
 		} catch (Exception e2) {
 			
 		}

@@ -1,21 +1,21 @@
 package model;
 
 import java.util.*;
-import java.sql.Date;
+
 
 
 public class Profesor {
-	String ime;
-	String prezime;
-	Date datum;
-	String adresaStanovanja;
-	String kontaktTel;
-	String email;
-	String adresaKancelarije;
-	String brLicneKarte;
-	String titula;
-	String zvanje;
-	List<Predmet> ListaPredmeta;
+	private String ime;
+	private String prezime;
+	private Date datum;
+	private String adresaStanovanja;
+	private String kontaktTel;
+	private String email;
+	private String adresaKancelarije;
+	private String brLicneKarte;
+	private String titula;
+	private String zvanje;
+	private List<Predmet> ListaPredmeta;
 	
 	public Profesor(String ime, String prezime, Date datum, String adresaStanovanja, String kontaktTel, String email,
 			String adresaKancelarije, String brLicneKarte, String titula, String zvanje, List<Predmet> listaPredmeta) {

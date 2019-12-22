@@ -2,12 +2,12 @@ package model;
 import java.util.*;
 
 public class Predmet {
-	String sifraPredmeta;
-	String nazivPredmeta;
-	int semestar;
-	int godinaStudija;
-	Profesor profesor;
-	List<Student> listaStudenata;
+	private String sifraPredmeta;
+	private String nazivPredmeta;
+	private int semestar;
+	private int godinaStudija;
+	private Profesor profesor;
+	private List<Student> listaStudenata;
 	
 	public Predmet() {
 		sifraPredmeta="";

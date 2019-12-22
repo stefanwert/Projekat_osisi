@@ -17,6 +17,7 @@ public class StudentJTable extends JTable {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.setRowHeight(20);	
 		this.setModel(new StudentTableModel());
 	}
 	@Override
