@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ActionListener.ActionListenerPotvrdiAdd;
+import ActionListener.ActionListenerPotvrdiAddPredmet;
 import ActionListener.ActionListenerPotvrdiEdit;
 import model.StudenskaSluzba;
 import pogled.MainFrame;
@@ -255,7 +255,7 @@ public class DialogProfesor extends JDialog {
 		panel.add(txtZvanje,gbtxtZvanje);
 	
 		ok=new JButton("Potvrda");
-		ok.addActionListener(new ActionListenerPotvrdiAdd());
+		ok.addActionListener(new ActionListenerPotvrdiAddPredmet());	//izmeni
 		JButton odustani=new JButton("Odustani");
 		odustani.addActionListener(new ActionListener() {
 			
