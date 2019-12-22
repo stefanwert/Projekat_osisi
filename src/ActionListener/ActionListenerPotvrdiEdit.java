@@ -12,11 +12,16 @@ public class ActionListenerPotvrdiEdit implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String sif=DialogPredmet.getInstance().readtxtsifra();
-		String naz=DialogPredmet.getInstance().readtxtNazivPr();
-		int sem= Integer.parseInt(DialogPredmet.getInstance().readtxtSemestar());
-		int god=Integer.parseInt(DialogPredmet.getInstance().readtxtGodinaStudjia());
-		StudenskaSluzba.getInstance().izmeniPredmet(sif, naz, sem, god);
+		try {
+			String sif=DialogPredmet.getInstance().readtxtsifra();
+			String naz=DialogPredmet.getInstance().readtxtNazivPr();
+			int sem= Integer.parseInt(DialogPredmet.getInstance().readtxtSemestar());
+			int god=Integer.parseInt(DialogPredmet.getInstance().readtxtGodinaStudjia());
+			StudenskaSluzba.getInstance().izmeniPredmet(sif, naz, sem, god);
+		} catch (Exception e2) {
+			// TODO: handle exception
+		}
+		
 		DialogPredmet.getInstance().dispose();
 		DialogPredmet.removeInstance();
 	}

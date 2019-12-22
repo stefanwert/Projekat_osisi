@@ -137,7 +137,7 @@ public class StudenskaSluzba {
 	
 	public boolean dodajPredmet(Predmet p) {
 		for (Predmet predmet : listaPredmeta) {
-			if(predmet.sifraPredmeta==p.sifraPredmeta)
+			if(predmet.sifraPredmeta.equals(p.getSifraPredmeta()))
 				return false;
 		}
 		listaPredmeta.add(p);

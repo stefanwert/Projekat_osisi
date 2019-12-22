@@ -14,7 +14,9 @@ public class ActionListenerRemove implements ActionListener{
 		if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			try {
 				int i=MainFrame.getInstance().getTabel().getSelectedRow();
-				StudenskaSluzba.getInstance().izbrisiPredmet(i);
+				String s=(String)MainFrame.getInstance().getTabel().getValueAt(i, 0);
+				System.out.println(s);
+				StudenskaSluzba.getInstance().izbrisiPredmet(s);
 			} catch (Exception e2) {
 				System.out.println("niste selektovali vrstu");
 			}
