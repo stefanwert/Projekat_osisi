@@ -11,9 +11,9 @@ import javax.swing.table.TableRowSorter;
 import pogled.MainFrame;
 import pogled.MyToolbar;
 
-public class DocumentListener2 implements javax.swing.event.DocumentListener{
+public class DocumentListenerPredmet implements javax.swing.event.DocumentListener{
 
-	private TableRowSorter<TableModel> rowSorter=new TableRowSorter<TableModel>(MainFrame.getInstance().getTabelPredmeta().getModel());
+	private TableRowSorter<TableModel> rowSorter=MainFrame.getTableRowSorterPredmet();
 	@Override
 	public void removeUpdate(DocumentEvent e) {
 		JTextField tf=MyToolbar.getInstance().getTextFild();

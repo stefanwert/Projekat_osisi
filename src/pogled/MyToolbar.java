@@ -23,7 +23,7 @@ import ActionListener.ActionListenerAdd;
 import ActionListener.ActionListenerEdit;
 import ActionListener.ActionListenerRemove;
 import ActionListener.ActionListenerSearch;
-import ActionListener.DocumentListener2;
+import ActionListener.DocumentListenerPredmet;
 import model.Predmet;
 import model.Profesor;
 import kontroler.*;
@@ -34,6 +34,7 @@ public class MyToolbar extends JToolBar{
 	private JTextField tf;
 	static private MyToolbar instance=null;
 	private static final long serialVersionUID = 1L;
+	
 	
 	static public MyToolbar getInstance() {
 		if(instance==null) {
@@ -83,7 +84,7 @@ public class MyToolbar extends JToolBar{
 		left.add(btnDelete);
 		
 		tf=new JTextField();
-//		tf.getDocument().addDocumentListener(new DocumentListener2());
+		tf.getDocument().addDocumentListener(new DocumentListenerPredmet());
 		//tf.setMaximumSize(new Dimension(200,2000));
 		tf.setPreferredSize(new Dimension(200,20));
 

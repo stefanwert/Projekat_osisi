@@ -17,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import model.Predmet;
 import model.StudenskaSluzba;
@@ -24,11 +25,12 @@ import model.StudenskaSluzba;
 
 public class MainFrame extends JFrame{
 	
-	private  JTable tabelaPredmeta;
-	private  JTable tabelaStudenata;
-	private  JTable tabelaProfesora; 
+	private static JTable tabelaPredmeta;
+	private JTable tabelaStudenata;
+	private JTable tabelaProfesora; 
 	private static MainFrame instance=null;
 	private JTabbedPane tabbedPane=null;
+	private static TableRowSorter<TableModel> rowSorterTablePredmet;
 	
 	static public MainFrame getInstance() {
 		if(instance==null) {
@@ -50,6 +52,7 @@ public class MainFrame extends JFrame{
 	setLayout(new BorderLayout(10,10));
 	setBackground(Color.WHITE);
 	
+	prikaziTabele();
 	MyMenuBar menu = new MyMenuBar();
 	this.setJMenuBar(menu);
 	
@@ -60,7 +63,6 @@ public class MainFrame extends JFrame{
 	MyStatusBar statusbar = new MyStatusBar();
 	add(statusbar,BorderLayout.SOUTH);
 	
-	prikaziTabele();
 	
 	setVisible(true);
 	}
@@ -83,6 +85,8 @@ public class MainFrame extends JFrame{
 		
 		tabelaPredmeta=new PredmetJTable();
 		tabelaPredmeta.setAutoCreateRowSorter(true);
+		rowSorterTablePredmet=new TableRowSorter<TableModel>(tabelaPredmeta.getModel());	//dodato za sortiranje
+		tabelaPredmeta.setRowSorter(rowSorterTablePredmet);									//dodato za sortiranje
 		JScrollPane scrollpanePredmet=new JScrollPane(tabelaPredmeta);
 		tabbedPane.addTab("Predmeti",scrollpanePredmet);
 		
@@ -103,13 +107,20 @@ public class MainFrame extends JFrame{
 		validate();
 	}
 	
-	public JTable getTabelPredmeta() {
+	
+	public static JTable getTabelPredmeta() {
 		return tabelaPredmeta;
 	}
+	
 	public JTable getTabelProfesora() {
 		return tabelaProfesora;
 	}
+	
 	public JTable getTabelStudenta() {
 		return tabelaStudenata;
+	}
+	
+	public static TableRowSorter getTableRowSorterPredmet() {
+		return rowSorterTablePredmet;
 	}
 }
