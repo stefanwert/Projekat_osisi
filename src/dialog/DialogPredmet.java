@@ -181,7 +181,7 @@ public class DialogPredmet extends JDialog {
 	}
 	
 	static public void setTxtFilds() {
-		int i =MainFrame.getTabelPredmeta().getSelectedRow();
+		int i =MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
 		String s=(String)MainFrame.getInstance().getTabelPredmeta().getValueAt(i, 0);
 		i=0;
 		for (Predmet predmet : StudenskaSluzba.getInstance().getListPredmeta()) {

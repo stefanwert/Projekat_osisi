@@ -147,7 +147,7 @@ public class StudenskaSluzba {
 			}
 		}
 		
-		int i =MainFrame.getTabelProfesora().getSelectedRow();
+		int i =MainFrame.getInstance().getTabelProfesora().getSelectedRow();
 		if(jedistven) {
 			listaProfesora.get(i).setBrLicneKarte(brLicneKarte);
 		}
@@ -277,7 +277,7 @@ public class StudenskaSluzba {
 				jedistven=false;
 			}
 		}
-		int i =MainFrame.getTabelPredmeta().getSelectedRow();
+		int i =MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
 		if(jedistven) {
 			listaPredmeta.get(i).setSifraPredmeta(sifraPredmeta);
 			

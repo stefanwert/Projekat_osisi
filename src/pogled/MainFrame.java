@@ -24,13 +24,13 @@ import model.StudenskaSluzba;
 
 public class MainFrame extends JFrame{
 	
-	private static JTable tabelaPredmeta;
-	private static JTable tabelaStudenata;
-	private static JTable tabelaProfesora; 
+	private  JTable tabelaPredmeta;
+	private  JTable tabelaStudenata;
+	private  JTable tabelaProfesora; 
 	private static MainFrame instance=null;
 	private JTabbedPane tabbedPane=null;
 	
-	public static MainFrame getInstance() {
+	static public MainFrame getInstance() {
 		if(instance==null) {
 			instance=new MainFrame();
 		}
@@ -53,7 +53,7 @@ public class MainFrame extends JFrame{
 	MyMenuBar menu = new MyMenuBar();
 	this.setJMenuBar(menu);
 	
-	MyToolbar toolbar = new MyToolbar();
+	MyToolbar toolbar = MyToolbar.getInstance();
 	toolbar.setBackground(Color.white);
 	add(toolbar,BorderLayout.NORTH);
 	
@@ -103,13 +103,13 @@ public class MainFrame extends JFrame{
 		validate();
 	}
 	
-	public static JTable getTabelPredmeta() {
+	public JTable getTabelPredmeta() {
 		return tabelaPredmeta;
 	}
-	public static JTable getTabelProfesora() {
+	public JTable getTabelProfesora() {
 		return tabelaProfesora;
 	}
-	public static JTable getTabelStudenta() {
+	public JTable getTabelStudenta() {
 		return tabelaStudenata;
 	}
 }

@@ -246,7 +246,7 @@ public class DialogStudent extends JDialog {
 	}
 	
 	static public void setTxtFilds() {
-		int i =MainFrame.getTabelStudenta().getSelectedRow();
+		int i =MainFrame.getInstance().getTabelStudenta().getSelectedRow();
 		txtBrojIndeksa.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 0));
 		txtIme.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 1));
 		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 2));

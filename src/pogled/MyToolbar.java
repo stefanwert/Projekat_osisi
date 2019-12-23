@@ -14,11 +14,16 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 import ActionListener.ActionListenerAdd;
 import ActionListener.ActionListenerEdit;
 import ActionListener.ActionListenerRemove;
 import ActionListener.ActionListenerSearch;
+import ActionListener.DocumentListener2;
 import model.Predmet;
 import model.Profesor;
 import kontroler.*;
@@ -26,9 +31,19 @@ public class MyToolbar extends JToolBar{
 	/**
 	 * 
 	 */
+	private JTextField tf;
+	static private MyToolbar instance=null;
 	private static final long serialVersionUID = 1L;
-
-	public MyToolbar() {
+	
+	static public MyToolbar getInstance() {
+		if(instance==null) {
+			 instance=new MyToolbar();
+		}
+		return instance;
+		
+	}
+	
+	private MyToolbar() {
 		super(SwingConstants.HORIZONTAL);
 		
 		Toolkit kit = Toolkit.getDefaultToolkit();
@@ -67,7 +82,8 @@ public class MyToolbar extends JToolBar{
 		left.add(btnEdit);
 		left.add(btnDelete);
 		
-		JTextField tf=new JTextField();
+		tf=new JTextField();
+//		tf.getDocument().addDocumentListener(new DocumentListener2());
 		//tf.setMaximumSize(new Dimension(200,2000));
 		tf.setPreferredSize(new Dimension(200,20));
 
@@ -89,5 +105,8 @@ public class MyToolbar extends JToolBar{
 		add(right,BorderLayout.EAST);
 		
 		setFloatable(false);
+	}
+	public JTextField getTextFild() {
+		return tf; 
 	}
 }
