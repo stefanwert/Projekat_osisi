@@ -3,6 +3,7 @@ package pogled;
 import javax.swing.table.AbstractTableModel;
 
 import model.Student;
+import model.Student.Status;
 import model.StudenskaSluzba;
 
 public class StudentTableModel extends AbstractTableModel{
@@ -52,7 +53,7 @@ public class StudentTableModel extends AbstractTableModel{
 		case 3:
 			 student.setTrenutnaGodina(Integer.parseInt(aValue.toString()));
 		case 4:
-			//student.setStatus();
+			 //student.setStatus();
 		case 5:
 			 student.setProsecnaOcena(Double.parseDouble(aValue.toString()));
 		

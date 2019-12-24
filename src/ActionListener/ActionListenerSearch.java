@@ -23,7 +23,6 @@ public class ActionListenerSearch implements ActionListener{
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			
-			
 		}		
 		
 		MainFrame.getInstance().azurirajPrikaz();

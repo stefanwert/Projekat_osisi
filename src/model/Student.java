@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 
@@ -60,24 +60,24 @@ public class Student
 		return datumRodjenja;
 	}
 
-	public void setDatumRodjenja(Date datum_rodjenja) {
-		this.datumRodjenja = datum_rodjenja;
+	public void setDatumRodjenja(Date datumRodjenja) {
+		this.datumRodjenja = datumRodjenja;
 	}
 
 	public String getAdresaStanovanja() {
 		return adresaStanovanja;
 	}
 
-	public void setAdresaStanovanja(String adresa_stanovanja) {
-		this.adresaStanovanja = adresa_stanovanja;
+	public void setAdresaStanovanja(String adresaStanovanja) {
+		this.adresaStanovanja = adresaStanovanja;
 	}
 
 	public String getKontaktTelefon() {
 		return kontaktTelefon;
 	}
 
-	public void setKontaktTelefon(String kontakt_telefon) {
-		this.kontaktTelefon = kontakt_telefon;
+	public void setKontaktTelefon(String kontaktTelefon) {
+		this.kontaktTelefon = kontaktTelefon;
 	}
 
 	public String getEmail() {
@@ -92,24 +92,24 @@ public class Student
 		return brojIndeksa;
 	}
 
-	public void setBrojIndeksa(String broj_indeksa) {
-		this.brojIndeksa = broj_indeksa;
+	public void setBrojIndeksa(String brojIndeksa) {
+		this.brojIndeksa = brojIndeksa;
 	}
 
 	public Date getDatumUpisa() {
 		return datumUpisa;
 	}
 
-	public void setDatumUpisa(Date datum_upisa) {
-		this.datumUpisa = datum_upisa;
+	public void setDatumUpisa(Date datumUpisa) {
+		this.datumUpisa = datumUpisa;
 	}
 
 	public int getTrenutnaGodina() {
 		return trenutnaGodina;
 	}
 
-	public void setTrenutnaGodina(int trenutna_godina) {
-		this.trenutnaGodina = trenutna_godina;
+	public void setTrenutnaGodina(int trenutnaGodina) {
+		this.trenutnaGodina = trenutnaGodina;
 	}
 
 	public Status getStatus() {
@@ -124,8 +124,8 @@ public class Student
 		return prosecnaOcena;
 	}
 
-	public void setProsecnaOcena(double prosecna_ocena) {
-		this.prosecnaOcena = prosecna_ocena;
+	public void setProsecnaOcena(double prosecnaOcena) {
+		this.prosecnaOcena = prosecnaOcena;
 	}
 
 	public List<Predmet> getListaPredmeta() {

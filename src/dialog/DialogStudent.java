@@ -2,7 +2,6 @@ package dialog;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridBagConstraints;
@@ -20,9 +19,10 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import ActionListener.ActionListenerPotvrdiAddPredmet;
+import ActionListener.ActionListenerPotvrdiAddStudent;
 import ActionListener.ActionListenerPotvrdiEdit;
 import model.StudenskaSluzba;
+import model.Student;
 import pogled.MainFrame;
 
 public class DialogStudent extends JDialog {
@@ -217,13 +217,13 @@ public class DialogStudent extends JDialog {
 	
 		
 		ok=new JButton("Potvrda");
-		ok.addActionListener(new ActionListenerPotvrdiAddPredmet());//ovde moras svoj listener promenio sam mu ime da ne mislis da radi za sve 
+		ok.addActionListener(new ActionListenerPotvrdiAddStudent()); 
 		JButton odustani=new JButton("Odustani");
 		odustani.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DialogPredmet.getInstance().dispose();
+				DialogStudent.getInstance().dispose();
 				
 			}
 		});
@@ -246,7 +246,15 @@ public class DialogStudent extends JDialog {
 	}
 	
 	static public void setTxtFilds() {
-		int i =MainFrame.getInstance().getTabelStudenta().getSelectedRow();
+		int i = MainFrame.getInstance().getTabelStudenta().getSelectedRow();
+		String s=(String)MainFrame.getInstance().getTabelStudenta().getValueAt(i, 0);
+		i=0;
+		for (Student student : StudenskaSluzba.getInstance().getListStudenata()) {
+			if(s.equals(student.getBrojIndeksa())) {
+				break;
+			}
+			i++;
+		}
 		txtBrojIndeksa.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 0));
 		txtIme.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 1));
 		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 2));

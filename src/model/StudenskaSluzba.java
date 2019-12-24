@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import model.Student.Status;
 import pogled.MainFrame;
 
 public class StudenskaSluzba {
@@ -71,6 +72,104 @@ public class StudenskaSluzba {
 		koloneProfesora.add("Titula");
 		koloneProfesora.add("Zvanje");
 		listaProfesora.add(new Profesor("stefan","petrovic",new Date(200,2,1),"adresa","tel","email","adresaKan","ovoJeKljuc","titula","zvanje",null));
+	}
+	
+	//za studenta deo
+	
+	public String getColumnNameStudenata(int i) {
+		return koloneStudenata.get(i);
+	}
+	
+	public int getColumCountStudenata() {
+		return koloneStudenata.size();
+	}
+	
+	public List<Student> getStudent(){
+		return listaStudenata;
+	}
+	
+	public void setStudent(List<Student> studenti) {
+		this.listaStudenata=studenti;
+	}
+	
+	public Student getRowStudenata(int rowIndex) {
+		return this.listaStudenata.get(rowIndex);
+	}
+	
+	public String getValueAtStudent(int row,int column) {
+		Student student=this.listaStudenata.get(row);
+		switch (column) {
+		case 0:
+			return student.getBrojIndeksa();
+		case 1:
+			return student.getIme();
+		case 2:
+			return student.getPrezime();
+		case 3:
+			return Integer.toString(student.getTrenutnaGodina());
+		case 4:
+			return student.getStatus().toString();
+		case 5:
+			return Double.toString(student.getProsecnaOcena());
+		default:
+			return null;
+		}
+	}
+	
+	
+	public boolean dodajStudenta(Student s) {
+		for (Student student : listaStudenata) {
+			if(student.getBrojIndeksa().equals(s.getBrojIndeksa()))
+				return false;
+		}
+		listaStudenata.add(s);
+		return true;
+	}
+	
+	public boolean obrisiStudenta(String brindx) {
+		for (Student student : listaStudenata) {
+			if(student.getBrojIndeksa().equals(brindx)) {
+				listaStudenata.remove(student);
+				return true;
+			}	
+		}	
+		return false;	
+	}
+	
+	public boolean obrisiStudenta(int i) {
+		listaStudenata.remove(i);
+		return true;
+	}
+	
+	public void izmeniStudenta(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,
+			String email, String brojIndeksa, Date datumUpisa, int trenutnaGodina, Status status,
+			double prosecnaOcena, List<Predmet> listaPredmeta,Student stari){
+		
+		boolean jedistven=true;
+		for (Student student : listaStudenata) {
+			if(student.getBrojIndeksa().equals(brojIndeksa)) {
+				jedistven=false;
+			}
+		}
+		
+		int i = MainFrame.getInstance().getTabelStudenta().getSelectedRow();
+		if(jedistven) {
+			listaStudenata.get(i).setBrojIndeksa(brojIndeksa);
+		}
+		else
+			System.out.println("pokuslai ste da promenite kljuc u kljuc koji vec postoji");
+		listaStudenata.get(i).setIme(ime);
+		listaStudenata.get(i).setPrezime(prezime);
+		listaStudenata.get(i).setDatumRodjenja(datumRodjenja);
+		listaStudenata.get(i).setAdresaStanovanja(adresaStanovanja);
+		listaStudenata.get(i).setKontaktTelefon(kontaktTelefon);
+		listaStudenata.get(i).setEmail(email);
+		listaStudenata.get(i).setBrojIndeksa(brojIndeksa);
+		listaStudenata.get(i).setDatumUpisa(datumUpisa);
+		listaStudenata.get(i).setTrenutnaGodina(trenutnaGodina);
+		listaStudenata.get(i).setStatus(status);
+		listaStudenata.get(i).setProsecnaOcena(prosecnaOcena);
+		
 	}
 	
 	//za profesora deo
@@ -165,7 +264,8 @@ public class StudenskaSluzba {
 		
 		
 	}
-	//kraj profesroa
+	
+	//za predmet deo
 	
 	public String getColumnNamePredmeta(int i) {
 		return kolonePredmeta.get(i);
@@ -205,47 +305,6 @@ public class StudenskaSluzba {
 		}
 	}
 	
-	public String getColumnNameStudenata(int i) {
-		return koloneStudenata.get(i);
-	}
-	
-	public int getColumCountStudenata() {
-		return koloneStudenata.size();
-	}
-	
-	public List<Student> getStudent(){
-		return listaStudenata;
-	}
-	
-	public void setStudent(List<Student> studenti) {
-		this.listaStudenata=studenti;
-	}
-	
-	public Student getRowStudenata(int rowIndex) {
-		return this.listaStudenata.get(rowIndex);
-	}
-	
-	public String getValueAtStudent(int row,int column) {
-		Student student=this.listaStudenata.get(row);
-		switch (column) {
-		case 0:
-			return student.getBrojIndeksa();
-		case 1:
-			return student.getIme();
-		case 2:
-			return student.getPrezime();
-		case 3:
-			return Integer.toString(student.getTrenutnaGodina());
-		case 4:
-			return student.getStatus().toString();
-		case 5:
-			return Double.toString(student.getProsecnaOcena());
-		default:
-			return null;
-		}
-	}
-	
-	
 	public boolean dodajPredmet(Predmet p) {
 		for (Predmet predmet : listaPredmeta) {
 			if(predmet.getSifraPredmeta().equals(p.getSifraPredmeta()))
@@ -277,7 +336,7 @@ public class StudenskaSluzba {
 				jedistven=false;
 			}
 		}
-		int i =MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
+		int i = MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
 		if(jedistven) {
 			listaPredmeta.get(i).setSifraPredmeta(sifraPredmeta);
 			
@@ -288,21 +347,5 @@ public class StudenskaSluzba {
 		listaPredmeta.get(i).setSemestar(semestar);
 		listaPredmeta.get(i).setGodinaStudija(godinaStudija);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

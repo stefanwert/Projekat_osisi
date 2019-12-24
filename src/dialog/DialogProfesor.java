@@ -16,8 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ActionListener.ActionListenerPotvrdiAddPredmet;
+import ActionListener.ActionListenerPotvrdiAddProfesor;
 import ActionListener.ActionListenerPotvrdiEdit;
+import model.Profesor;
 import model.StudenskaSluzba;
 import pogled.MainFrame;
 
@@ -255,13 +256,13 @@ public class DialogProfesor extends JDialog {
 		panel.add(txtZvanje,gbtxtZvanje);
 	
 		ok=new JButton("Potvrda");
-		ok.addActionListener(new ActionListenerPotvrdiAddPredmet());	//izmeni
+		ok.addActionListener(new ActionListenerPotvrdiAddProfesor());
 		JButton odustani=new JButton("Odustani");
 		odustani.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DialogPredmet.getInstance().dispose();
+				DialogProfesor.getInstance().dispose();
 				
 			}
 		});
@@ -284,9 +285,25 @@ public class DialogProfesor extends JDialog {
 	}
 	
 	static public void setTxtFilds() {
-		int i =MainFrame.getInstance().getTabelStudenta().getSelectedRow();
-		txtIme.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 0));
-		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 1));
+		int i = MainFrame.getInstance().getTabelProfesora().getSelectedRow();
+		String s=(String)MainFrame.getInstance().getTabelProfesora().getValueAt(i, 7);
+		i=0;
+		for (Profesor profesor : StudenskaSluzba.getInstance().getListProfesora()) {
+			if(s.equals(profesor.getBrLicneKarte())) {
+				break;
+			}
+			i++;
+		}
+		txtIme.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 0));
+		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 1));
+		txtDatumRodjenja.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 2));
+		txtAdresaStanovanja.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 3));
+		txtBrojTelefona.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 4));
+		txtEmail.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 5));
+		txtAdresaKancelarije.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 6));
+		txtBrojLicneKarte.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 7));
+		txtTitula.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 8));
+		txtZvanje.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 9));
 		
 		ok.removeActionListener(ok.getActionListeners()[0]);
 		ok.addActionListener(new ActionListenerPotvrdiEdit());
@@ -309,8 +326,28 @@ public class DialogProfesor extends JDialog {
 		return txtAdresaStanovanja.getText();
 	}
 	
+	static public String readtxtEmail() {
+		return txtEmail.getText();
+	}
+	
 	static public String readtxtBrojTelefona() {
 		return txtBrojTelefona.getText();
+	}
+	
+	static public String readtxtAdresaKancelarije() {
+		return txtAdresaKancelarije.getText();
+	}
+	
+	static public String readtxtBrojLicneKarte() {
+		return txtBrojLicneKarte.getText();
+	}
+	
+	static public String readtxtTitula() {
+		return txtTitula.getText();
+	}
+	
+	static public String readtxtZvanje() {
+		return txtZvanje.getText();
 	}
 	
 }

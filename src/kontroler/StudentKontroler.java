@@ -1,53 +1,51 @@
 package kontroler;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
+
 import model.Predmet;
 import model.Student;
 import model.Student.Status;
+import model.StudenskaSluzba;
 
 public class StudentKontroler {
 	
-	void dodaj_studenta(String ime, String prezime, Date datum_rodjenja, String adresa_stanovanja, String kontakt_telefon,
-			String email, String broj_indeksa, Date datum_upisa, int trenutna_godina, Status status,
-			double prosecna_ocena, List<Predmet> listaPredmeta,List<Student> listaStudenata)
-	{
-		Student s = new Student(ime,prezime,datum_rodjenja,adresa_stanovanja,kontakt_telefon,email,
-				broj_indeksa,datum_upisa,trenutna_godina,status,prosecna_ocena,listaPredmeta);
+private static StudentKontroler instance = null;
+	
+	public static StudentKontroler getInstance() {
+		if(instance==null)
+			instance=new StudentKontroler();
+		return instance;
+	}
+	private StudentKontroler() {
 		
-		listaStudenata.add(s);
+	}
+	
+	public void dodajStudenta(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,
+			String email, String brojIndeksa, Date datumUpisa, int trenutnaGodina, Status status,
+			double prosecnaOcena, List<Predmet> listaPredmeta,List<Student> listaStudenata){
+		
+		Student s = new Student(ime,prezime,datumRodjenja,adresaStanovanja,kontaktTelefon,email,
+				brojIndeksa,datumUpisa,trenutnaGodina,status,prosecnaOcena,listaPredmeta);
+		
+		StudenskaSluzba.getInstance().dodajStudenta(s);
 	}
     
-	void obrisi_studenta(String broj_indeksa,List<Student> listaStudenata)
-	{
-		for(Student student : listaStudenata)
-		{
-			if(broj_indeksa.equals(student.getBrojIndeksa()))
-			{
-				listaStudenata.remove(student);
-			}
-		}
+	public void obrisiStudenta(String brojIndeksa){
+		
+		StudenskaSluzba.getInstance().obrisiStudenta(brojIndeksa);
+		
 	}
 	
-	void izmeni_studenta(String ime, String prezime, Date datum_rodjenja, String adresa_stanovanja, String kontakt_telefon,
-			String email, String broj_indeksa, Date datum_upisa, int trenutna_godina, Status status,
-			double prosecna_ocena, List<Predmet> listaPredmeta,Student stari)
-	{
-		stari.setIme(ime);
-		stari.setPrezime(prezime);
-		stari.setDatumRodjenja(datum_rodjenja);
-		stari.setAdresaStanovanja(adresa_stanovanja);
-		stari.setKontaktTelefon(kontakt_telefon);
-		stari.setEmail(email);
-		stari.setBrojIndeksa(broj_indeksa);
-		stari.setDatumUpisa(datum_upisa);
-		stari.setTrenutnaGodina(trenutna_godina);
-		stari.setStatus(status);
-		stari.setProsecnaOcena(prosecna_ocena);
-		stari.setListaPredmeta(listaPredmeta);
+	public void izmeniStudenta(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,
+			String email, String brojIndeksa, Date datumUpisa, int trenutnaGodina, Status status,
+			double prosecnaOcena, List<Predmet> listaPredmeta,Student stari){
+		
+		StudenskaSluzba.getInstance().izmeniStudenta(ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, email, brojIndeksa, datumUpisa, trenutnaGodina, status, prosecnaOcena, listaPredmeta, stari);
+		
 	}
 	
-	void pretrazi_studenta(String kriterijum_pretrage)
+	public void pretraziStudenta(String kriterijum_pretrage)
 	{
 		//String parts[] = kriterijum_pretrage.split(";");
 		//String index[] = parts[2].split(":");

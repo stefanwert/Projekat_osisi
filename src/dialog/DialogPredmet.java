@@ -181,7 +181,7 @@ public class DialogPredmet extends JDialog {
 	}
 	
 	static public void setTxtFilds() {
-		int i =MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
+		int i = MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
 		String s=(String)MainFrame.getInstance().getTabelPredmeta().getValueAt(i, 0);
 		i=0;
 		for (Predmet predmet : StudenskaSluzba.getInstance().getListPredmeta()) {
@@ -194,6 +194,7 @@ public class DialogPredmet extends JDialog {
 		txtNazivPr.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 1));
 		txtSemestar.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 2));
 		txtGodinaStudjia.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 3));
+		
 		ok.removeActionListener(ok.getActionListeners()[0]);
 		ok.addActionListener(new ActionListenerPotvrdiEdit());
 		
