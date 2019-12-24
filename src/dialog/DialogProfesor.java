@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ActionListener.ActionListenerPotvrdiAddProfesor;
-import ActionListener.ActionListenerPotvrdiEdit;
+import ActionListener.ActionListenerPotvrdiEditProfesor;
 import model.Profesor;
 import model.StudenskaSluzba;
 import pogled.MainFrame;
@@ -306,7 +306,7 @@ public class DialogProfesor extends JDialog {
 		txtZvanje.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 9));
 		
 		ok.removeActionListener(ok.getActionListeners()[0]);
-		ok.addActionListener(new ActionListenerPotvrdiEdit());
+		ok.addActionListener(new ActionListenerPotvrdiEditProfesor());
 		
 	}
 	

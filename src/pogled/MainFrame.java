@@ -75,13 +75,10 @@ public class MainFrame extends JFrame{
 		JScrollPane scrollpaneStudent=new JScrollPane(tabelaStudenata);
 		tabbedPane.addTab("Studenti",scrollpaneStudent);
 
-//		JPanel pan=new JPanel();
 		tabelaProfesora=new ProfesorJTable();
 		tabelaProfesora.setAutoCreateRowSorter(true);
 		JScrollPane scrollpaneProfesor=new JScrollPane(tabelaProfesora);
 		tabbedPane.addTab("Profesori",scrollpaneProfesor);
-		
-		add(tabbedPane,BorderLayout.CENTER);
 		
 		tabelaPredmeta=new PredmetJTable();
 		tabelaPredmeta.setAutoCreateRowSorter(true);
@@ -89,6 +86,8 @@ public class MainFrame extends JFrame{
 		tabelaPredmeta.setRowSorter(rowSorterTablePredmet);									//dodato za sortiranje
 		JScrollPane scrollpanePredmet=new JScrollPane(tabelaPredmeta);
 		tabbedPane.addTab("Predmeti",scrollpanePredmet);
+		
+		add(tabbedPane,BorderLayout.CENTER);
 		
 		azurirajPrikaz();
 	}
@@ -98,12 +97,12 @@ public class MainFrame extends JFrame{
 	}
 	
 	public void azurirajPrikaz() {
-		PredmetTableModel model=(PredmetTableModel) tabelaPredmeta.getModel();
+		StudentTableModel model=(StudentTableModel) tabelaStudenata.getModel();
 		model.fireTableDataChanged();
 		ProfesorTableModel model2=(ProfesorTableModel) tabelaProfesora.getModel();
 		model2.fireTableDataChanged();
-		
-		//ovde dodaj i za studenta
+		PredmetTableModel model3=(PredmetTableModel) tabelaPredmeta.getModel();
+		model3.fireTableDataChanged();
 		validate();
 	}
 	
