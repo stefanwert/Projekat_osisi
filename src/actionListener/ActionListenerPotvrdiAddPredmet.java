@@ -16,7 +16,6 @@ public class ActionListenerPotvrdiAddPredmet implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Profesor pro= new Profesor("profa", "profic", new Date(), "novi safd", "nema", "ne'am jbg","123", "123", "Redovni profesor vandredni dekan", "asdf", null);
 		
-		
 		try {
 			String sif=DialogPredmet.getInstance().readtxtsifra();
 			String naz=DialogPredmet.getInstance().readtxtNazivPr();
@@ -28,7 +27,6 @@ public class ActionListenerPotvrdiAddPredmet implements ActionListener{
 		} catch (Exception e2) {
 			
 		}
-		
 		
 		DialogPredmet.getInstance().dispose();
 		DialogPredmet.removeInstance();

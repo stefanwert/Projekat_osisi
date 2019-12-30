@@ -27,7 +27,7 @@ private static ProfesorKontroler instance = null;
 	public void obrisiProfesora(String s) {
 		StudenskaSluzba.getInstance().izbrisiProfesora(s);
 	}
-	public void izmeniPredmet(String ime, String prezime, Date datum, String adresaStanovanja, String kontaktTel, String email,
+	public void izmeniProfesora(String ime, String prezime, Date datum, String adresaStanovanja, String kontaktTel, String email,
 			String adresaKancelarije, String brLicneKarte, String titula, String zvanje) {
 		StudenskaSluzba.getInstance().izmeniProfesora(ime, prezime, datum, adresaStanovanja, kontaktTel, email, adresaKancelarije, brLicneKarte, titula, zvanje);
 	}

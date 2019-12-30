@@ -16,7 +16,20 @@ public class ActionListenerPotvrdiAddStudent implements ActionListener {
 			String index=DialogStudent.getInstance().readtxtBrojIndeksa();
 			String ime=DialogStudent.getInstance().readtxtIme();
 			String prezime=DialogStudent.getInstance().readtxtPrezime();
-			int godina=Integer.parseInt(DialogStudent.getInstance().readtxtComboBox().getSelectedItem().toString());
+			int godina;
+			if(" I(prva)".equals(DialogStudent.getInstance().readtxtComboBox().getSelectedItem().toString())){
+				godina=1;
+			}
+			else if(" II(druga)".equals(DialogStudent.getInstance().readtxtComboBox().getSelectedItem().toString())){
+				godina=1;
+			}
+			else if(" III(treca)".equals(DialogStudent.getInstance().readtxtComboBox().getSelectedItem().toString())){
+				godina=1;
+			}
+			else if(" IV(cetvrta)".equals(DialogStudent.getInstance().readtxtComboBox().getSelectedItem().toString())){
+				godina=1;
+			}
+			
 			String status=DialogStudent.getInstance().getStatus().getSelection().getActionCommand(); 
 			double prosek= Double.parseDouble(DialogStudent.getInstance().readtxtProsecnaOcena());
 		    //StudentKontroler.getInstance().dodajStudenta(index, ime, prezime, godina, status, prosek,  );

@@ -16,7 +16,7 @@ public class ActionListenerPotvrdiEditProfesor implements ActionListener{
 		try {
 			String ime=DialogProfesor.getInstance().readtxtIme();
 			String prezime=DialogProfesor.getInstance().readtxtPrezime();
-			SimpleDateFormat formatter=new SimpleDateFormat("dd.MMM.yyyy");  
+			SimpleDateFormat formatter=new SimpleDateFormat("dd.MM.yyyy");  
 			Date datumr=formatter.parse(DialogProfesor.getInstance().readtxtDatumRodjenja());
 			String adresas=DialogProfesor.getInstance().readtxtAdresaStanovanja();
 			String brojtel=DialogProfesor.getInstance().readtxtBrojTelefona();
@@ -25,7 +25,7 @@ public class ActionListenerPotvrdiEditProfesor implements ActionListener{
 			String brojlk=DialogProfesor.getInstance().readtxtBrojLicneKarte();
 			String titula=DialogProfesor.getInstance().readtxtTitula();
 			String zvanje=DialogProfesor.getInstance().readtxtZvanje();
-			ProfesorKontroler.getInstance().dodajProfesora(ime, prezime, datumr, adresas, brojtel, email, adresak, brojlk, titula, zvanje);
+			ProfesorKontroler.getInstance().izmeniProfesora(ime, prezime, datumr, adresas, brojtel, email, adresak, brojlk, titula, zvanje);
 		} catch (Exception e2) {
 			
 		}
