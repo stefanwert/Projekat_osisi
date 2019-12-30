@@ -10,6 +10,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -19,8 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-import ActionListener.ActionListenerPotvrdiAddStudent;
-import ActionListener.ActionListenerPotvrdiEdit;
+import actionListener.ActionListenerPotvrdiAddStudent;
 import model.StudenskaSluzba;
 import model.Student;
 import pogled.MainFrame;
@@ -33,6 +33,9 @@ public class DialogStudent extends JDialog {
 	static private JTextField txtAdresaStanovanja;
 	static private JTextField txtBrojTelefona;
 	static private JTextField txtBrojIndeksa;
+	static private JTextField txtProsecnaOcena;
+	static private JComboBox<String> cb;
+	static private ButtonGroup status;
 	static private JButton ok;
 	
  private static DialogStudent instance =null;
@@ -53,7 +56,7 @@ public class DialogStudent extends JDialog {
 	public DialogStudent(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		instance=this;
-		setSize(470,420);
+		setSize(470,450);
 		setLocationRelativeTo(parent);
 		
 		setLayout(new BorderLayout());
@@ -77,17 +80,23 @@ public class DialogStudent extends JDialog {
 		lblBrojTelefona.setFont(new Font("Broj telefona:",Font.PLAIN,18));
 		JLabel lblBrojIndeksa=new JLabel("Broj indeksa:");
 		lblBrojIndeksa.setFont(new Font("Broj indeksa:",Font.PLAIN,18));
+		JLabel lblProsecnaOcena=new JLabel("Prosecna ocena:");
+		lblProsecnaOcena.setFont(new Font("Prosecna ocena:",Font.PLAIN,18));
 		JLabel lblTrenutnaGodinaStudija=new JLabel("Trenutna godina studija:");
 		lblTrenutnaGodinaStudija.setFont(new Font("Trenutna godina studija:",Font.PLAIN,18));
+		
 		String[] godinaStudija = { " I(prva)"," II(druga)"," III(treca)"," IV(cetvrta)"};
-	    final JComboBox<String> cb = new JComboBox<String>(godinaStudija);
+	    cb = new JComboBox<String>(godinaStudija);
 	    cb.setVisible(true);
+	    
 		JRadioButton budzet = new JRadioButton("Budzet");
 		budzet.setFont(new Font("Budzet:",Font.PLAIN,18));
+		budzet.setActionCommand( budzet.getText() );
 		JRadioButton samofinansiranje = new JRadioButton("Samofinansiranje");
 		samofinansiranje.setFont(new Font("Samofinansiranje:",Font.PLAIN,18));
+		samofinansiranje.setActionCommand( samofinansiranje.getText() );
 		// grupa regulise da samo jedan RadioButton može biti èekiran
-		ButtonGroup status = new ButtonGroup();
+		status = new ButtonGroup();
 		status.add(budzet);
 		status.add(samofinansiranje);
 		
@@ -103,6 +112,8 @@ public class DialogStudent extends JDialog {
 		txtBrojTelefona.setPreferredSize(new Dimension(250,25));
 		txtBrojIndeksa=new JTextField();
 		txtBrojIndeksa.setPreferredSize(new Dimension(250,25));
+		txtProsecnaOcena=new JTextField();
+		txtProsecnaOcena.setPreferredSize(new Dimension(250,25));
 		
 		GridBagConstraints gblblIme=new GridBagConstraints();
 		gblblIme.gridx=0;
@@ -190,28 +201,42 @@ public class DialogStudent extends JDialog {
 		gbtxtBrojIndeksa.weightx=100;
 		panel.add(txtBrojIndeksa,gbtxtBrojIndeksa);
 		
+		GridBagConstraints gblblProsecnaOcena=new GridBagConstraints();
+		gblblProsecnaOcena.gridx=0;
+		gblblProsecnaOcena.gridy=6;
+		gblblProsecnaOcena.insets=new Insets(10, 0, 5, 0);
+		gblblProsecnaOcena.anchor=GridBagConstraints.CENTER;
+		panel.add(lblProsecnaOcena,gblblProsecnaOcena);
+		GridBagConstraints gbtxtProsecnaOcena=new GridBagConstraints();
+		gbtxtProsecnaOcena.gridx=1;
+		gbtxtProsecnaOcena.gridy=6;
+		gbtxtProsecnaOcena.insets=new Insets(10, 0, 5, 0);
+		gbtxtProsecnaOcena.anchor=GridBagConstraints.WEST;
+		gbtxtProsecnaOcena.weightx=100;
+		panel.add(txtProsecnaOcena,gbtxtProsecnaOcena);
+		
 		GridBagConstraints gblblTrenutnaGodinaStudija=new GridBagConstraints();
 		gblblTrenutnaGodinaStudija.gridx=0;
-		gblblTrenutnaGodinaStudija.gridy=6;
+		gblblTrenutnaGodinaStudija.gridy=7;
 		gblblTrenutnaGodinaStudija.insets=new Insets(10, 10, 5, 0);
 		gblblTrenutnaGodinaStudija.anchor=GridBagConstraints.CENTER;
 		panel.add(lblTrenutnaGodinaStudija,gblblTrenutnaGodinaStudija);
 		GridBagConstraints gbtxtcb=new GridBagConstraints();
 		gbtxtcb.gridx=1;
-		gbtxtcb.gridy=6;
+		gbtxtcb.gridy=7;
 		gbtxtcb.insets=new Insets(10, 5, 5, 0);
 		gbtxtcb.anchor=GridBagConstraints.CENTER;
 		panel.add(cb,gbtxtcb);
 		
 		GridBagConstraints gbBudzet=new GridBagConstraints();
 		gbBudzet.gridx=0;
-		gbBudzet.gridy=7;
+		gbBudzet.gridy=8;
 		gbBudzet.insets=new Insets(10, 0, 5, 0);
 		panel.add(budzet,gbBudzet);
 		
 		GridBagConstraints gbSamofinansiranje=new GridBagConstraints();
 		gbSamofinansiranje.gridx=1;
-		gbSamofinansiranje.gridy=7;
+		gbSamofinansiranje.gridy=8;
 		gbSamofinansiranje.insets=new Insets(10, 0, 5, 0);
 		panel.add(samofinansiranje,gbSamofinansiranje);
 	
@@ -258,9 +283,12 @@ public class DialogStudent extends JDialog {
 		txtBrojIndeksa.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 0));
 		txtIme.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 1));
 		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 2));
+		//cb.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 3));
+		//status.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 4));
+		txtProsecnaOcena.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 5));
 		
 		ok.removeActionListener(ok.getActionListeners()[0]);
-		ok.addActionListener(new ActionListenerPotvrdiEdit());
+		ok.addActionListener(new ActionListenerPotvrdiAddStudent());
 		
 	}
 	
@@ -287,5 +315,16 @@ public class DialogStudent extends JDialog {
 	static public String readtxtBrojIndeksa() {
 		return txtBrojIndeksa.getText();
 	}
-
+	
+	static public String readtxtProsecnaOcena() {
+		return txtProsecnaOcena.getText();
+	}
+	
+	static public JComboBox readtxtComboBox(){
+		return cb;
+	}
+	
+	static public ButtonGroup getStatus(){
+		return status;
+	}
 }

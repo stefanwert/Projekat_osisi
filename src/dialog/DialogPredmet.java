@@ -1,16 +1,12 @@
 package dialog;
 
-import java.awt.BorderLayout;import java.awt.BufferCapabilities;
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Dialog;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,8 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ActionListener.ActionListenerPotvrdiAddPredmet;
-import ActionListener.ActionListenerPotvrdiEdit;
+import actionListener.ActionListenerPotvrdiAddPredmet;
+import actionListener.ActionListenerPotvrdiEditPredmet;
 import model.Predmet;
 import model.StudenskaSluzba;
 import pogled.MainFrame;
@@ -196,7 +192,7 @@ public class DialogPredmet extends JDialog {
 		txtGodinaStudjia.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 3));
 		
 		ok.removeActionListener(ok.getActionListeners()[0]);
-		ok.addActionListener(new ActionListenerPotvrdiEdit());
+		ok.addActionListener(new ActionListenerPotvrdiEditPredmet());
 		
 	}
 	

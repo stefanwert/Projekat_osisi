@@ -1,14 +1,14 @@
-package ActionListener;
+package actionListener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import dialog.DialogProfesor;
 import kontroler.ProfesorKontroler;
 
-public class ActionListenerPotvrdiAddProfesor implements ActionListener {
+public class ActionListenerPotvrdiEditProfesor implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {

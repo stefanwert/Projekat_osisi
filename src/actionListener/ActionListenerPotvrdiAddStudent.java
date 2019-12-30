@@ -1,10 +1,11 @@
-package ActionListener;
+package actionListener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import dialog.DialogStudent;
 import kontroler.StudentKontroler;
+import model.Student;
 
 public class ActionListenerPotvrdiAddStudent implements ActionListener {
 	
@@ -15,9 +16,10 @@ public class ActionListenerPotvrdiAddStudent implements ActionListener {
 			String index=DialogStudent.getInstance().readtxtBrojIndeksa();
 			String ime=DialogStudent.getInstance().readtxtIme();
 			String prezime=DialogStudent.getInstance().readtxtPrezime();
-			//int godina=Integer.parseInt(DialogStudent.getInstance().readtxtGodinaStudjia());
-			//double prosek= Double.parseDouble(DialogStudent.getInstance().readtxtProsek());
-		    //StudentKontroler.getInstance().dodajStudenta(index, ime, prezime, godina, prosek, null);
+			int godina=Integer.parseInt(DialogStudent.getInstance().readtxtComboBox().getSelectedItem().toString());
+			String status=DialogStudent.getInstance().getStatus().getSelection().getActionCommand(); 
+			double prosek= Double.parseDouble(DialogStudent.getInstance().readtxtProsecnaOcena());
+		    //StudentKontroler.getInstance().dodajStudenta(index, ime, prezime, godina, status, prosek,  );
 		} catch (Exception e2) {
 			// TODO: handle exception
 		}

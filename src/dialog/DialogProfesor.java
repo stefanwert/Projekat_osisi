@@ -16,8 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ActionListener.ActionListenerPotvrdiAddProfesor;
-import ActionListener.ActionListenerPotvrdiEditProfesor;
+import actionListener.ActionListenerPotvrdiAddProfesor;
+import actionListener.ActionListenerPotvrdiEditProfesor;
 import model.Profesor;
 import model.StudenskaSluzba;
 import pogled.MainFrame;
