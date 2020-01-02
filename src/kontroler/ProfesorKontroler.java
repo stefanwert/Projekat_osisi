@@ -1,5 +1,6 @@
 package kontroler;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +22,13 @@ private static ProfesorKontroler instance = null;
 	}
 	public void dodajProfesora(String ime, String prezime, Date datum, String adresaStanovanja, String kontaktTel, String email,
 			String adresaKancelarije, String brLicneKarte, String titula, String zvanje) {
+		
+//		System.out.println("profesor kontroler datum: "+datum);
+//		SimpleDateFormat formatter=new SimpleDateFormat("dd.MM.yyyy");
+//		String s=formatter.format(datum);
+//		System.out.println("profesor kontroler datum string: "+s);
+		
+		
 		Profesor p=new Profesor(ime, prezime, datum, adresaStanovanja, kontaktTel, email, adresaKancelarije, brLicneKarte, titula, zvanje, null);
 		StudenskaSluzba.getInstance().dodajProfesora(p);
 	}

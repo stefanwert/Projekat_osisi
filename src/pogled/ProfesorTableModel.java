@@ -22,10 +22,6 @@ public class ProfesorTableModel extends AbstractTableModel{
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		/*if(columnIndex==2) {
-			System.out.println(rowIndex+" row "+columnIndex+" column");
-			System.out.println(StudenskaSluzba.getInstance().getValueAtProfesor(rowIndex, columnIndex)+"ovde");
-		}*/
 		return StudenskaSluzba.getInstance().getValueAtProfesor(rowIndex, columnIndex);
 	}
 	
@@ -37,6 +33,7 @@ public class ProfesorTableModel extends AbstractTableModel{
 	public String getColumnName(int columnIndex) {
 		return StudenskaSluzba.getInstance().getColumnNameProfesora(columnIndex);
 	}
+	//ovi ide da je iscell editable true za neku kolonu
 	/*public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		Profesor profesor= StudenskaSluzba.getInstance().getListProfesora().get(rowIndex);
 		switch (columnIndex) {

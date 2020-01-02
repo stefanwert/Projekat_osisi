@@ -1,4 +1,5 @@
 package model;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -193,7 +194,11 @@ public class StudenskaSluzba {
 		case 1:
 			return profesor.getPrezime();
 		case 2:
-			return String.format("%d.%d.%d", profesor.getDatum().getDay(),profesor.getDatum().getMonth(),profesor.getDatum().getYear());
+			SimpleDateFormat formatter=new SimpleDateFormat("dd.MM.yyyy");
+			String s=formatter.format(profesor.getDatum());
+			return s;
+			//ovako ne moze mora kao sto je gore
+			//return String.format("%d.%d.%d", profesor.getDatum().getDay(),profesor.getDatum().getMonth(),profesor.getDatum().getYear());
 		case 3:
 			return profesor.getAdresaStanovanja();
 		case 4:
