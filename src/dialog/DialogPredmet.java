@@ -49,7 +49,7 @@ public class DialogPredmet extends JDialog {
 	public DialogPredmet(Frame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		instance=this;
-		setSize(350,350);
+		setSize(500,500);
 		setLocationRelativeTo(parent);
 		
 		setLayout(new BorderLayout());
@@ -192,7 +192,9 @@ public class DialogPredmet extends JDialog {
 		txtGodinaStudjia.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 3));
 		
 		ok.removeActionListener(ok.getActionListeners()[0]);
-		ok.addActionListener(new ActionListenerPotvrdiEditPredmet());
+		ActionListenerPotvrdiEditPredmet ls=new ActionListenerPotvrdiEditPredmet();
+		ls.setStaraSif(DialogPredmet.getInstance().readtxtsifra());
+		ok.addActionListener(ls);
 		
 	}
 	

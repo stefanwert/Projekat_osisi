@@ -8,7 +8,7 @@ import kontroler.PredmetKontroler;
 import model.StudenskaSluzba;
 
 public class ActionListenerPotvrdiEditPredmet implements ActionListener {
-	
+	String staraSif="";
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -17,7 +17,7 @@ public class ActionListenerPotvrdiEditPredmet implements ActionListener {
 		String naz=DialogPredmet.getInstance().readtxtNazivPr();
 		int sem= Integer.parseInt(DialogPredmet.getInstance().readtxtSemestar());
 		int god=Integer.parseInt(DialogPredmet.getInstance().readtxtGodinaStudjia());
-		PredmetKontroler.getInstance().izmeniPredmet(sif, naz, sem, god);
+		PredmetKontroler.getInstance().izmeniPredmet(staraSif,sif, naz, sem, god);
 		
 	} catch (Exception e2) {
 		// TODO: handle exception
@@ -27,6 +27,12 @@ public class ActionListenerPotvrdiEditPredmet implements ActionListener {
 	DialogPredmet.removeInstance();
 
 	}
+	
+	public void setStaraSif(String staraSif) {
+		this.staraSif = staraSif;
+	}
+	
+	
 }
 
 

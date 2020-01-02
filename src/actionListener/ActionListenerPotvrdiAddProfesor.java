@@ -18,6 +18,10 @@ public class ActionListenerPotvrdiAddProfesor implements ActionListener {
 			String prezime=DialogProfesor.getInstance().readtxtPrezime();
 			SimpleDateFormat formatter=new SimpleDateFormat("dd.MM.yyyy");  
 			Date datumr=formatter.parse(DialogProfesor.getInstance().readtxtDatumRodjenja());
+			System.out.println(DialogProfesor.getInstance().readtxtDatumRodjenja());
+			System.out.println(datumr);
+			/*String s=formatter.format(datumr);
+			System.out.println(s);*/
 			String adresas=DialogProfesor.getInstance().readtxtAdresaStanovanja();
 			String brojtel=DialogProfesor.getInstance().readtxtBrojTelefona();
 			String email=DialogProfesor.getInstance().readtxtEmail();

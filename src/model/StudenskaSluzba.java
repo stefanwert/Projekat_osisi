@@ -56,7 +56,7 @@ public class StudenskaSluzba {
 		koloneStudenata.add("Godina studija");
 		koloneStudenata.add("Status");
 		koloneStudenata.add("Prosek");
-		Student s = new Student("Nemanja","Tamindzija",new java.sql.Date(1997),"adresa","066/123-456","nemanja.tam@gmail.com",
+		Student s = new Student("Nemanja","Tamindzija",new Date(2018,12,01),"adresa","066/123-456","nemanja.tam@gmail.com",
 				"RA242-2018",new java.sql.Date(2018),3,Student.Status.B,7.5,listaPredmeta);
 		listaStudenata.add(s);
 		
@@ -71,7 +71,7 @@ public class StudenskaSluzba {
 		koloneProfesora.add("Broj licne karte");
 		koloneProfesora.add("Titula");
 		koloneProfesora.add("Zvanje");
-		listaProfesora.add(new Profesor("stefan","petrovic",new Date(200,2,1),"adresa","tel","email","adresaKan","ovoJeKljuc","titula","zvanje",null));
+		listaProfesora.add(new Profesor("stefan","petrovic",new Date(2000,11,11),"adresa","tel","email","adresaKan","ovoJeKljuc","titula","zvanje",null));
 	}
 	
 	//za studenta deo
@@ -193,7 +193,7 @@ public class StudenskaSluzba {
 		case 1:
 			return profesor.getPrezime();
 		case 2:
-			return String.format("%d %d %d", profesor.getDatum().getDay(),profesor.getDatum().getMonth(),profesor.getDatum().getYear());
+			return String.format("%d.%d.%d", profesor.getDatum().getDay(),profesor.getDatum().getMonth(),profesor.getDatum().getYear());
 		case 3:
 			return profesor.getAdresaStanovanja();
 		case 4:
@@ -254,6 +254,7 @@ public class StudenskaSluzba {
 			System.out.println("pokuslai ste da promenite kljuc u kljuc koji vec postoji");
 		listaProfesora.get(i).setIme(ime);
 		listaProfesora.get(i).setPrezime(prezime);
+		System.out.println(datum);
 		listaProfesora.get(i).setDatum(datum);
 		listaProfesora.get(i).setAdresaStanovanja(adresaStanovanja);
 		listaProfesora.get(i).setKontaktTel(kontaktTel);
@@ -329,20 +330,22 @@ public class StudenskaSluzba {
 		return true;
 	}
 	
-	public void izmeniPredmet(String sifraPredmeta, String nazivPredmeta, int semestar, int godinaStudija) {
-		boolean jedistven=true;
+	public void izmeniPredmet(String sifraStara,String sifraPredmeta, String nazivPredmeta, int semestar, int godinaStudija) {
+//		boolean jedistven=true;
+//		int i = MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
+		int i=0;
 		for (Predmet predmet : listaPredmeta) {
-			if(predmet.getSifraPredmeta().equals(sifraPredmeta)) {
-				jedistven=false;
+			if(predmet.getSifraPredmeta().equals(sifraStara)) {
+//				jedistven=false;
+				break;
 			}
+			i++; 
 		}
-		int i = MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
-		if(jedistven) {
+//		if(jedistven) {
 			listaPredmeta.get(i).setSifraPredmeta(sifraPredmeta);
-			
-		}
-		else
-			System.out.println("pokuslai ste da promenite kljuc u kljuc koji vec postoji");
+//		}
+//		else
+//			System.out.println("pokuslai ste da promenite kljuc u kljuc koji vec postoji");
 		listaPredmeta.get(i).setNazivPredmeta(nazivPredmeta);
 		listaPredmeta.get(i).setSemestar(semestar);
 		listaPredmeta.get(i).setGodinaStudija(godinaStudija);

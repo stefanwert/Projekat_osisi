@@ -1,5 +1,7 @@
 package pogled;
 
+import java.text.SimpleDateFormat;
+
 import javax.swing.table.AbstractTableModel;
 
 import model.Predmet;
@@ -20,6 +22,10 @@ public class ProfesorTableModel extends AbstractTableModel{
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
+		/*if(columnIndex==2) {
+			System.out.println(rowIndex+" row "+columnIndex+" column");
+			System.out.println(StudenskaSluzba.getInstance().getValueAtProfesor(rowIndex, columnIndex)+"ovde");
+		}*/
 		return StudenskaSluzba.getInstance().getValueAtProfesor(rowIndex, columnIndex);
 	}
 	

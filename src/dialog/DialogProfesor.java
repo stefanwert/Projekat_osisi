@@ -9,6 +9,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -296,7 +297,7 @@ public class DialogProfesor extends JDialog {
 		}
 		txtIme.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 0));
 		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 1));
-		txtDatumRodjenja.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 2));
+		txtDatumRodjenja.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 2));//ovde mora drugacije
 		txtAdresaStanovanja.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 3));
 		txtBrojTelefona.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 4));
 		txtEmail.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 5));

@@ -283,6 +283,8 @@ public class DialogStudent extends JDialog {
 		txtBrojIndeksa.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 0));
 		txtIme.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 1));
 		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 2));
+		System.out.println(cb.getSelectedItem());
+		//cb.setSelectedItem(anObject);
 		//cb.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 3));
 		//status.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 4));
 		txtProsecnaOcena.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 5));

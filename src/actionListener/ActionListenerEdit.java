@@ -14,7 +14,7 @@ public class ActionListenerEdit implements ActionListener{
 		
 		if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==0) {
 			try {
-				DialogStudent ds=new DialogStudent(MainFrame.getInstance(),"Dodaj studenta",true);
+				DialogStudent ds=new DialogStudent(MainFrame.getInstance(),"Izmeni studenta",true);
 				ds.setTxtFilds();
 				ds.setVisible(true);
 			} catch (Exception e) {
@@ -23,7 +23,7 @@ public class ActionListenerEdit implements ActionListener{
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==1) {
 			try {
-				DialogProfesor dp=new DialogProfesor(MainFrame.getInstance(),"Dodaj profesora",true);
+				DialogProfesor dp=new DialogProfesor(MainFrame.getInstance(),"Izmeni profesora",true);
 				dp.setTxtFilds();
 				dp.setVisible(true);
 			} catch (Exception e) {
@@ -32,7 +32,7 @@ public class ActionListenerEdit implements ActionListener{
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			try {
-				DialogPredmet d=new DialogPredmet(MainFrame.getInstance(),"DODAJ PREDMET",true);
+				DialogPredmet d=new DialogPredmet(MainFrame.getInstance(),"Izmeni predmet",true);
 				d.setTxtFilds();
 				d.setVisible(true);
 			} catch (Exception e) {

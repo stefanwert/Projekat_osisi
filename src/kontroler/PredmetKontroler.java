@@ -24,8 +24,8 @@ public class PredmetKontroler {
 	public void obrisiPredmet(String s) {
 		StudenskaSluzba.getInstance().izbrisiPredmet(s);
 	}
-	public void izmeniPredmet(String sifraPredmeta, String nazivPredmeta, int semestar, int godinaStudija) {
-		StudenskaSluzba.getInstance().izmeniPredmet(sifraPredmeta, nazivPredmeta, semestar, godinaStudija);
+	public void izmeniPredmet(String sifraStara,String sifraPredmeta, String nazivPredmeta, int semestar, int godinaStudija) {
+		StudenskaSluzba.getInstance().izmeniPredmet(sifraStara,sifraPredmeta, nazivPredmeta, semestar, godinaStudija);
 	}
 	
 }
