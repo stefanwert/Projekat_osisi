@@ -75,13 +75,26 @@ public class MyToolbar extends JToolBar{
 		btnDelete.setBackground(Color.white);
 		btnDelete.setIcon(new ImageIcon("images/removebtn.png"));
 		btnDelete.setBorderPainted(false);
-		//dodati action listener
+		
+		JButton btnAddStudentaNaPredmet =new JButton();
+		btnAddStudentaNaPredmet.setToolTipText("Dodaj studenta na predmet");
+		btnAddStudentaNaPredmet.setBackground(Color.white);
+		btnAddStudentaNaPredmet.setIcon(new ImageIcon("images/add2.png"));
+		btnAddStudentaNaPredmet.setBorderPainted(false);
+		
+		JButton btnAddProfesoraNapredmet =new JButton();
+		btnAddProfesoraNapredmet.setToolTipText("Dodaj studenta na predmet");
+		btnAddProfesoraNapredmet.setBackground(Color.white);
+		btnAddProfesoraNapredmet.setIcon(new ImageIcon("images/add3.png"));
+		btnAddProfesoraNapredmet.setBorderPainted(false);
 		
 		JPanel left=new JPanel();
 		left.setBackground(Color.white);
 	    left.add(btnNew);
 		left.add(btnEdit);
 		left.add(btnDelete);
+		left.add(btnAddStudentaNaPredmet);
+		left.add(btnAddProfesoraNapredmet);
 		
 		tf=new JTextField();
 		tf.getDocument().addDocumentListener(new DocumentListenerPredmet());
