@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 
 import actionListener.ActionListenerPotvrdiAddPredmet;
 import actionListener.ActionListenerPotvrdiEditPredmet;
+import actionListener.keyListenerForInt;
 import model.Predmet;
 import model.StudenskaSluzba;
 import pogled.MainFrame;
@@ -72,15 +73,18 @@ public class DialogPredmet extends JDialog {
 		
 		txtsifra=new JTextField();
 		txtsifra.setPreferredSize(new Dimension(160,25));
+		txtsifra.addKeyListener(new keyListenerForInt());
 		
 		txtNazivPr=new JTextField();
 		txtNazivPr.setPreferredSize(new Dimension(160,25));
 		
 		txtSemestar=new JTextField();
 		txtSemestar.setPreferredSize(new Dimension(160,25));
+		txtSemestar.addKeyListener(new keyListenerForInt());
 		
 		txtGodinaStudjia=new JTextField();
 		txtGodinaStudjia.setPreferredSize(new Dimension(160,25));
+		txtGodinaStudjia.addKeyListener(new keyListenerForInt());
 		
 		GridBagConstraints gblblsifra=new GridBagConstraints();
 		gblblsifra.gridx=0;
