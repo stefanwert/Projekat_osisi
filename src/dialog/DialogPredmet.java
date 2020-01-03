@@ -201,7 +201,7 @@ public class DialogPredmet extends JDialog {
 		ActionListenerPotvrdiEditPredmet ls=new ActionListenerPotvrdiEditPredmet();
 		ls.setStaraSif(DialogPredmet.getInstance().readtxtsifra());
 		ok.addActionListener(ls);
-		ok.addFocusListener(new FocusListenerForPotvrdiAddOrEdit());
+		//ok.addFocusListener(new FocusListenerForPotvrdiAddOrEdit());
 		
 	}
 	

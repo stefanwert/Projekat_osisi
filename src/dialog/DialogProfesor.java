@@ -10,6 +10,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -357,7 +358,9 @@ public class DialogProfesor extends JDialog {
 	
 	public boolean isTxtFieldsEmpty() {
 		boolean ret=false;
-		if(txtIme.getText().isEmpty() || txtPrezime.getText().isEmpty() || txtDatumRodjenja.getText().isEmpty() || txtAdresaKancelarije.getText().isEmpty() 
+		Pattern p=Pattern.compile("\\d{2}\\.\\d{2}\\.\\d{4}");
+		//uslov unutar if-a nije isti za datum 
+		if(txtIme.getText().isEmpty() || txtPrezime.getText().isEmpty() || !p.matcher(txtDatumRodjenja.getText()).matches() || txtAdresaKancelarije.getText().isEmpty() 
 				|| txtBrojTelefona.getText().isEmpty() || txtEmail.getText().isEmpty() || txtAdresaKancelarije.getText().isEmpty() || txtBrojLicneKarte.getText().isEmpty()
 				 || txtTitula.getText().isEmpty() || txtZvanje.getText().isEmpty()) {
 			ret=true;
