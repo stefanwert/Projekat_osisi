@@ -45,8 +45,8 @@ public class StudenskaSluzba {
 		kolonePredmeta.add("Godina studija");
 		kolonePredmeta.add("Profesor");
 		Predmet p=new Predmet("123","1234", 1, 1, 
-				new Profesor("profa", "profic", new java.sql.Date(23), "novi safd", "nema", "ne'am jbg",
-"123", "123", "Redovni profesor vandredni dekan", "asdf", null), null);
+				/*new Profesor("profa", "profic", new java.sql.Date(23), "novi safd", "nema", "ne'am jbg",
+"123", "123", "Redovni profesor vandredni dekan", "asdf", null)*/null, null);
 		p.setNazivPredmeta("dgsasdfgafd");
 		listaPredmeta.add(p);
 		
@@ -305,6 +305,9 @@ public class StudenskaSluzba {
 		case 3:
 			return Integer.toString(predmet.getGodinaStudija());
 		case 4:
+			if(predmet.getProfesor()==null) {
+				return "Null";
+			}
 			return predmet.getProfesor().getIme()+" "+predmet.getProfesor().getPrezime();
 		default:
 			return null;

@@ -83,7 +83,7 @@ public class MyToolbar extends JToolBar{
 		btnAddStudentaNaPredmet.setBorderPainted(false);
 		
 		JButton btnAddProfesoraNapredmet =new JButton();
-		btnAddProfesoraNapredmet.setToolTipText("Dodaj studenta na predmet");
+		btnAddProfesoraNapredmet.setToolTipText("Dodaj Profesora na predmet");
 		btnAddProfesoraNapredmet.setBackground(Color.white);
 		btnAddProfesoraNapredmet.setIcon(new ImageIcon("images/add3.png"));
 		btnAddProfesoraNapredmet.setBorderPainted(false);
