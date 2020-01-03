@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 
 import actionListener.ActionListenerPotvrdiAddPredmet;
 import actionListener.ActionListenerPotvrdiEditPredmet;
+import actionListener.FocusListenerForPotvrdiAddOrEdit;
 import actionListener.keyListenerForInt;
 import model.Predmet;
 import model.StudenskaSluzba;
@@ -145,6 +146,7 @@ public class DialogPredmet extends JDialog {
 		
 		ok=new JButton("POTVRDA");
 		ok.addActionListener(new ActionListenerPotvrdiAddPredmet());
+		ok.addFocusListener(new FocusListenerForPotvrdiAddOrEdit());
 		JButton odustani=new JButton("ODUSTANI");
 		odustani.addActionListener(new ActionListener() {
 			
@@ -199,6 +201,7 @@ public class DialogPredmet extends JDialog {
 		ActionListenerPotvrdiEditPredmet ls=new ActionListenerPotvrdiEditPredmet();
 		ls.setStaraSif(DialogPredmet.getInstance().readtxtsifra());
 		ok.addActionListener(ls);
+		ok.addFocusListener(new FocusListenerForPotvrdiAddOrEdit());
 		
 	}
 	
@@ -216,5 +219,14 @@ public class DialogPredmet extends JDialog {
 	
 	static public String readtxtGodinaStudjia() {
 		return txtGodinaStudjia.getText();
+	}
+	
+	public boolean isTxtFieldsEmpty() {
+		boolean ret=false;
+		if(txtsifra.getText().isEmpty() || txtNazivPr.getText().isEmpty() || txtGodinaStudjia.getText().isEmpty() || txtSemestar.getText().isEmpty()) {
+			ret=true;
+		}
+		
+		return ret;
 	}
 }
