@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 
 import actionListener.ActionListenerPotvrdiAddProfesor;
 import actionListener.ActionListenerPotvrdiEditProfesor;
+import actionListener.FocusListenerForDateInput;
+import actionListener.FocusListenerForPotvrdiAddOrEdit;
 import model.Profesor;
 import model.StudenskaSluzba;
 import pogled.MainFrame;
@@ -95,6 +97,7 @@ public class DialogProfesor extends JDialog {
 		txtPrezime.setPreferredSize(new Dimension(250,25));
 		txtDatumRodjenja=new JTextField();
 		txtDatumRodjenja.setPreferredSize(new Dimension(250,25));
+		txtDatumRodjenja.addFocusListener(new FocusListenerForDateInput());
 		txtAdresaStanovanja=new JTextField();
 		txtAdresaStanovanja.setPreferredSize(new Dimension(250,25));
 		txtBrojTelefona=new JTextField();
@@ -258,6 +261,7 @@ public class DialogProfesor extends JDialog {
 	
 		ok=new JButton("Potvrda");
 		ok.addActionListener(new ActionListenerPotvrdiAddProfesor());
+		ok.addFocusListener(new FocusListenerForPotvrdiAddOrEdit());
 		JButton odustani=new JButton("Odustani");
 		odustani.addActionListener(new ActionListener() {
 			
@@ -349,6 +353,17 @@ public class DialogProfesor extends JDialog {
 	
 	static public String readtxtZvanje() {
 		return txtZvanje.getText();
+	}
+	
+	public boolean isTxtFieldsEmpty() {
+		boolean ret=false;
+		if(txtIme.getText().isEmpty() || txtPrezime.getText().isEmpty() || txtDatumRodjenja.getText().isEmpty() || txtAdresaKancelarije.getText().isEmpty() 
+				|| txtBrojTelefona.getText().isEmpty() || txtEmail.getText().isEmpty() || txtAdresaKancelarije.getText().isEmpty() || txtBrojLicneKarte.getText().isEmpty()
+				 || txtTitula.getText().isEmpty() || txtZvanje.getText().isEmpty()) {
+			ret=true;
+		}
+		
+		return ret;
 	}
 	
 }

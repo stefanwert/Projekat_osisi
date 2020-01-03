@@ -19,13 +19,16 @@ public class FocusListenerForPotvrdiAddOrEdit implements FocusListener{
 			
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==1) {
-			
+			if(DialogProfesor.getInstance().isTxtFieldsEmpty()) {
+				b.setEnabled(false);
+			}else {
+				b.setEnabled(true);
+			}
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			if(DialogPredmet.getInstance().isTxtFieldsEmpty()) {	
 				b.setEnabled(false);
-			}
-			else {
+			}else {
 				b.setEnabled(true);
 			}
 	    }
