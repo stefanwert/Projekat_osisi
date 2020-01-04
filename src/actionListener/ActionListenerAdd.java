@@ -13,16 +13,19 @@ public class ActionListenerAdd implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		
 		if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==0) {
-			DialogStudent ds = new DialogStudent(MainFrame.getInstance(),"Dodaj studenta",true);
-			ds.setVisible(true);
+			DialogStudent.getInstance().call(MainFrame.getInstance(),"Dodaj studenta",true);
+//			DialogStudent ds = new DialogStudent(MainFrame.getInstance(),"Dodaj studenta",true);
+//			ds.setVisible(true);
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==1) {
-			DialogProfesor dp = new DialogProfesor(MainFrame.getInstance(),"Dodaj profesora",true);
-			dp.setVisible(true);
+			DialogProfesor.getInstance().call(MainFrame.getInstance(),"Dodaj profesora",true);
+//			DialogProfesor dp = new DialogProfesor(MainFrame.getInstance(),"Dodaj profesora",true);
+//			dp.setVisible(true);
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
-			DialogPredmet d=new DialogPredmet(MainFrame.getInstance(),"DODAJ PREDMET",true);
-			d.setVisible(true);
+			DialogPredmet.getInstance().call(MainFrame.getInstance(),"DODAJ PREDMET",true);
+			//DialogPredmet d=new DialogPredmet(MainFrame.getInstance(),"DODAJ PREDMET",true);
+			//d.setVisible(true);
 	    }
 			
 		MainFrame.getInstance().azurirajPrikaz();

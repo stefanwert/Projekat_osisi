@@ -14,27 +14,30 @@ public class ActionListenerEdit implements ActionListener{
 		
 		if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==0) {
 			try {
-				DialogStudent ds=new DialogStudent(MainFrame.getInstance(),"Dodaj studenta",true);
-				ds.setTxtFilds();
-				ds.setVisible(true);
+				DialogStudent.getInstance().call(MainFrame.getInstance(),"Izmeni studenta",true);
+//				DialogStudent ds=new DialogStudent(MainFrame.getInstance(),"Izmeni studenta",true);
+//				ds.setTxtFilds();
+//				ds.setVisible(true);
 			} catch (Exception e) {
 				System.out.println("Nista nije selektovano");
 			}
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==1) {
 			try {
-				DialogProfesor dp=new DialogProfesor(MainFrame.getInstance(),"Dodaj profesora",true);
-				dp.setTxtFilds();
-				dp.setVisible(true);
+				DialogProfesor.getInstance().call(MainFrame.getInstance(),"Izmeni profesora",true);
+//				DialogProfesor dp=new DialogProfesor(MainFrame.getInstance(),"Izmeni profesora",true);
+//				dp.setTxtFilds();
+//				dp.setVisible(true);
 			} catch (Exception e) {
 				System.out.println("Nista nije selektovano");
 			}
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			try {
-				DialogPredmet d=new DialogPredmet(MainFrame.getInstance(),"DODAJ PREDMET",true);
-				d.setTxtFilds();
-				d.setVisible(true);
+				DialogPredmet.getInstance().call(MainFrame.getInstance(),"Izmeni predmet",true);
+//				DialogPredmet d=new DialogPredmet(MainFrame.getInstance(),"Izmeni predmet",true);
+//				d.setTxtFilds();
+//				d.setVisible(true);
 			} catch (Exception e) {
 				System.out.println("Nista nije selektovano");
 			}

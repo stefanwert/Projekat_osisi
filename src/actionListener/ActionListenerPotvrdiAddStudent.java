@@ -21,13 +21,13 @@ public class ActionListenerPotvrdiAddStudent implements ActionListener {
 				godina=1;
 			}
 			else if(" II(druga)".equals(DialogStudent.getInstance().readtxtComboBox().getSelectedItem().toString())){
-				godina=1;
+				godina=2;
 			}
 			else if(" III(treca)".equals(DialogStudent.getInstance().readtxtComboBox().getSelectedItem().toString())){
-				godina=1;
+				godina=3;
 			}
 			else if(" IV(cetvrta)".equals(DialogStudent.getInstance().readtxtComboBox().getSelectedItem().toString())){
-				godina=1;
+				godina=4;
 			}
 			
 			String status=DialogStudent.getInstance().getStatus().getSelection().getActionCommand(); 

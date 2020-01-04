@@ -1,5 +1,7 @@
 package pogled;
 
+import java.text.SimpleDateFormat;
+
 import javax.swing.table.AbstractTableModel;
 
 import model.Predmet;
@@ -31,6 +33,7 @@ public class ProfesorTableModel extends AbstractTableModel{
 	public String getColumnName(int columnIndex) {
 		return StudenskaSluzba.getInstance().getColumnNameProfesora(columnIndex);
 	}
+	//ovi ide da je iscell editable true za neku kolonu
 	/*public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		Profesor profesor= StudenskaSluzba.getInstance().getListProfesora().get(rowIndex);
 		switch (columnIndex) {
