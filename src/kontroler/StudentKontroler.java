@@ -1,5 +1,6 @@
 package kontroler;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -45,27 +46,8 @@ private static StudentKontroler instance = null;
 		
 	}
 	
-	public void pretraziStudenta(String kriterijum_pretrage,List<Student> listaStudenata)
-	{
-		String parts[] = kriterijum_pretrage.split(";");
-		int duzina = parts.length;
-		String strime[] = parts[0].split(":");
-		String ime = strime[1];
-		for(Student s : listaStudenata)
-		{
-			s.getIme().equals(ime);
-			
-		}
-		String strprz[] = parts[1].split(":");
-		String prezime = strprz[1];
-		String index[] = parts[2].split(":");
-		String br_indx = index[1];
-		String godstud[] = parts[3].split(":");
-		String god = godstud[1];
-		String strstat[] = parts[4].split(":");
-		String status = strstat[1];
-		
-		
-	}
+	
+	
+	
 	
 }

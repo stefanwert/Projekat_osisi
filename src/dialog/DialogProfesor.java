@@ -270,7 +270,9 @@ public class DialogProfesor extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				DialogProfesor.getInstance().dispose();
-				
+				DialogProfesor.removeInstance();	
+//				DialogProfesor.getInstance().clearTxtFilds();
+//				DialogProfesor.getInstance().setVisible(false);
 			}
 		});
 		JPanel btnPanel=new JPanel();
@@ -290,9 +292,10 @@ public class DialogProfesor extends JDialog {
 		panel.add(odustani,gbOdustani);
 		
 		if(title.equals("Izmeni profesora")) {
-			this.setTxtFilds();
+			DialogProfesor.getInstance().setTxtFilds();
 		}else {
 			//ovde samo obrisi txt pre unosa 
+			//DialogProfesor.getInstance().clearTxtFilds();
 		}
 		DialogProfesor.getInstance().setVisible(true);
 		
@@ -532,6 +535,18 @@ public class DialogProfesor extends JDialog {
 		panel.add(odustani,gbOdustani);
 		
 	}*/
+	static public void clearTxtFilds() {
+		txtIme.setText("");
+		txtPrezime.setText("");
+		txtDatumRodjenja.setText("");
+		txtAdresaStanovanja.setText("");
+		txtBrojTelefona.setText("");
+		txtEmail.setText("");
+		txtAdresaKancelarije.setText("");
+		txtBrojLicneKarte.setText("");
+		txtTitula.setText("");
+		txtZvanje.setText("");
+	}
 	
 	static public void setTxtFilds() {
 		int i = MainFrame.getInstance().getTabelProfesora().getSelectedRow();
@@ -545,7 +560,7 @@ public class DialogProfesor extends JDialog {
 		}
 		txtIme.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 0));
 		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 1));
-		txtDatumRodjenja.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 2));//ovde mora drugacije
+		txtDatumRodjenja.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 2));
 		txtAdresaStanovanja.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 3));
 		txtBrojTelefona.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 4));
 		txtEmail.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 5));

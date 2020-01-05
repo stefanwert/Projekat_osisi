@@ -28,7 +28,7 @@ public class ActionListenerPotvrdiEditPredmet implements ActionListener {
 
 	}
 	
-	public void setStaraSif(String staraSif) {
+	public void getStaraSif(String staraSif) {
 		this.staraSif = staraSif;
 	}
 	

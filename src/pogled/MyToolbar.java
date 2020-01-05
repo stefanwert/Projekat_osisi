@@ -20,6 +20,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import actionListener.ActionListenerAdd;
+import actionListener.ActionListenerAddProfesorOnPredmet;
 import actionListener.ActionListenerEdit;
 import actionListener.ActionListenerRemove;
 import actionListener.ActionListenerSearch;
@@ -87,6 +88,7 @@ public class MyToolbar extends JToolBar{
 		btnAddProfesoraNapredmet.setBackground(Color.white);
 		btnAddProfesoraNapredmet.setIcon(new ImageIcon("images/add3.png"));
 		btnAddProfesoraNapredmet.setBorderPainted(false);
+		btnAddProfesoraNapredmet.addActionListener(new ActionListenerAddProfesorOnPredmet());
 		
 		JPanel left=new JPanel();
 		left.setBackground(Color.white);

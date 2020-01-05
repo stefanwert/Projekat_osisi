@@ -51,8 +51,8 @@ public class DialogPredmet extends JDialog {
 		this.setTitle(title);
 		this.setModal(modal);
 		
-		setSize(500,500);
-		setLocationRelativeTo(parent);
+		setSize(400,300);
+		//setLocationRelativeTo(parent);
 		
 		setLayout(new BorderLayout());
 		JPanel p=new JPanel();
@@ -152,13 +152,13 @@ public class DialogPredmet extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DialogPredmet.getInstance().dispose();
-				
+				dispose();
+				removeInstance();
 			}
 		});
-		JPanel btnPanel=new JPanel();
-		btnPanel.add(ok,BorderLayout.EAST);
-		btnPanel.add(odustani,BorderLayout.WEST);
+//		JPanel btnPanel=new JPanel();
+//		btnPanel.add(ok,BorderLayout.EAST);
+//		btnPanel.add(odustani,BorderLayout.WEST);
 		
 		GridBagConstraints empty=new GridBagConstraints();
 		empty.gridheight=5;
@@ -187,7 +187,7 @@ public class DialogPredmet extends JDialog {
 		}else {
 			//ovde samo obrisi txt pre unosa 
 		}
-		DialogPredmet.getInstance().setVisible(true);
+		setVisible(true);
 		
 		//this.setVisible(true);//dodato
 		
@@ -348,7 +348,7 @@ public class DialogPredmet extends JDialog {
 		
 		ok.removeActionListener(ok.getActionListeners()[0]);
 		ActionListenerPotvrdiEditPredmet ls=new ActionListenerPotvrdiEditPredmet();
-		ls.setStaraSif(DialogPredmet.getInstance().readtxtsifra());
+		ls.getStaraSif(DialogPredmet.getInstance().readtxtsifra());
 		ok.addActionListener(ls);
 		//ok.addFocusListener(new FocusListenerForPotvrdiAddOrEdit());
 		

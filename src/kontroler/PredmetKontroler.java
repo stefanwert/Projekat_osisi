@@ -3,6 +3,7 @@ package kontroler;
 import java.util.List;
 
 import model.*;
+import pogled.MainFrame;
 
 
 public class PredmetKontroler {
@@ -30,6 +31,25 @@ public class PredmetKontroler {
 	
 	public void izmeniPredmet(String sifraStara,String sifraPredmeta, String nazivPredmeta, int semestar, int godinaStudija) {
 		StudenskaSluzba.getInstance().izmeniPredmet(sifraStara,sifraPredmeta, nazivPredmeta, semestar, godinaStudija);
+	}
+	
+	public void dodajProfesora(String brLicne) {
+		int i =MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
+		String s=(String)MainFrame.getInstance().getTabelPredmeta().getValueAt(i, 0);
+		i=0;
+		for (Predmet predmet : StudenskaSluzba.getInstance().getListPredmeta()) {
+			if(s.equals(predmet.getSifraPredmeta())) {
+				break;
+			}
+			i++;
+		}
+		Profesor p=null;
+		for (Profesor profesor : StudenskaSluzba.getInstance().getListProfesora()) {
+			if(profesor.getBrLicneKarte().equals(brLicne)) {
+				//
+				StudenskaSluzba.getInstance().getListPredmeta().get(i).setProfesor(profesor);
+			}
+		}
 	}
 	
 }
