@@ -40,6 +40,7 @@ public class StudentTableModel extends AbstractTableModel{
 		return false;
 	}
 	
+	/*
 	@Override
 	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 		Student student= StudenskaSluzba.getInstance().getListStudenata().get(rowIndex);
@@ -58,5 +59,5 @@ public class StudentTableModel extends AbstractTableModel{
 			 student.setProsecnaOcena(Double.parseDouble(aValue.toString()));
 		
 		}
-	}
+	}*/
 }

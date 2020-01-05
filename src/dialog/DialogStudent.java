@@ -9,8 +9,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 
-import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -21,6 +21,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import actionListener.ActionListenerPotvrdiAddStudent;
+import actionListener.FocusListenerForDateInput;
+import actionListener.FocusListenerForPotvrdiAddOrEdit;
+import actionListener.KeyListenerForDouble;
 import model.StudenskaSluzba;
 import model.Student;
 import pogled.MainFrame;
@@ -107,6 +110,7 @@ public class DialogStudent extends JDialog {
 		txtPrezime.setPreferredSize(new Dimension(250,25));
 		txtDatumRodjenja=new JTextField();
 		txtDatumRodjenja.setPreferredSize(new Dimension(250,25));
+		txtDatumRodjenja.addFocusListener(new FocusListenerForDateInput());
 		txtAdresaStanovanja=new JTextField();
 		txtAdresaStanovanja.setPreferredSize(new Dimension(250,25));
 		txtBrojTelefona=new JTextField();
@@ -115,6 +119,7 @@ public class DialogStudent extends JDialog {
 		txtBrojIndeksa.setPreferredSize(new Dimension(250,25));
 		txtProsecnaOcena=new JTextField();
 		txtProsecnaOcena.setPreferredSize(new Dimension(250,25));
+		txtProsecnaOcena.addKeyListener(new KeyListenerForDouble());
 		
 		GridBagConstraints gblblIme=new GridBagConstraints();
 		gblblIme.gridx=0;
@@ -244,6 +249,7 @@ public class DialogStudent extends JDialog {
 		
 		ok=new JButton("Potvrda");
 		ok.addActionListener(new ActionListenerPotvrdiAddStudent()); 
+		ok.addFocusListener(new FocusListenerForPotvrdiAddOrEdit());
 		JButton odustani=new JButton("Odustani");
 		odustani.addActionListener(new ActionListener() {
 			
@@ -504,14 +510,18 @@ public class DialogStudent extends JDialog {
 			}
 			i++;
 		}
-		txtBrojIndeksa.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 0));
-		txtIme.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 1));
-		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 2));
+		
+		txtIme.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 0));
+		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 1));
+		txtDatumRodjenja.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 2));
+		txtAdresaStanovanja.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 3));
+		txtBrojTelefona.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 4));
+		txtBrojIndeksa.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 6));
 		System.out.println(cb.getSelectedItem());
 		//cb.setSelectedItem(anObject);
-		//cb.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 3));
-		//status.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 4));
-		txtProsecnaOcena.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 5));
+		//cb.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 8));
+		//status.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 9));
+		txtProsecnaOcena.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 10));
 		
 		ok.removeActionListener(ok.getActionListeners()[0]);
 		ok.addActionListener(new ActionListenerPotvrdiAddStudent());
@@ -552,5 +562,16 @@ public class DialogStudent extends JDialog {
 	
 	static public ButtonGroup getStatus(){
 		return status;
+	}
+	
+	public boolean isTxtFieldsEmpty() {
+		boolean ret=false;
+		Pattern p=Pattern.compile("\\d{2}\\.\\d{2}\\.\\d{4}");
+		if(txtIme.getText().isEmpty() || txtPrezime.getText().isEmpty() || !p.matcher(txtDatumRodjenja.getText()).matches() 
+				|| txtAdresaStanovanja.getText().isEmpty() || txtBrojTelefona.getText().isEmpty() || txtBrojIndeksa.getText().isEmpty()) {
+			ret=true;
+		}
+		
+		return ret;
 	}
 }

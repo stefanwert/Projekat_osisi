@@ -17,7 +17,6 @@ public class ActionListenerPotvrdiEditProfesor implements ActionListener{
 			String ime=DialogProfesor.getInstance().readtxtIme();
 			String prezime=DialogProfesor.getInstance().readtxtPrezime();
 			SimpleDateFormat formatter=new SimpleDateFormat("dd.MM.yyyy");  
-			//Date datumr=formatter.parse(DialogProfesor.getInstance().readtxtDatumRodjenja());
 			Date datumr =new SimpleDateFormat("dd.MM.yyyy").parse(DialogProfesor.getInstance().readtxtDatumRodjenja());
 			System.out.println(datumr);
 			String adresas=DialogProfesor.getInstance().readtxtAdresaStanovanja();
