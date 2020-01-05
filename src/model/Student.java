@@ -22,6 +22,22 @@ public class Student
     private double prosecnaOcena;
     private List<Predmet> listaPredmeta;
     
+    public Student() {
+		super();
+		this.ime = null;
+		this.prezime = null;
+		this.datumRodjenja = null;
+		this.adresaStanovanja = null;
+		this.kontaktTelefon = null;
+		this.email = null;
+		this.brojIndeksa = null;
+		this.datumUpisa = null;
+		this.trenutnaGodina = 0;
+		this.status = null;
+		this.prosecnaOcena = 0;
+		this.listaPredmeta = null;
+	}
+    
 	public Student(String ime, String prezime, Date datumRodjenja, String adresaStanovanja, String kontaktTelefon,
 			String email, String brojIndeksa, Date datumUpisa, int trenutnaGodina, Status status,
 			double prosecnaOcena, List<Predmet> listaPredmeta) {

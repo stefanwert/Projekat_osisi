@@ -38,6 +38,8 @@ public class DialogStudent extends JDialog {
 	static private JTextField txtBrojIndeksa;
 	static private JTextField txtProsecnaOcena;
 	static private JComboBox<String> cb;
+	static public JRadioButton budzet;
+	static public JRadioButton samofinansiranje;
 	static private ButtonGroup status;
 	static private JButton ok;
 	
@@ -93,10 +95,10 @@ public class DialogStudent extends JDialog {
 	    cb = new JComboBox<String>(godinaStudija);
 	    cb.setVisible(true);
 	    
-		JRadioButton budzet = new JRadioButton("Budzet");
+		budzet = new JRadioButton("Budzet");
 		budzet.setFont(new Font("Budzet:",Font.PLAIN,18));
 		budzet.setActionCommand( budzet.getText() );
-		JRadioButton samofinansiranje = new JRadioButton("Samofinansiranje");
+		samofinansiranje = new JRadioButton("Samofinansiranje");
 		samofinansiranje.setFont(new Font("Samofinansiranje:",Font.PLAIN,18));
 		samofinansiranje.setActionCommand( samofinansiranje.getText() );
 		// grupa regulise da samo jedan RadioButton može biti èekiran
@@ -511,17 +513,14 @@ public class DialogStudent extends JDialog {
 			i++;
 		}
 		
-		txtIme.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 0));
-		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 1));
-		txtDatumRodjenja.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 2));
-		txtAdresaStanovanja.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 3));
-		txtBrojTelefona.setText(StudenskaSluzba.getInstance().getValueAtProfesor(i, 4));
-		txtBrojIndeksa.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 6));
+		txtBrojIndeksa.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 0));
+		txtIme.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 1));
+		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 2));	
 		System.out.println(cb.getSelectedItem());
 		//cb.setSelectedItem(anObject);
-		//cb.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 8));
-		//status.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 9));
-		txtProsecnaOcena.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 10));
+		//cb.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 3));
+		//status.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 4));
+		txtProsecnaOcena.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 5));
 		
 		ok.removeActionListener(ok.getActionListeners()[0]);
 		ok.addActionListener(new ActionListenerPotvrdiAddStudent());

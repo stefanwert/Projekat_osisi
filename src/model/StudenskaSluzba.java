@@ -101,31 +101,18 @@ public class StudenskaSluzba {
 		Student student=this.listaStudenata.get(row);
 		switch (column) {
 		case 0:
-			return student.getIme();
-		case 1:
-			return student.getPrezime();
-		case 2:
-			SimpleDateFormat formatterdr=new SimpleDateFormat("dd.MM.yyyy");
-			String dr=formatterdr.format(student.getDatumRodjenja());
-			return dr;
-		case 3:
-			return student.getAdresaStanovanja();
-		case 4:
-			return student.getKontaktTelefon();
-		case 5:
-			return student.getEmail();
-		case 6:
 			return student.getBrojIndeksa();
-		case 7:
-			SimpleDateFormat formatterdu=new SimpleDateFormat("dd.MM.yyyy");
-			String du=formatterdu.format(student.getDatumUpisa());
-			return du;
-		case 8:
+		case 1:
+			return student.getIme();
+		case 2:
+			return student.getPrezime();
+		case 3:
 			return Integer.toString(student.getTrenutnaGodina());
-		case 9:
+		case 4:
 			return student.getStatus().toString();
-		case 10:
+		case 5:
 			return Double.toString(student.getProsecnaOcena());
+			
 		default:
 			return null;
 		}

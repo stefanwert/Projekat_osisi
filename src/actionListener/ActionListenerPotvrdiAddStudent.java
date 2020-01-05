@@ -22,11 +22,8 @@ public class ActionListenerPotvrdiAddStudent implements ActionListener {
 			Date datumr=formatter.parse(DialogStudent.getInstance().readtxtDatumRodjenja());
 			String adresa=DialogStudent.getInstance().readtxtAdresaStanovanja();
 			String brojtel=DialogStudent.getInstance().readtxtBrojTelefona();
-			String email=DialogProfesor.getInstance().readtxtEmail();
 			String index=DialogStudent.getInstance().readtxtBrojIndeksa();
-			SimpleDateFormat formatterdu=new SimpleDateFormat("dd.MM.yyyy");  
-			Date datumu=formatterdu.parse(DialogStudent.getInstance().readtxtDatumRodjenja());
-			int godina;
+			int godina=0;
 			if(" I(prva)".equals(DialogStudent.getInstance().readtxtComboBox().getSelectedItem().toString())){
 				godina=1;
 			}
@@ -39,10 +36,14 @@ public class ActionListenerPotvrdiAddStudent implements ActionListener {
 			else if(" IV(cetvrta)".equals(DialogStudent.getInstance().readtxtComboBox().getSelectedItem().toString())){
 				godina=4;
 			}
-			
-			String status=DialogStudent.getInstance().getStatus().getSelection().getActionCommand(); 
+			Student student = new Student();
+			if(DialogStudent.getInstance().budzet.isSelected()==true) {
+				student.setStatus(Student.Status.B);
+				}else {
+					student.setStatus(Student.Status.S);
+				}
 			double prosek= Double.parseDouble(DialogStudent.getInstance().readtxtProsecnaOcena());
-		   // StudentKontroler.getInstance().dodajStudenta(ime, prezime, datumr, adresa, email, index, datumu, godina, status, prosek, null, null);
+		   StudentKontroler.getInstance().dodajStudenta(ime, prezime, datumr, adresa, brojtel, null, index, null, godina, student.getStatus(), prosek, null, null);
 		} catch (Exception e2) {
 			// TODO: handle exception
 		}

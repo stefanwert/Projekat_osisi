@@ -54,6 +54,14 @@ public class MyMenuBar extends JMenuBar {
 		
 		JMenuItem miClose = new JMenuItem("Close");
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,InputEvent.CTRL_MASK));
+		miClose.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+				
+				
+			}
+		});
 		
 		file.add(miNew);
 		file.addSeparator();
