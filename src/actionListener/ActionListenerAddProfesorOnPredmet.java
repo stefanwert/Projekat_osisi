@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import dialog.DialogPredmet;
-import dialog.DialogoAddProfesorToPredmet;
+import dialog.DialogAddProfesorToPredmet;
 import pogled.MainFrame;
 
 public class ActionListenerAddProfesorOnPredmet implements ActionListener{
@@ -14,7 +14,7 @@ public class ActionListenerAddProfesorOnPredmet implements ActionListener{
 		if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			try {
 				if(MainFrame.getInstance().getTabelPredmeta().getSelectedRow()!=-1)
-				DialogoAddProfesorToPredmet.getInstance().call(MainFrame.getInstance(),"Dodaj profesora na predmet",true);
+				DialogAddProfesorToPredmet.getInstance().call(MainFrame.getInstance(),"Dodaj profesora na predmet",true);
 				
 				
 			} catch (Exception e2) {

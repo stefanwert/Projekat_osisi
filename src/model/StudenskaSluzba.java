@@ -112,7 +112,15 @@ public class StudenskaSluzba {
 			return student.getStatus().toString();
 		case 5:
 			return Double.toString(student.getProsecnaOcena());
-			
+		/*case 6:
+			SimpleDateFormat formatter=new SimpleDateFormat("dd.MM.yyyy");
+			String dr=formatter.format(student.getDatumRodjenja());
+			return dr;
+		case 7:
+			return student.getAdresaStanovanja();
+		case 8:
+			return student.getKontaktTelefon();
+			*/
 		default:
 			return null;
 		}

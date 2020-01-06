@@ -19,17 +19,17 @@ import javax.swing.JTextField;
 import actionListener.ActionListenerAddProfesorOnPredmet;
 import actionListener.ActionListenerPotvrdiAddProfesoraOnPredmet;
 
-public class DialogoAddProfesorToPredmet extends JDialog{
+public class DialogAddProfesorToPredmet extends JDialog{
 
 	private static final long serialVersionUID = 5411149443296880822L;
 	static private JTextField txtBrLicneKarte;
 	static private JButton ok;
 	
-	private static DialogoAddProfesorToPredmet instance=null;
+	private static DialogAddProfesorToPredmet instance=null;
 	
-	static public DialogoAddProfesorToPredmet getInstance() {
+	static public DialogAddProfesorToPredmet getInstance() {
 		if(instance==null) {
-			instance=new DialogoAddProfesorToPredmet();
+			instance=new DialogAddProfesorToPredmet();
 		}
 		return instance;
 	}
@@ -38,7 +38,7 @@ public class DialogoAddProfesorToPredmet extends JDialog{
 		instance=null;
 	}
 	
-	private DialogoAddProfesorToPredmet() {}
+	private DialogAddProfesorToPredmet() {}
 
 	public void call(Frame parent, String title, boolean modal) {
 		this.setLocationRelativeTo(parent);

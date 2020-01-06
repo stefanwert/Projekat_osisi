@@ -46,8 +46,53 @@ private static StudentKontroler instance = null;
 		
 	}
 	
-	
-	
-	
+	public void pretraziStudenta(String kriterijum_pretrage,List<Student> listaStudenata)
+	{
+		String parts[] = kriterijum_pretrage.split(";");
+		int duzina = parts.length;
+		String parts2[];
+		List<Student> retList=StudenskaSluzba.getInstance().getListStudenata();
+		for (String s : parts) {
+			parts2=s.split(":");
+			if(parts[0].equals("ime")) {
+				for (Student student : StudenskaSluzba.getInstance().getListStudenata()) {
+					if(!student.getIme().equals(parts2[1])) {
+						System.out.println(retList.size());
+						retList.remove(student);
+						System.out.println(retList.size());		//provera da li se brisu
+					}
+				}
+			}
+			if(parts[0].equals("prezime")) {
+				for (Student student : StudenskaSluzba.getInstance().getListStudenata()) {
+					if(!student.getPrezime().equals(parts2[1])) {
+						System.out.println(retList.size());
+						retList.remove(student);
+						System.out.println(retList.size());		
+					}
+				}
+			}
+			if(parts[0].equals("indeks")) {
+				for (Student student : StudenskaSluzba.getInstance().getListStudenata()) {
+					if(!student.getBrojIndeksa().equals(parts2[1])) {
+						System.out.println(retList.size());
+						retList.remove(student);
+						System.out.println(retList.size());		
+					}
+				}
+			}
+			if(parts[0].equals("status")) {
+				for (Student student : StudenskaSluzba.getInstance().getListStudenata()) {
+					if(!student.getStatus().equals(parts2[1])) {
+						System.out.println(retList.size());
+						retList.remove(student);
+						System.out.println(retList.size());		
+					}
+				}
+			}
+			
+		}
+		
+	}
 	
 }

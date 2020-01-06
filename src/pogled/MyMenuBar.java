@@ -173,9 +173,23 @@ public class MyMenuBar extends JMenuBar {
 		help.setMnemonic(KeyEvent.VK_H);
 		JMenuItem miHelp = new JMenuItem("Help");
 		miHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H,InputEvent.CTRL_MASK));
+		miHelp.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Help.getInstance();
+			}
+		});
 		
 		JMenuItem miAbout = new JMenuItem("About");
 		miAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A,InputEvent.CTRL_MASK));
+		miAbout.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				About.getInstance();
+			}
+		});
 		
 		help.add(miHelp);
 		help.addSeparator();
