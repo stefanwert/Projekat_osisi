@@ -200,5 +200,4 @@ public class MyMenuBar extends JMenuBar {
 		add(edit);
 		add(help);		
 	}
-	
 }

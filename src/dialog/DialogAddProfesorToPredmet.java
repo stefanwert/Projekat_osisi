@@ -84,7 +84,6 @@ public class DialogAddProfesorToPredmet extends JDialog{
 //		ok.addFocusListener(l);
 		JButton odustani=new JButton("ODUSTANI");
 		odustani.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();

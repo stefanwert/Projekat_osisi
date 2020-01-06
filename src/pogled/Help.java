@@ -39,7 +39,6 @@ public class Help extends JFrame {
 		        JPanel txtPanel = new JPanel(new BorderLayout(10,5));
 		        txtPanel.setBackground(Color.LIGHT_GRAY);
 		        
-		        // obican tekst
 		        JLabel label = new JLabel("Detaljan opis o naèinu korišæenja aplikacije");
 		        label.setPreferredSize(new Dimension(20, 20));
 		        txtPanel.add(label, BorderLayout.NORTH);

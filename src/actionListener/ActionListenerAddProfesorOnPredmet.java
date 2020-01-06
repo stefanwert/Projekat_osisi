@@ -16,7 +16,6 @@ public class ActionListenerAddProfesorOnPredmet implements ActionListener{
 				if(MainFrame.getInstance().getTabelPredmeta().getSelectedRow()!=-1)
 				DialogAddProfesorToPredmet.getInstance().call(MainFrame.getInstance(),"Dodaj profesora na predmet",true);
 				
-				
 			} catch (Exception e2) {
 				System.out.println("nista nije selektovano");
 			}

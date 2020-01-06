@@ -120,7 +120,7 @@ public class StudenskaSluzba {
 			return student.getAdresaStanovanja();
 		case 8:
 			return student.getKontaktTelefon();
-			*/
+		*/
 		default:
 			return null;
 		}
