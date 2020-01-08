@@ -32,7 +32,6 @@ public class About extends JFrame {
 		        int screenWidth = screenSize.width;
 		        setSize(screenWidth / 2, screenHeight / 2);
 		        setTitle("Help");
-		        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		        setLocationRelativeTo(null);
 		        setVisible(true);
 		        

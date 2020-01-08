@@ -33,6 +33,26 @@ public class PredmetKontroler {
 		StudenskaSluzba.getInstance().izmeniPredmet(sifraStara,sifraPredmeta, nazivPredmeta, semestar, godinaStudija);
 	}
 	
+	public void dodajStudenta(String brojIndeksa) {
+		int i =MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
+		String s=(String)MainFrame.getInstance().getTabelPredmeta().getValueAt(i, 0);
+		i=0;
+		for (Predmet predmet : StudenskaSluzba.getInstance().getListPredmeta()) {
+			if(s.equals(predmet.getSifraPredmeta())) {
+				break;
+			}
+			i++;
+		}
+		List<Student> listaStudenata = null;
+		for (Student student : StudenskaSluzba.getInstance().getListStudenata()) {
+			if(student.getBrojIndeksa().equals(brojIndeksa)) {
+			
+				listaStudenata.add(student);
+				StudenskaSluzba.getInstance().getListPredmeta().get(i).setListaStudenata(listaStudenata);
+			}
+		}
+	}
+	
 	public void dodajProfesora(String brLicne) {
 		int i =MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
 		String s=(String)MainFrame.getInstance().getTabelPredmeta().getValueAt(i, 0);

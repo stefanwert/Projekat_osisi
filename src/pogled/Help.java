@@ -4,7 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,7 +35,6 @@ public class Help extends JFrame {
 		        int screenWidth = screenSize.width;
 		        setSize(screenWidth / 2, screenHeight / 2);
 		        setTitle("Help");
-		        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		        setLocationRelativeTo(null);
 		        setVisible(true);
 		        
@@ -48,8 +50,8 @@ public class Help extends JFrame {
 		        // dodajemo scroller-e po potrebi
 		        JScrollPane scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		        
-		        txtPanel.add(scrollPane, BorderLayout.CENTER); 
-		        
+		        txtPanel.add(scrollPane, BorderLayout.CENTER);
+				
 		        this.add(txtPanel);
 		       
 		}

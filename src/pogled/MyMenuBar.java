@@ -35,18 +35,12 @@ public class MyMenuBar extends JMenuBar {
 				
 				if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==0) {
 					DialogStudent.getInstance().call(MainFrame.getInstance(),"Dodaj studenta",true);
-//					DialogStudent ds = new DialogStudent(MainFrame.getInstance(),"Dodaj studenta",true);
-//					ds.setVisible(true);
 				}
 				else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==1) {
 					DialogProfesor.getInstance().call(MainFrame.getInstance(),"Dodaj profesora",true);
-//					DialogProfesor dp = new DialogProfesor(MainFrame.getInstance(),"Dodaj profesora",true);
-//					dp.setVisible(true);
 				}
 				else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 					DialogPredmet.getInstance().call(MainFrame.getInstance(),"DODAJ PREDMET",true);
-//					DialogPredmet d=new DialogPredmet(MainFrame.getInstance(),"DODAJ PREDMET",true);
-//					d.setVisible(true);
 			    }
 				MainFrame.getInstance().azurirajPrikaz();
 			}
@@ -79,9 +73,7 @@ public class MyMenuBar extends JMenuBar {
 				if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==0) {
 					try {
 						DialogStudent.getInstance().call(MainFrame.getInstance(),"Izmeni studenta",true);
-//						DialogStudent ds=new DialogStudent(MainFrame.getInstance(),"Dodaj studenta",true);
-//						ds.setTxtFilds();
-//						ds.setVisible(true);
+
 					} catch (Exception e) {
 						System.out.println("Nista nije selektovano");
 					}
@@ -89,9 +81,7 @@ public class MyMenuBar extends JMenuBar {
 				else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==1) {
 					try {
 						DialogProfesor.getInstance().call(MainFrame.getInstance(),"Izmeni profesora",true);
-//						DialogProfesor dp=new DialogProfesor(MainFrame.getInstance(),"Dodaj profesora",true);
-//						dp.setTxtFilds();
-//						dp.setVisible(true);
+
 					} catch (Exception e) {
 						System.out.println("Nista nije selektovano");
 					}
@@ -99,9 +89,6 @@ public class MyMenuBar extends JMenuBar {
 				else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 					try {
 						DialogPredmet.getInstance().call(MainFrame.getInstance(),"Izmeni predmet",true);
-//						DialogPredmet d=new DialogPredmet(MainFrame.getInstance(),"DODAJ PREDMET",true);
-//						d.setTxtFilds();
-//						d.setVisible(true);
 					} catch (Exception e) {
 						System.out.println("Nista nije selektovano");
 					}
@@ -153,7 +140,6 @@ public class MyMenuBar extends JMenuBar {
 							int i = MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
 							System.out.println(i);
 							String s=(String)MainFrame.getInstance().getTabelPredmeta().getValueAt(i, 0);
-							//StudenskaSluzba.getInstance().izbrisiPredmet(s);
 							PredmetKontroler.getInstance().obrisiPredmet(s);
 						} catch (Exception e2) {
 						System.out.println("niste selektovali vrstu u tabeli predmet");
