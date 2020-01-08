@@ -521,9 +521,9 @@ public class DialogStudent extends JDialog {
 		//cb.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 3));
 		//status.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 4));
 		txtProsecnaOcena.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 5));
-		/*txtDatumRodjenja.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 6));
+		txtDatumRodjenja.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 6));
 		txtAdresaStanovanja.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 7));
-		txtBrojTelefona.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 8));  */
+		txtBrojTelefona.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 8));
 		ok.removeActionListener(ok.getActionListeners()[0]);
 		ok.addActionListener(new ActionListenerPotvrdiAddStudent());
 		
