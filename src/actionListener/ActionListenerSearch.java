@@ -23,7 +23,7 @@ public class ActionListenerSearch implements ActionListener{
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			MyToolbar.getInstance().getButtonSrc().addActionListener(new ActionListenerSearchPredmet());
-		}		
+		}
 		//MyToolbar.getInstance().getButtonSrc().removeActionListener(l);
 		MainFrame.getInstance().azurirajPrikaz();
 	}

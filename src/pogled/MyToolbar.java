@@ -26,7 +26,7 @@ import actionListener.ActionListenerAddProfesorOnPredmet;
 import actionListener.ActionListenerEdit;
 import actionListener.ActionListenerRemove;
 import actionListener.ActionListenerSearch;
-import actionListener.DocumentListenerPredmet;
+import actionListener.DocumentListenerForDelete;
 import model.Predmet;
 import model.Profesor;
 import kontroler.*;
@@ -102,11 +102,11 @@ public class MyToolbar extends JToolBar{
 		left.add(btnAddProfesoraNapredmet);
 		
 		tf=new JTextField();
-		DocumentListenerPredmet dl=new DocumentListenerPredmet();
 		//tf.getDocument().addDocumentListener(dl);
 		//tf.setMaximumSize(new Dimension(200,2000));
 		tf.setPreferredSize(new Dimension(200,20));
-
+		DocumentListener dl=new DocumentListenerForDelete();
+		tf.getDocument().addDocumentListener(dl);
 		
 		btnSearch =new JButton();
 		btnSearch.setToolTipText("Search");
