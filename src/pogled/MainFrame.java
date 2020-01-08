@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import actionListener.WindowListenerForMainFrame;
 import model.Predmet;
 import model.StudenskaSluzba;
 
@@ -45,6 +46,8 @@ public class MainFrame extends JFrame{
 	Dimension screenSize= kit.getScreenSize();
 	int screenHeight=screenSize.height;
 	int screenWidth=screenSize.width;
+	
+	this.addWindowListener(new WindowListenerForMainFrame());
 	
 	setSize(screenWidth*3/5,screenHeight*3/5);
 	setTitle("Studentska sluzba");

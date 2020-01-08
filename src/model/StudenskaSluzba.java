@@ -1,4 +1,14 @@
 package model;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,7 +17,11 @@ import java.util.List;
 import model.Student.Status;
 import pogled.MainFrame;
 
-public class StudenskaSluzba {
+public class StudenskaSluzba implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3454124951027584486L;
 	List<Student> listaStudenata=new ArrayList<Student>();
 	List<Predmet> listaPredmeta=new ArrayList<Predmet>();
 	List<Profesor> listaProfesora=new ArrayList<Profesor>();
@@ -44,11 +58,17 @@ public class StudenskaSluzba {
 		kolonePredmeta.add("Semestar");
 		kolonePredmeta.add("Godina studija");
 		kolonePredmeta.add("Profesor");
-		Predmet p=new Predmet("123","1234", 1, 1, 
-				/*new Profesor("profa", "profic", new java.sql.Date(23), "novi safd", "nema", "ne'am jbg",
-"123", "123", "Redovni profesor vandredni dekan", "asdf", null)*/null, null);
-		p.setNazivPredmeta("dgsasdfgafd");
-		listaPredmeta.add(p);
+//		Predmet p=new Predmet("123","1234", 1, 1, 
+//				/*new Profesor("profa", "profic", new java.sql.Date(23), "novi safd", "nema", "ne'am jbg",
+//"123", "123", "Redovni profesor vandredni dekan", "asdf", null)*/null, null);
+//		p.setNazivPredmeta("dgsasdfgafd");
+//		listaPredmeta.add(p);
+		try {
+			serializeRead();
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		koloneStudenata = new ArrayList<String>();
 		koloneStudenata.add("Index");
@@ -73,6 +93,30 @@ public class StudenskaSluzba {
 		koloneProfesora.add("Titula");
 		koloneProfesora.add("Zvanje");
 		listaProfesora.add(new Profesor("stefan","petrovic",new Date(2000,11,11),"adresa","tel","email","adresaKan","ovoJeKljuc","titula","zvanje",null));
+	}
+	
+	public void serializeWrite() throws FileNotFoundException, IOException {
+		File f= new File("File/read.txt");
+		ObjectOutputStream oos=new ObjectOutputStream(
+				new BufferedOutputStream(new FileOutputStream(f)));
+		try {
+			oos.writeObject(listaPredmeta);
+			//oos.writeObject(instance);
+		} finally {
+			oos.close();
+		}
+	}
+	
+	public void serializeRead() throws FileNotFoundException, IOException, ClassNotFoundException {
+		File f= new File("File/read.txt");
+		ObjectInputStream ois=new ObjectInputStream(
+				new BufferedInputStream(new FileInputStream(f)));
+		try {
+			listaPredmeta= (List<Predmet>) ois.readObject();
+			//instance= (StudenskaSluzba) ois.readObject();
+		} finally {
+			ois.close();
+		}
 	}
 	
 	//za studenta deo
