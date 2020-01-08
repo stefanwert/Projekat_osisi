@@ -35,7 +35,7 @@ public class MyToolbar extends JToolBar{
 	private JTextField tf;
 	static private MyToolbar instance=null;
 	private static final long serialVersionUID = 1L;
-	
+	boolean tacno=false;
 	
 	static public MyToolbar getInstance() {
 		if(instance==null) {
@@ -99,7 +99,8 @@ public class MyToolbar extends JToolBar{
 		left.add(btnAddProfesoraNapredmet);
 		
 		tf=new JTextField();
-		tf.getDocument().addDocumentListener(new DocumentListenerPredmet());
+		DocumentListenerPredmet dl=new DocumentListenerPredmet();
+		//tf.getDocument().addDocumentListener(dl);
 		//tf.setMaximumSize(new Dimension(200,2000));
 		tf.setPreferredSize(new Dimension(200,20));
 
@@ -110,6 +111,22 @@ public class MyToolbar extends JToolBar{
 		btnSearch.addActionListener(new ActionListenerSearch());
 		btnSearch.setIcon(new ImageIcon("images/loopbtn.png"));
 		btnSearch.setBorderPainted(false);
+		btnSearch.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(tacno) {
+					tf.getDocument().removeDocumentListener(dl);
+					tacno=false;
+				}
+				else {
+					tf.getDocument().addDocumentListener(dl);
+					tacno=true;
+					System.out.println("ukljuceno");
+				}
+				
+			}
+		});
 
 		JPanel right=new JPanel();
 		right.setBackground(Color.white);
