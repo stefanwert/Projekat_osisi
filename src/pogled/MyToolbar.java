@@ -11,6 +11,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -35,7 +37,8 @@ public class MyToolbar extends JToolBar{
 	private JTextField tf;
 	static private MyToolbar instance=null;
 	private static final long serialVersionUID = 1L;
-	boolean tacno=false;
+	private boolean tacno=false;
+	private JButton btnSearch;
 	
 	static public MyToolbar getInstance() {
 		if(instance==null) {
@@ -105,28 +108,13 @@ public class MyToolbar extends JToolBar{
 		tf.setPreferredSize(new Dimension(200,20));
 
 		
-		JButton btnSearch =new JButton();
+		btnSearch =new JButton();
 		btnSearch.setToolTipText("Search");
 		btnSearch.setBackground(Color.white);
 		btnSearch.addActionListener(new ActionListenerSearch());
 		btnSearch.setIcon(new ImageIcon("images/loopbtn.png"));
 		btnSearch.setBorderPainted(false);
-		btnSearch.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(tacno) {
-					tf.getDocument().removeDocumentListener(dl);
-					tacno=false;
-				}
-				else {
-					tf.getDocument().addDocumentListener(dl);
-					tacno=true;
-					System.out.println("ukljuceno");
-				}
-				
-			}
-		});
+		btnSearch.addActionListener(new ActionListenerSearch());
 
 		JPanel right=new JPanel();
 		right.setBackground(Color.white);
@@ -141,5 +129,9 @@ public class MyToolbar extends JToolBar{
 	}
 	public JTextField getTextFild() {
 		return tf; 
+	}
+	
+	public JButton getButtonSrc() {
+		return btnSearch;
 	}
 }

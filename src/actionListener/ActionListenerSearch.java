@@ -22,9 +22,9 @@ public class ActionListenerSearch implements ActionListener{
 			//tabovi moraju biti dodavani u ovom redosledu
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
-			
+			MyToolbar.getInstance().getButtonSrc().addActionListener(new ActionListenerSearchPredmet());
 		}		
-		
+		//MyToolbar.getInstance().getButtonSrc().removeActionListener(l);
 		MainFrame.getInstance().azurirajPrikaz();
 	}
 

@@ -23,7 +23,10 @@ public class DocumentListenerPredmet implements javax.swing.event.DocumentListen
 	public void removeUpdate(DocumentEvent e) {
 		JTextField tf=MyToolbar.getInstance().getTextFild();
 		String text=tf.getText();
-		if(text.endsWith(":")) {
+		if(text.length()==0) {
+			rowSorter.setRowFilter(null);
+		}
+		/*if(text.endsWith(":")) {
 			text=text+" ";
 		}
 		
@@ -43,7 +46,7 @@ public class DocumentListenerPredmet implements javax.swing.event.DocumentListen
 		}
 		fooBarFilter = RowFilter.andFilter(filters);
 		rowSorter.setRowFilter(fooBarFilter);
-		
+		*/
 		
 		
 	}
@@ -56,7 +59,7 @@ public class DocumentListenerPredmet implements javax.swing.event.DocumentListen
 	
 	@Override
 	public void insertUpdate(DocumentEvent e) {
-		JTextField tf=MyToolbar.getInstance().getTextFild();
+		/*JTextField tf=MyToolbar.getInstance().getTextFild();
 		String text=tf.getText();
 		
 		List<RowFilter<Object,Object>> filters = new ArrayList<RowFilter<Object,Object>>(2);
@@ -76,7 +79,7 @@ public class DocumentListenerPredmet implements javax.swing.event.DocumentListen
 		fooBarFilter = RowFilter.andFilter(filters);
 		rowSorter.setRowFilter(fooBarFilter);
 		
-		
+		*/
 	}
 	
 	@Override
