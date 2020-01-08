@@ -18,8 +18,7 @@ public class ActionListenerSearch implements ActionListener{
 			//ovde ide studentov dialog
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==1) {
-			//ovde ide dialog za profesora
-			//tabovi moraju biti dodavani u ovom redosledu
+			MyToolbar.getInstance().getButtonSrc().addActionListener(new ActionListenerSearchProfesor());
 		}
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			MyToolbar.getInstance().getButtonSrc().addActionListener(new ActionListenerSearchPredmet());

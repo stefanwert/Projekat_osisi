@@ -31,6 +31,7 @@ public class MainFrame extends JFrame{
 	private static MainFrame instance=null;
 	private JTabbedPane tabbedPane=null;
 	private static TableRowSorter<TableModel> rowSorterTablePredmet;
+	private static TableRowSorter<TableModel> rowSorterTableProfesor;
 	
 	static public MainFrame getInstance() {
 		if(instance==null) {
@@ -82,8 +83,12 @@ public class MainFrame extends JFrame{
 		
 		tabelaPredmeta=new PredmetJTable();
 		tabelaPredmeta.setAutoCreateRowSorter(true);
+		
 		rowSorterTablePredmet=new TableRowSorter<TableModel>(tabelaPredmeta.getModel());	//dodato za sortiranje
-		tabelaPredmeta.setRowSorter(rowSorterTablePredmet);									//dodato za sortiranje
+		tabelaPredmeta.setRowSorter(rowSorterTablePredmet);									
+		rowSorterTableProfesor=new TableRowSorter<TableModel>(tabelaProfesora.getModel());
+		tabelaProfesora.setRowSorter(rowSorterTableProfesor);
+																							//dodato dovde
 		JScrollPane scrollpanePredmet=new JScrollPane(tabelaPredmeta);
 		tabbedPane.addTab("Predmeti",scrollpanePredmet);
 		
@@ -121,5 +126,8 @@ public class MainFrame extends JFrame{
 	
 	public static TableRowSorter getTableRowSorterPredmet() {
 		return rowSorterTablePredmet;
+	}
+	public static TableRowSorter getTableRowSorterProfesor() {
+		return rowSorterTableProfesor;
 	}
 }

@@ -18,13 +18,14 @@ import pogled.PredmetTableModel;
 public class DocumentListenerForDelete implements javax.swing.event.DocumentListener{
 
 	private TableRowSorter<TableModel> rowSorter=MainFrame.getTableRowSorterPredmet();
-	private RowFilter<Object, Object> fooBarFilter;
+	private TableRowSorter<TableModel> rowSorter2=MainFrame.getTableRowSorterProfesor();
 	@Override
 	public void removeUpdate(DocumentEvent e) {
 		JTextField tf=MyToolbar.getInstance().getTextFild();
 		String text=tf.getText();
 		if(text.length()==0) {
 			rowSorter.setRowFilter(null);
+			rowSorter2.setRowFilter(null);
 		}
 		
 	}
