@@ -297,7 +297,7 @@ public class DialogProfesor extends JDialog {
 			//ovde samo obrisi txt pre unosa 
 			//DialogProfesor.getInstance().clearTxtFilds();
 		}
-		DialogProfesor.getInstance().setVisible(true);
+		setVisible(true);
 		
 	}
 	

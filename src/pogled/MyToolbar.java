@@ -25,7 +25,10 @@ import actionListener.ActionListenerAdd;
 import actionListener.ActionListenerAddProfesorOnPredmet;
 import actionListener.ActionListenerEdit;
 import actionListener.ActionListenerRemove;
+import actionListener.ActionListenerRemoveProfesorFromPredmet;
 import actionListener.ActionListenerSearch;
+import actionListener.ActionListenerSearchPredmet;
+import actionListener.ActionListenerSearchProfesor;
 import actionListener.DocumentListenerForDelete;
 import model.Predmet;
 import model.Profesor;
@@ -93,6 +96,13 @@ public class MyToolbar extends JToolBar{
 		btnAddProfesoraNapredmet.setBorderPainted(false);
 		btnAddProfesoraNapredmet.addActionListener(new ActionListenerAddProfesorOnPredmet());
 		
+		JButton btnRemoveProfesoraSaPredmeta=new JButton();
+		btnRemoveProfesoraSaPredmeta.setToolTipText("Obrisi Profesora sa predmeta");
+		btnRemoveProfesoraSaPredmeta.setBackground(Color.white);
+		btnRemoveProfesoraSaPredmeta.setIcon(new ImageIcon("images/remove2.png"));
+		btnRemoveProfesoraSaPredmeta.setBorderPainted(false);
+		btnRemoveProfesoraSaPredmeta.addActionListener(new ActionListenerRemoveProfesorFromPredmet());
+		
 		JPanel left=new JPanel();
 		left.setBackground(Color.white);
 	    left.add(btnNew);
@@ -100,6 +110,7 @@ public class MyToolbar extends JToolBar{
 		left.add(btnDelete);
 		left.add(btnAddStudentaNaPredmet);
 		left.add(btnAddProfesoraNapredmet);
+		left.add(btnRemoveProfesoraSaPredmeta);
 		
 		tf=new JTextField();
 		//tf.getDocument().addDocumentListener(dl);
@@ -111,7 +122,8 @@ public class MyToolbar extends JToolBar{
 		btnSearch =new JButton();
 		btnSearch.setToolTipText("Search");
 		btnSearch.setBackground(Color.white);
-		btnSearch.addActionListener(new ActionListenerSearch());
+		btnSearch.addActionListener(new ActionListenerSearchPredmet());
+		btnSearch.addActionListener(new ActionListenerSearchProfesor());
 		btnSearch.setIcon(new ImageIcon("images/loopbtn.png"));
 		btnSearch.setBorderPainted(false);
 		btnSearch.addActionListener(new ActionListenerSearch());

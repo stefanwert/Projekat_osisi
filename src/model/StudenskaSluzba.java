@@ -63,12 +63,7 @@ public class StudenskaSluzba implements Serializable{
 //"123", "123", "Redovni profesor vandredni dekan", "asdf", null)*/null, null);
 //		p.setNazivPredmeta("dgsasdfgafd");
 //		listaPredmeta.add(p);
-		try {
-			serializeRead();
-		} catch (ClassNotFoundException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		
 		koloneStudenata = new ArrayList<String>();
 		koloneStudenata.add("Index");
@@ -93,6 +88,12 @@ public class StudenskaSluzba implements Serializable{
 		koloneProfesora.add("Titula");
 		koloneProfesora.add("Zvanje");
 		listaProfesora.add(new Profesor("stefan","petrovic",new Date(2000,11,11),"adresa","tel","email","adresaKan","ovoJeKljuc","titula","zvanje",null));
+		
+		try {
+			serializeRead();
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void serializeWrite() throws FileNotFoundException, IOException {

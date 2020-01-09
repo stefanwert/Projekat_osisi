@@ -11,7 +11,11 @@ public class WindowListenerForMainFrame implements WindowListener
 
 	@Override
 	public void windowOpened(WindowEvent e) {
-		// TODO Auto-generated method stub
+		try {
+			StudenskaSluzba.getInstance().serializeRead();
+		} catch (ClassNotFoundException | IOException e1) {
+			e1.printStackTrace();
+		}
 		
 	}
 

@@ -9,9 +9,12 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -47,12 +50,58 @@ public class DialogPredmet extends JDialog {
 	private DialogPredmet(){}
 	
 	public void call(Frame parent, String title, boolean modal) {
-		this.setLocationRelativeTo(parent);
 		this.setTitle(title);
 		this.setModal(modal);
 		
 		setSize(400,300);
+		this.setLocationRelativeTo(parent);
 		//setLocationRelativeTo(parent);
+		//setDefaultCloseOperation(JDialog.EXIT_ON_CLOSE);
+		addWindowListener(new WindowListener() {
+			
+			@Override
+			public void windowOpened(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowIconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowDeiconified(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowClosing(WindowEvent e) {
+				dispose();
+				removeInstance();
+				
+			}
+			
+			@Override
+			public void windowClosed(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void windowActivated(WindowEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		setLayout(new BorderLayout());
 		JPanel p=new JPanel();
@@ -183,7 +232,7 @@ public class DialogPredmet extends JDialog {
 		
 		//ovo ispod je dodato
 		if(title.equals("Izmeni predmet")) {
-			this.setTxtFilds();
+			setTxtFilds();
 		}else {
 			//ovde samo obrisi txt pre unosa 
 		}

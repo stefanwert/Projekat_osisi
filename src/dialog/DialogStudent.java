@@ -62,6 +62,8 @@ public class DialogStudent extends JDialog {
 		this.setTitle(title);
 		this.setModal(modal);
 		
+		
+		
 		setSize(470,450);
 		setLocationRelativeTo(parent);
 		
@@ -258,12 +260,12 @@ public class DialogStudent extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				DialogStudent.getInstance().dispose();
-				
+				DialogStudent.getInstance().removeInstance();
 			}
 		});
-		JPanel btnPanel=new JPanel();
-		btnPanel.add(ok,BorderLayout.EAST);
-		btnPanel.add(odustani,BorderLayout.WEST);
+//		JPanel btnPanel=new JPanel();
+//		btnPanel.add(ok,BorderLayout.EAST);
+//		btnPanel.add(odustani,BorderLayout.WEST);
 			
 		GridBagConstraints gbok=new GridBagConstraints();
 		gbok.gridx=0;
