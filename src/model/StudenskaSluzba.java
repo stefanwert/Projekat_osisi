@@ -1,19 +1,28 @@
 package model;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.omg.CORBA.portable.InputStream;
+
+import dialog.DialogStudent;
 import model.Student.Status;
 import pogled.MainFrame;
 
@@ -87,15 +96,82 @@ public class StudenskaSluzba implements Serializable{
 		koloneProfesora.add("Broj licne karte");
 		koloneProfesora.add("Titula");
 		koloneProfesora.add("Zvanje");
-		listaProfesora.add(new Profesor("stefan","petrovic",new Date(2000,11,11),"adresa","tel","email","adresaKan","ovoJeKljuc","titula","zvanje",null));
+		//listaProfesora.add(new Profesor("stefan","petrovic",new Date(2000,11,11),"adresa","tel","email","adresaKan","ovoJeKljuc","titula","zvanje",null));
 		
 		try {
 			serializeRead();
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 		}
+		
+	}
+	public void ucitajpredmete() {
+		BufferedReader csvReader = null;
+		try {
+			csvReader=new BufferedReader(new InputStreamReader(new FileInputStream("File/Predmeti.csv"),"UTF-8") );
+			String row;
+			int i=0;
+			while((row=csvReader.readLine())!=null) {
+				if(i!=0) {
+					String[] data=row.split(",");
+					Predmet p=new Predmet(data[0],data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3]),null,null);
+					dodajPredmet(p);
+				}
+				i++;
+					
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			csvReader.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		MainFrame.getInstance().azurirajPrikaz();
+		
 	}
 	
+	public void ucitajProfesore() {
+		BufferedReader csvReader = null;
+		try {
+			csvReader=new BufferedReader(new InputStreamReader(new FileInputStream("File/Profesori.csv"),"UTF-8") );
+			String row;
+			int i=0;
+			while((row=csvReader.readLine())!=null) {
+				if(i!=0) {
+					String[] data=row.split(",");
+					SimpleDateFormat formatter=new SimpleDateFormat("dd.MM.yyyy");
+					String pom=data[2].substring(0,data[2].length()-1);
+					  
+					Date dat;
+					try {
+						dat = formatter.parse(pom);
+						Profesor p=new Profesor(data[0], data[1],dat, data[3]+" "+data[4], data[5], data[6],data[7]+" "+data[8]+" "+data[9], data[10], data[11],data[12], null);
+						System.out.println(data[0]);
+						dodajProfesora(p);
+						//listaProfesora.add(p);
+						System.out.println(listaProfesora.size());
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				i++;
+					
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			csvReader.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		MainFrame.getInstance().azurirajPrikaz();
+	}
 	public void serializeWrite() throws FileNotFoundException, IOException {
 		File f= new File("File/read.txt");
 		ObjectOutputStream oos=new ObjectOutputStream(
