@@ -11,8 +11,8 @@ public class MainApp {
 
 	public static void main(String[] args) {
 		MainFrame.getInstance();
-		//StudenskaSluzba.getInstance().ucitajpredmete();
 		StudenskaSluzba.getInstance().ucitajProfesore();
+		//StudenskaSluzba.getInstance().ucitajpredmete();
 		System.out.println(StudenskaSluzba.getInstance().getListProfesora().size());
 		
 	}

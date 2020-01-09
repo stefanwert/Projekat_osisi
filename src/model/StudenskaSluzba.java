@@ -23,6 +23,7 @@ import java.util.List;
 import org.omg.CORBA.portable.InputStream;
 
 import dialog.DialogStudent;
+import kontroler.PredmetKontroler;
 import model.Student.Status;
 import pogled.MainFrame;
 
@@ -114,7 +115,21 @@ public class StudenskaSluzba implements Serializable{
 			while((row=csvReader.readLine())!=null) {
 				if(i!=0) {
 					String[] data=row.split(",");
-					Predmet p=new Predmet(data[0],data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3]),null,null);
+					
+					
+					String pom="";
+					if(!data[4].equals("null")) {
+						pom=data[4].substring(3, data[4].length()-2);
+						
+					}
+					System.out.println(pom);
+					Profesor pr=null;
+					for (Profesor p : listaProfesora) {
+						if(p.getBrLicneKarte().equals(pom)) {
+							pr=p;
+						}
+					}
+					Predmet p=new Predmet(data[0],data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3]),pr,null);
 					dodajPredmet(p);
 				}
 				i++;
@@ -148,11 +163,10 @@ public class StudenskaSluzba implements Serializable{
 					Date dat;
 					try {
 						dat = formatter.parse(pom);
-						Profesor p=new Profesor(data[0], data[1],dat, data[3]+" "+data[4], data[5], data[6],data[7]+" "+data[8]+" "+data[9], data[10], data[11],data[12], null);
-						System.out.println(data[0]);
+						Profesor p=new Profesor(data[0], data[1],dat, data[3]+" "+data[4], data[5], data[6],data[7]+" "+data[8]+" "+data[9], data[10].substring(3, data[10].length()-3), data[11],data[12], null);
+						
 						dodajProfesora(p);
 						//listaProfesora.add(p);
-						System.out.println(listaProfesora.size());
 					} catch (ParseException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
