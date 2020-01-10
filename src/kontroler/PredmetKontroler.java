@@ -53,6 +53,10 @@ public class PredmetKontroler {
 		}
 	}
 	
+	public void obrisiStudenta() {
+		
+	}
+	
 	public void dodajProfesora(String brLicne) {
 		int i =MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
 		String s=(String)MainFrame.getInstance().getTabelPredmeta().getValueAt(i, 0);

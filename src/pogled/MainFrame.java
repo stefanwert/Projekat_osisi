@@ -31,8 +31,10 @@ public class MainFrame extends JFrame{
 	private JTable tabelaProfesora; 
 	private static MainFrame instance=null;
 	private JTabbedPane tabbedPane=null;
-	private static TableRowSorter<TableModel> rowSorterTablePredmet;
+	private static TableRowSorter<TableModel> rowSorterTableStudent;
 	private static TableRowSorter<TableModel> rowSorterTableProfesor;
+	private static TableRowSorter<TableModel> rowSorterTablePredmet;
+	
 	
 	static public MainFrame getInstance() {
 		if(instance==null) {
@@ -87,11 +89,13 @@ public class MainFrame extends JFrame{
 		tabelaPredmeta=new PredmetJTable();
 		tabelaPredmeta.setAutoCreateRowSorter(true);
 		
-		rowSorterTablePredmet=new TableRowSorter<TableModel>(tabelaPredmeta.getModel());	//dodato za sortiranje
+		rowSorterTableStudent=new TableRowSorter<TableModel>(tabelaStudenata.getModel());	
+		tabelaStudenata.setRowSorter(rowSorterTableStudent);	
+		rowSorterTablePredmet=new TableRowSorter<TableModel>(tabelaPredmeta.getModel());	
 		tabelaPredmeta.setRowSorter(rowSorterTablePredmet);									
 		rowSorterTableProfesor=new TableRowSorter<TableModel>(tabelaProfesora.getModel());
 		tabelaProfesora.setRowSorter(rowSorterTableProfesor);
-																							//dodato dovde
+																				
 		JScrollPane scrollpanePredmet=new JScrollPane(tabelaPredmeta);
 		tabbedPane.addTab("Predmeti",scrollpanePredmet);
 		
@@ -114,23 +118,23 @@ public class MainFrame extends JFrame{
 		validate();
 	}
 	
-	
+	public JTable getTabelStudenta() {
+		return tabelaStudenata;
+	}
+	public JTable getTabelProfesora() {
+		return tabelaProfesora;
+	}
 	public static JTable getTabelPredmeta() {
 		return tabelaPredmeta;
 	}
 	
-	public JTable getTabelProfesora() {
-		return tabelaProfesora;
-	}
-	
-	public JTable getTabelStudenta() {
-		return tabelaStudenata;
-	}
-	
-	public static TableRowSorter getTableRowSorterPredmet() {
-		return rowSorterTablePredmet;
+	public static TableRowSorter getTableRowSorterStudent() {
+		return rowSorterTableStudent;
 	}
 	public static TableRowSorter getTableRowSorterProfesor() {
 		return rowSorterTableProfesor;
+	}
+	public static TableRowSorter getTableRowSorterPredmet() {
+		return rowSorterTablePredmet;
 	}
 }

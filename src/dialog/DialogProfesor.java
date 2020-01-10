@@ -18,10 +18,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import actionListener.ActionListenerPotvrdiAddProfesor;
-import actionListener.ActionListenerPotvrdiEditProfesor;
 import actionListener.FocusListenerForDateInput;
 import actionListener.FocusListenerForPotvrdiAddOrEdit;
+import actionListenerProfesor.ActionListenerPotvrdiAddProfesor;
+import actionListenerProfesor.ActionListenerPotvrdiEditProfesor;
 import model.Profesor;
 import model.StudenskaSluzba;
 import pogled.MainFrame;

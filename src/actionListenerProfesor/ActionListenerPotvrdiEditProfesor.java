@@ -1,14 +1,14 @@
-package actionListener;
+package actionListenerProfesor;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import dialog.DialogProfesor;
 import kontroler.ProfesorKontroler;
 
-public class ActionListenerPotvrdiAddProfesor implements ActionListener {
+public class ActionListenerPotvrdiEditProfesor implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -17,7 +17,8 @@ public class ActionListenerPotvrdiAddProfesor implements ActionListener {
 			String ime=DialogProfesor.getInstance().readtxtIme();
 			String prezime=DialogProfesor.getInstance().readtxtPrezime();
 			SimpleDateFormat formatter=new SimpleDateFormat("dd.MM.yyyy");  
-			Date datumr=formatter.parse(DialogProfesor.getInstance().readtxtDatumRodjenja());
+			Date datumr =new SimpleDateFormat("dd.MM.yyyy").parse(DialogProfesor.getInstance().readtxtDatumRodjenja());
+			System.out.println(datumr);
 			String adresas=DialogProfesor.getInstance().readtxtAdresaStanovanja();
 			String brojtel=DialogProfesor.getInstance().readtxtBrojTelefona();
 			String email=DialogProfesor.getInstance().readtxtEmail();
@@ -25,9 +26,9 @@ public class ActionListenerPotvrdiAddProfesor implements ActionListener {
 			String brojlk=DialogProfesor.getInstance().readtxtBrojLicneKarte();
 			String titula=DialogProfesor.getInstance().readtxtTitula();
 			String zvanje=DialogProfesor.getInstance().readtxtZvanje();
-			ProfesorKontroler.getInstance().dodajProfesora(ime, prezime, datumr, adresas, brojtel, email, adresak, brojlk, titula, zvanje);
+			ProfesorKontroler.getInstance().izmeniProfesora(ime, prezime, datumr, adresas, brojtel, email, adresak, brojlk, titula, zvanje);
 		} catch (Exception e2) {
-			
+			e2.printStackTrace();
 		}
 		
 		DialogProfesor.getInstance().dispose();

@@ -1,20 +1,19 @@
-package actionListener;
+package actionListenerStudent;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import dialog.DialogPredmet;
-import dialog.DialogAddProfesorToPredmet;
+import dialog.DialogAddStudentToPredmet;
 import pogled.MainFrame;
 
-public class ActionListenerAddProfesorOnPredmet implements ActionListener{
+public class ActionListenerAddStudentaToPredmet implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			try {
-				if(MainFrame.getInstance().getTabelPredmeta().getSelectedRow()!=-1)
-				DialogAddProfesorToPredmet.getInstance().call(MainFrame.getInstance(),"Dodaj profesora na predmet",true);
+				if(MainFrame.getInstance().getTabelStudenta().getSelectedRow()!=-1)
+				DialogAddStudentToPredmet.getInstance().call(MainFrame.getInstance(),"Dodaj studenta na predmet",true);
 				
 			} catch (Exception e2) {
 				System.out.println("nista nije selektovano");
@@ -27,5 +26,4 @@ public class ActionListenerAddProfesorOnPredmet implements ActionListener{
 
 		MainFrame.getInstance().azurirajPrikaz();
 	}
-
 }

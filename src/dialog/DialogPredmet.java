@@ -19,10 +19,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import actionListener.ActionListenerPotvrdiAddPredmet;
-import actionListener.ActionListenerPotvrdiEditPredmet;
 import actionListener.FocusListenerForPotvrdiAddOrEdit;
 import actionListener.KeyListenerForInt;
+import actionListenerPredmet.ActionListenerPotvrdiAddPredmet;
+import actionListenerPredmet.ActionListenerPotvrdiEditPredmet;
 import model.Predmet;
 import model.StudenskaSluzba;
 import pogled.MainFrame;

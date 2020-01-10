@@ -22,14 +22,14 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import actionListener.ActionListenerAdd;
-import actionListener.ActionListenerAddProfesorOnPredmet;
 import actionListener.ActionListenerEdit;
 import actionListener.ActionListenerRemove;
-import actionListener.ActionListenerRemoveProfesorFromPredmet;
 import actionListener.ActionListenerSearch;
-import actionListener.ActionListenerSearchPredmet;
-import actionListener.ActionListenerSearchProfesor;
 import actionListener.DocumentListenerForDelete;
+import actionListenerPredmet.ActionListenerSearchPredmet;
+import actionListenerProfesor.ActionListenerAddProfesorOnPredmet;
+import actionListenerProfesor.ActionListenerRemoveProfesorFromPredmet;
+import actionListenerProfesor.ActionListenerSearchProfesor;
 import model.Predmet;
 import model.Profesor;
 import kontroler.*;

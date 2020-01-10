@@ -17,8 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import actionListener.ActionListenerAddProfesorOnPredmet;
-import actionListener.ActionListenerPotvrdiAddProfesoraOnPredmet;
+import actionListenerProfesor.ActionListenerAddProfesorOnPredmet;
+import actionListenerProfesor.ActionListenerPotvrdiAddProfesoraOnPredmet;
 
 public class DialogAddProfesorToPredmet extends JDialog{
 
