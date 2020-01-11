@@ -12,7 +12,7 @@ public class ActionListenerAddStudentaToPredmet implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			try {
-				if(MainFrame.getInstance().getTabelStudenta().getSelectedRow()!=-1)
+				if(MainFrame.getInstance().getTabelPredmeta().getSelectedRow()!=-1)
 				DialogAddStudentToPredmet.getInstance().call(MainFrame.getInstance(),"Dodaj studenta na predmet",true);
 				
 			} catch (Exception e2) {

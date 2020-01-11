@@ -28,38 +28,23 @@ public class ActionListenerSearchStudent implements ActionListener {
 		String parts2[];
 		for (String s : parts) {
 			parts2=s.split(":");
-			if(parts2[0].equalsIgnoreCase("ime")) {
+			if(parts2[0].equalsIgnoreCase("broj indeksa")) {
 				filters.add(RowFilter.regexFilter(parts2[1],0));
 			}
-			else if(parts2[0].equalsIgnoreCase("prezime")) {
+			else if(parts2[0].equalsIgnoreCase("ime")) {
 				filters.add(RowFilter.regexFilter(parts2[1],1));
 			}
-			else if(parts2[0].equalsIgnoreCase("datumRodjenja")) {
+			else if(parts2[0].equalsIgnoreCase("prezime")) {
 				filters.add(RowFilter.regexFilter(parts2[1],2));
 			}
-			else if(parts2[0].equalsIgnoreCase("adresa stanovanja")) {
+			else if(parts2[0].equalsIgnoreCase("godina studija")) {
 				filters.add(RowFilter.regexFilter(parts2[1],3));
 			}
-			else if(parts2[0].equalsIgnoreCase("kontakt telefon")) {
+			else if(parts2[0].equalsIgnoreCase("status")) {
 				filters.add(RowFilter.regexFilter(parts2[1],4));
 			}
-			else if(parts2[0].equalsIgnoreCase("email")) {
+			else if(parts2[0].equalsIgnoreCase("prosek")) {
 				filters.add(RowFilter.regexFilter(parts2[1],5));
-			}
-			else if(parts2[0].equalsIgnoreCase("brojIndeksa")) {
-				filters.add(RowFilter.regexFilter(parts2[1],6));
-			}
-			else if(parts2[0].equalsIgnoreCase("datumUpisa")) {
-				filters.add(RowFilter.regexFilter(parts2[1],7));
-			}
-			else if(parts2[0].equalsIgnoreCase("trenutnaGodina")) {
-				filters.add(RowFilter.regexFilter(parts2[1],8));
-			}
-			else if(parts2[0].equalsIgnoreCase("status")) {
-				filters.add(RowFilter.regexFilter(parts2[1],9));
-			}
-			else if(parts2[0].equalsIgnoreCase("prosecnaOcena")) {
-				filters.add(RowFilter.regexFilter(parts2[1],10));
 			}
 		}
 		fooBarFilter = RowFilter.andFilter(filters);

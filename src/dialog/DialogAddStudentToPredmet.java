@@ -41,10 +41,10 @@ public class DialogAddStudentToPredmet extends JDialog {
 	private DialogAddStudentToPredmet() {}
 
 	public void call(Frame parent, String title, boolean modal) {
+		setSize(350,200);
 		this.setLocationRelativeTo(parent);
 		this.setTitle(title);
 		this.setModal(modal);
-		setSize(350,200);
 		
 		setLayout(new BorderLayout());
 		JPanel p=new JPanel();

@@ -24,6 +24,7 @@ import actionListener.FocusListenerForDateInput;
 import actionListener.FocusListenerForPotvrdiAddOrEdit;
 import actionListener.KeyListenerForDouble;
 import actionListenerStudent.ActionListenerPotvrdiAddStudent;
+import actionListenerStudent.ActionListenerPotvrdiEditStudent;
 import model.StudenskaSluzba;
 import model.Student;
 import pogled.MainFrame;
@@ -279,6 +280,7 @@ public class DialogStudent extends JDialog {
 		gbOdustani.insets=new Insets(20, 0, 0, 0);
 		panel.add(odustani,gbOdustani);
 		
+		status.setSelected(samofinansiranje.getModel(), true);
 		if(title.equals("Izmeni studenta")) {
 			this.setTxtFilds();
 		}else {
@@ -517,17 +519,37 @@ public class DialogStudent extends JDialog {
 		
 		txtBrojIndeksa.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 0));
 		txtIme.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 1));
-		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 2));	
-		System.out.println(cb.getSelectedItem());
+		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 2));
+		System.out.println(StudenskaSluzba.getInstance().getValueAtStudent(i, 3));
+		if("1".equals(StudenskaSluzba.getInstance().getValueAtStudent(i, 3))){
+			cb.setSelectedIndex(0);
+		}
+		else if("2".equals(StudenskaSluzba.getInstance().getValueAtStudent(i, 3))){
+			cb.setSelectedIndex(1);
+		}
+		else if("3".equals(StudenskaSluzba.getInstance().getValueAtStudent(i, 3))){
+			cb.setSelectedIndex(2);
+		}
+		else {
+			cb.setSelectedIndex(3);
+		}
 		//cb.setSelectedItem(anObject);
 		//cb.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 3));
-		//status.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 4));
+		System.out.println(cb.getSelectedIndex());
 		txtProsecnaOcena.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 5));
 		txtDatumRodjenja.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 6));
 		txtAdresaStanovanja.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 7));
 		txtBrojTelefona.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 8));
+		if("B".equals(StudenskaSluzba.getInstance().getValueAtStudent(i, 4))){
+			status.setSelected(samofinansiranje.getModel(), false);
+			status.setSelected(budzet.getModel(), true);
+		}else{
+			status.setSelected(budzet.getModel(), false);
+			status.setSelected(samofinansiranje.getModel(), true);
+		}
+		
 		ok.removeActionListener(ok.getActionListeners()[0]);
-		ok.addActionListener(new ActionListenerPotvrdiAddStudent());
+		ok.addActionListener(new ActionListenerPotvrdiEditStudent());
 		
 	}
 	

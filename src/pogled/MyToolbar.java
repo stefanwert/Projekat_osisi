@@ -2,37 +2,27 @@ package pogled;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import javax.swing.event.DocumentEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
+import javax.swing.SwingConstants;
 import javax.swing.event.DocumentListener;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 import actionListener.ActionListenerAdd;
 import actionListener.ActionListenerEdit;
 import actionListener.ActionListenerRemove;
-import actionListener.ActionListenerSearch;
 import actionListener.DocumentListenerForDelete;
 import actionListenerPredmet.ActionListenerSearchPredmet;
 import actionListenerProfesor.ActionListenerAddProfesorOnPredmet;
 import actionListenerProfesor.ActionListenerRemoveProfesorFromPredmet;
 import actionListenerProfesor.ActionListenerSearchProfesor;
-import model.Predmet;
-import model.Profesor;
-import kontroler.*;
+import actionListenerStudent.ActionListenerAddStudentaToPredmet;
+import actionListenerStudent.ActionListenerSearchStudent;
 public class MyToolbar extends JToolBar{
 	/**
 	 * 
@@ -88,6 +78,7 @@ public class MyToolbar extends JToolBar{
 		btnAddStudentaNaPredmet.setBackground(Color.white);
 		btnAddStudentaNaPredmet.setIcon(new ImageIcon("images/add2.png"));
 		btnAddStudentaNaPredmet.setBorderPainted(false);
+		btnAddStudentaNaPredmet.addActionListener(new ActionListenerAddStudentaToPredmet());
 		
 		JButton btnAddProfesoraNapredmet =new JButton();
 		btnAddProfesoraNapredmet.setToolTipText("Dodaj Profesora na predmet");
@@ -124,9 +115,10 @@ public class MyToolbar extends JToolBar{
 		btnSearch.setBackground(Color.white);
 		btnSearch.addActionListener(new ActionListenerSearchPredmet());
 		btnSearch.addActionListener(new ActionListenerSearchProfesor());
+		btnSearch.addActionListener(new ActionListenerSearchStudent());
 		btnSearch.setIcon(new ImageIcon("images/loopbtn.png"));
 		btnSearch.setBorderPainted(false);
-		btnSearch.addActionListener(new ActionListenerSearch());
+//		btnSearch.addActionListener(new ActionListenerSearch());
 
 		JPanel right=new JPanel();
 		right.setBackground(Color.white);
