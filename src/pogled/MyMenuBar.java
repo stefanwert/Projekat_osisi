@@ -163,7 +163,7 @@ public class MyMenuBar extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				Help.getInstance();
+				About.getInstance().call();
 			}
 		});
 		
@@ -173,7 +173,7 @@ public class MyMenuBar extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				About.getInstance();
+				About.getInstance().call();
 			}
 		});
 		

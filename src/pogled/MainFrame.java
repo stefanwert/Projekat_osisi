@@ -2,26 +2,18 @@ package pogled;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.LayoutManager;
-import java.awt.Panel;
 import java.awt.Toolkit;
 
-import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import actionListener.TableColumnModelListener1;
 import actionListener.WindowListenerForMainFrame;
-import model.Predmet;
-import model.StudenskaSluzba;
 
 
 public class MainFrame extends JFrame{
@@ -88,6 +80,11 @@ public class MainFrame extends JFrame{
 		
 		tabelaPredmeta=new PredmetJTable();
 		tabelaPredmeta.setAutoCreateRowSorter(true);
+		JScrollPane scrollpanePredmet=new JScrollPane(tabelaPredmeta);
+		tabbedPane.addTab("Predmeti",scrollpanePredmet);
+		
+		tabelaPredmeta.getColumnModel().addColumnModelListener(new TableColumnModelListener1());
+		
 		
 		rowSorterTableStudent=new TableRowSorter<TableModel>(tabelaStudenata.getModel());	
 		tabelaStudenata.setRowSorter(rowSorterTableStudent);	
@@ -96,8 +93,7 @@ public class MainFrame extends JFrame{
 		rowSorterTableProfesor=new TableRowSorter<TableModel>(tabelaProfesora.getModel());
 		tabelaProfesora.setRowSorter(rowSorterTableProfesor);
 																				
-		JScrollPane scrollpanePredmet=new JScrollPane(tabelaPredmeta);
-		tabbedPane.addTab("Predmeti",scrollpanePredmet);
+		
 		
 		add(tabbedPane,BorderLayout.CENTER);
 		

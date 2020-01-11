@@ -1,4 +1,6 @@
 package model;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -6,24 +8,20 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.omg.CORBA.portable.InputStream;
+import javax.swing.JButton;
 
 import dialog.DialogStudent;
-import kontroler.PredmetKontroler;
 import model.Student.Status;
 import pogled.MainFrame;
 
@@ -68,6 +66,7 @@ public class StudenskaSluzba implements Serializable{
 		kolonePredmeta.add("Semestar");
 		kolonePredmeta.add("Godina studija");
 		kolonePredmeta.add("Profesor");
+		kolonePredmeta.add("Studenti");
 //		Predmet p=new Predmet("123","1234", 1, 1, 
 //				/*new Profesor("profa", "profic", new java.sql.Date(23), "novi safd", "nema", "ne'am jbg",
 //"123", "123", "Redovni profesor vandredni dekan", "asdf", null)*/null, null);
@@ -435,7 +434,7 @@ public class StudenskaSluzba implements Serializable{
 		return this.listaPredmeta.get(rowIndex);
 	}
 	
-	public String getValueAtPredmet(int row,int column) {
+	public Object getValueAtPredmet(int row,int column) {
 		Predmet predmet=this.listaPredmeta.get(row);
 		switch (column) {
 		case 0:
@@ -451,6 +450,9 @@ public class StudenskaSluzba implements Serializable{
 				return "Null";
 			}
 			return predmet.getProfesor().getIme()+" "+predmet.getProfesor().getPrezime();
+		case 5:
+			
+            return "Prikazi";
 		default:
 			return null;
 		}

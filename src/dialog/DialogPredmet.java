@@ -390,10 +390,10 @@ public class DialogPredmet extends JDialog {
 			}
 			i++;
 		}
-		txtsifra.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 0));
-		txtNazivPr.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 1));
-		txtSemestar.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 2));
-		txtGodinaStudjia.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 3));
+		txtsifra.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 0).toString());
+		txtNazivPr.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 1).toString());
+		txtSemestar.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 2).toString());
+		txtGodinaStudjia.setText(StudenskaSluzba.getInstance().getValueAtPredmet(i, 3).toString());
 		
 		ok.removeActionListener(ok.getActionListeners()[0]);
 		ActionListenerPotvrdiEditPredmet ls=new ActionListenerPotvrdiEditPredmet();
