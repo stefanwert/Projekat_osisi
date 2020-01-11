@@ -162,7 +162,7 @@ public class StudenskaSluzba implements Serializable{
 					Date dat;
 					try {
 						dat = formatter.parse(pom);
-						Profesor p=new Profesor(data[0], data[1],dat, data[3]+" "+data[4], data[5], data[6],data[7]+" "+data[8]+" "+data[9], data[10].substring(3, data[10].length()-3), data[11],data[12], null);
+						Profesor p=new Profesor(data[0], data[1],dat, data[3].substring(1,data[3].length())+" "+data[4].substring(0,data[4].length()-1), data[5], data[6],data[7].substring(1,data[7].length())+" "+data[8]+" "+data[9].substring(0,data[9].length()-1), data[10].substring(3, data[10].length()-3), data[11],data[12], null);
 						
 						dodajProfesora(p);
 						//listaProfesora.add(p);
