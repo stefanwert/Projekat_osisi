@@ -17,7 +17,7 @@ public class MainApp {
 		StudenskaSluzba.getInstance().ucitajStudente();
 		
 		
-		StudenskaSluzba.getInstance().getListPredmeta().get(0).getListaStudenata().add(StudenskaSluzba.getInstance().getListStudenata().get(0));
+		//StudenskaSluzba.getInstance().getListPredmeta().get(0).getListaStudenata().add(StudenskaSluzba.getInstance().getListStudenata().get(0));
 		
 	}
 

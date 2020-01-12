@@ -247,6 +247,18 @@ public class StudenskaSluzba implements Serializable{
 		} finally {
 			oos.close();
 		}
+		
+		//profesori
+		File f2= new File("File/readProfesore.txt");
+		ObjectOutputStream oos2=new ObjectOutputStream(
+				new BufferedOutputStream(new FileOutputStream(f2)));
+		try {
+			oos2.writeObject(listaProfesora);
+			//oos.writeObject(instance);
+		} finally {
+			oos2.close();
+		}
+		
 	}
 	
 	public void serializeRead() throws FileNotFoundException, IOException, ClassNotFoundException {
@@ -258,6 +270,18 @@ public class StudenskaSluzba implements Serializable{
 			//instance= (StudenskaSluzba) ois.readObject();
 		} finally {
 			ois.close();
+		}
+		
+		//profesor
+		
+		File f2= new File("File/readProfesore.txt");
+		ObjectInputStream ois2=new ObjectInputStream(
+				new BufferedInputStream(new FileInputStream(f2)));
+		try {
+			listaProfesora= (List<Profesor>) ois2.readObject();
+			//instance= (StudenskaSluzba) ois.readObject();
+		} finally {
+			ois2.close();
 		}
 	}
 	
