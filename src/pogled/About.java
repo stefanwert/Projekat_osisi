@@ -33,7 +33,7 @@ public class About extends JFrame {
 	        int screenHeight = screenSize.height;
 	        int screenWidth = screenSize.width;
 	        setSize(screenWidth / 2, screenHeight / 2);
-	        setTitle("Help");
+	        setTitle("About");
 	        setLocationRelativeTo(null);
 	        setVisible(true);
 	        
@@ -44,8 +44,18 @@ public class About extends JFrame {
 	        label.setPreferredSize(new Dimension(20, 20));
 	        txtPanel.add(label, BorderLayout.NORTH);
 	        
+	        String tekst="Verzija aplikacije: v1.0StudentskaSluzba\n \n"
+	        		+ " Opis aplikacije:\n"
+	        		+ " Ova aplikacija sluzi za rad na studentskoj sluzbi.Omoguceno je manipulisanje nad svim postojecim podacima kao i dodavanje novih.\n Neke od funkijonalnosti sistema su: dodavanje,izmena,brisanje,pretraga i sortiranje nad tabelama Studenata,Profesora i Predmeta.\n \n"
+	        		+ " O autorima:\n"
+	        		+ " Nemanja Tamindzija - Rodjen 16.08.1997 u Rumi, odrastao je u Nevesinju gdje je pohadjao osnovnu skolu \"Risto Prorokovic\" \n "
+	        		+ " i gimnaziju \"Aleksa Santic\".Trenutno je student trece godine Elektrotehnike na Fakultetu tehnickih nauka u Novom Sadu.\n \n"
+	        		+ " Stefan Petrovic - Rodjen 21.10.1998 u Smederevu gdje je odrastao i stekao obrazovanje, pohadjao je osnovnu skolu \"Ivo andric\" \n"
+	        		+ " i Srednju tehnicku skolu u Smederevu.Trenutno je student trece godine Elektrotehnike na Fakultetu tehnickih nauka u Novom Sadu.\n";
+	        
 	        // viselinijsko tekstualno polje
-	        JTextArea textArea = new JTextArea("Ovo je viselinijsko tekstualno polje");
+	        JTextArea textArea = new JTextArea(tekst);
+	        textArea.setEditable(false);
 	        // dodajemo scroller-e po potrebi
 	        JScrollPane scrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 	        
