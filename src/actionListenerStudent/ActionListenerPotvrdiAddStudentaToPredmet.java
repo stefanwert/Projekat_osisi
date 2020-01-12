@@ -20,5 +20,4 @@ public class ActionListenerPotvrdiAddStudentaToPredmet implements ActionListener
 		DialogAddStudentToPredmet.getInstance().dispose();
 		DialogAddStudentToPredmet.removeInstance();
 	}
-
 }

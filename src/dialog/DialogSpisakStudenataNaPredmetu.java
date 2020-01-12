@@ -2,11 +2,16 @@ package dialog;
 
 import java.awt.BorderLayout;
 import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import kontroler.PredmetKontroler;
+import pogled.MainFrame;
 import pogled.StudentiNaPredmetuJTable;
 
 public class DialogSpisakStudenataNaPredmetu extends JDialog{
@@ -24,6 +29,7 @@ public class DialogSpisakStudenataNaPredmetu extends JDialog{
 		}
 		
 		private JTable tabelaStudenataNaPredmetu;
+		static private JButton obrisi;
 		
 		public void call(Frame parent, String title, boolean modal) {
 			this.setLocationRelativeTo(parent);
@@ -38,6 +44,22 @@ public class DialogSpisakStudenataNaPredmetu extends JDialog{
 			tabelaStudenataNaPredmetu = new StudentiNaPredmetuJTable();
 			JScrollPane scrollPane = new JScrollPane(tabelaStudenataNaPredmetu);
 			add(scrollPane, BorderLayout.CENTER);
+			
+			obrisi=new JButton("Obrisi");
+			obrisi.addActionListener(new ActionListener() {
+				
+				public void actionPerformed(ActionEvent e) {
+					try {
+						if(tabelaStudenataNaPredmetu.getSelectedRow()!=-1) {
+							PredmetKontroler.getInstance().obrisiStudenta();
+						}				
+					} catch (Exception e2) {
+						System.out.println("nista nije selektovano");
+					}
+				}
+			});
+			
+			add(obrisi, BorderLayout.SOUTH);
 			
 			setVisible(true);
 			

@@ -43,17 +43,26 @@ public class PredmetKontroler {
 			}
 			i++;
 		}
-		List<Student> listaStudenata = null;
 		for (Student student : StudenskaSluzba.getInstance().getListStudenata()) {
 			if(student.getBrojIndeksa().equals(brojIndeksa)) {
-			
-				listaStudenata.add(student);
-				StudenskaSluzba.getInstance().getListPredmeta().get(i).setListaStudenata(listaStudenata);
+				
+				StudenskaSluzba.getInstance().getListPredmeta().get(i).getListaStudenata().add(student);
 			}
 		}
 	}
 	
 	public void obrisiStudenta() {
+		int i =MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
+		String s=(String)MainFrame.getInstance().getTabelPredmeta().getValueAt(i, 0);
+		i=0;
+		for (Predmet predmet : StudenskaSluzba.getInstance().getListPredmeta()) {
+			if(s.equals(predmet.getSifraPredmeta())) {
+				break;
+			}
+			i++;
+		}
+		
+		StudenskaSluzba.getInstance().getListPredmeta().get(i).getListaStudenata().remove(i);
 		
 	}
 	

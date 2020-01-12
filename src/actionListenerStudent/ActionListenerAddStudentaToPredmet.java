@@ -22,7 +22,6 @@ public class ActionListenerAddStudentaToPredmet implements ActionListener{
 		else {
 			System.out.println("nije selektovan predmet tab");
 		}
-		
 
 		MainFrame.getInstance().azurirajPrikaz();
 	}
