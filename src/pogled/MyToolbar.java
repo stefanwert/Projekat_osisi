@@ -104,8 +104,6 @@ public class MyToolbar extends JToolBar{
 		left.add(btnRemoveProfesoraSaPredmeta);
 		
 		tf=new JTextField();
-		//tf.getDocument().addDocumentListener(dl);
-		//tf.setMaximumSize(new Dimension(200,2000));
 		tf.setPreferredSize(new Dimension(200,20));
 		DocumentListener dl=new DocumentListenerForDelete();
 		tf.getDocument().addDocumentListener(dl);
@@ -118,7 +116,6 @@ public class MyToolbar extends JToolBar{
 		btnSearch.addActionListener(new ActionListenerSearchStudent());
 		btnSearch.setIcon(new ImageIcon("images/loopbtn.png"));
 		btnSearch.setBorderPainted(false);
-//		btnSearch.addActionListener(new ActionListenerSearch());
 
 		JPanel right=new JPanel();
 		right.setBackground(Color.white);

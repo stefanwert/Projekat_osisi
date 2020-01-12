@@ -15,9 +15,6 @@ public class ActionListenerEdit implements ActionListener{
 		if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==0) {
 			try {
 				DialogStudent.getInstance().call(MainFrame.getInstance(),"Izmeni studenta",true);
-//				DialogStudent ds=new DialogStudent(MainFrame.getInstance(),"Izmeni studenta",true);
-//				ds.setTxtFilds();
-//				ds.setVisible(true);
 			} catch (Exception e) {
 				System.out.println("Nista nije selektovano");
 			}
@@ -25,9 +22,6 @@ public class ActionListenerEdit implements ActionListener{
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==1) {
 			try {
 				DialogProfesor.getInstance().call(MainFrame.getInstance(),"Izmeni profesora",true);
-//				DialogProfesor dp=new DialogProfesor(MainFrame.getInstance(),"Izmeni profesora",true);
-//				dp.setTxtFilds();
-//				dp.setVisible(true);
 			} catch (Exception e) {
 				System.out.println("Nista nije selektovano");
 			}
@@ -35,9 +29,6 @@ public class ActionListenerEdit implements ActionListener{
 		else if(MainFrame.getInstance().getTabbedPane().getSelectedIndex()==2) {
 			try {
 				DialogPredmet.getInstance().call(MainFrame.getInstance(),"Izmeni predmet",true);
-//				DialogPredmet d=new DialogPredmet(MainFrame.getInstance(),"Izmeni predmet",true);
-//				d.setTxtFilds();
-//				d.setVisible(true);
 			} catch (Exception e) {
 				System.out.println("Nista nije selektovano");
 			}

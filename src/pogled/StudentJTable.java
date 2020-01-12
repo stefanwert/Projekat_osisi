@@ -30,17 +30,5 @@ public class StudentJTable extends JTable {
 		}
 		return c;
 	}
-    //svaka parna vrsta je siva a neparna bijela
-	static class MyTableCellRenderer extends DefaultTableCellRenderer {
-
-		public static final Color VERY_LIGHT_GRAY = new Color(245,245,245);
-	    @Override
-	    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-	        StudentTableModel model = (StudentTableModel) table.getModel();
-	        final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-	        c.setBackground(row % 2 == 0 ? VERY_LIGHT_GRAY : Color.RED);
-	        return c;
-	    }
-	}
 
 }

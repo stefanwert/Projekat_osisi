@@ -50,26 +50,4 @@ public class PredmetTableModel extends AbstractTableModel{
 		return false;
 	}
 
-	
-
-	
-
-	/*@Override
-	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		Predmet predmet= StudenskaSluzba.getInstance().getListPredmeta().get(rowIndex);
-		switch (columnIndex) {
-		case 0:
-			 predmet.setSifraPredmeta(aValue.toString());;
-		case 1:
-			 predmet.setNazivPredmeta(aValue.toString());
-		case 2:
-			 predmet.setSemestar(Integer.parseInt(aValue.toString()));
-		case 3:
-			 predmet.setGodinaStudija(Integer.parseInt(aValue.toString()));
-		case 4:
-			 predmet.getProfesor();
-		
-		}
-	}*/
-
 }

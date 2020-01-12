@@ -28,7 +28,7 @@ public class ActionListenerSearchStudent implements ActionListener {
 		String parts2[];
 		for (String s : parts) {
 			parts2=s.split(":");
-			if(parts2[0].equalsIgnoreCase("broj indeksa")) {
+			if(parts2[0].equalsIgnoreCase("index")) {
 				filters.add(RowFilter.regexFilter(parts2[1],0));
 			}
 			else if(parts2[0].equalsIgnoreCase("ime")) {

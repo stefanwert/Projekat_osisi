@@ -66,8 +66,6 @@ public class DialogAddProfesorToPredmet extends JDialog{
 		GridBagConstraints gbLbl=new GridBagConstraints();
 		gbLbl.gridx=0;
 		gbLbl.gridy=0;
-		//gbLbl.anchor=GridBagConstraints.NORTH;
-		//gbLbl.gridheight=100;
 		gbLbl.insets=new Insets(15, 0, 50, 0);
 		gbLbl.anchor=GridBagConstraints.CENTER;
 		p.add(lblsifra,gbLbl);
@@ -75,15 +73,11 @@ public class DialogAddProfesorToPredmet extends JDialog{
 		GridBagConstraints gbTxt=new GridBagConstraints();
 		gbTxt.gridx=1;
 		gbTxt.gridy=0;
-		//gbTxt.anchor=GridBagConstraints.NORTH;
-		//gbTxt.gridheight=100;
 		gbTxt.insets=new Insets(15, 5, 50, 0);
-		//gbTxt.anchor=GridBagConstraints.CENTER;
 		p.add(txtBrLicneKarte,gbTxt);
 		
 		ok=new JButton("POTVRDA");
 		ok.addActionListener(new ActionListenerPotvrdiAddProfesoraOnPredmet());
-//		ok.addFocusListener(l);
 		JButton odustani=new JButton("ODUSTANI");
 		odustani.addActionListener(new ActionListener() {
 			@Override
@@ -106,7 +100,6 @@ public class DialogAddProfesorToPredmet extends JDialog{
 		gbOdustani.insets=new Insets(0, 0, 10, 0);
 		p.add(odustani,gbOdustani);
 		
-		//DialogoAddProfesorToPredmet.getInstance().setVisible(true);
 		setVisible(true);
 	}
 	

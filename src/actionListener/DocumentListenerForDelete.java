@@ -19,6 +19,7 @@ public class DocumentListenerForDelete implements javax.swing.event.DocumentList
 
 	private TableRowSorter<TableModel> rowSorter=MainFrame.getTableRowSorterPredmet();
 	private TableRowSorter<TableModel> rowSorter2=MainFrame.getTableRowSorterProfesor();
+	private TableRowSorter<TableModel> rowSorter3=MainFrame.getTableRowSorterStudent();
 	@Override
 	public void removeUpdate(DocumentEvent e) {
 		JTextField tf=MyToolbar.getInstance().getTextFild();
@@ -26,11 +27,10 @@ public class DocumentListenerForDelete implements javax.swing.event.DocumentList
 		if(text.length()==0) {
 			rowSorter.setRowFilter(null);
 			rowSorter2.setRowFilter(null);
+			rowSorter3.setRowFilter(null);
 		}
 		
 	}
-	
-
 	
 	@Override
 	public void insertUpdate(DocumentEvent e) {

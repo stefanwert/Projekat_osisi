@@ -12,7 +12,6 @@ import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import actionListener.TableColumnModelListener1;
 import actionListener.WindowListenerForMainFrame;
 
 
@@ -82,9 +81,6 @@ public class MainFrame extends JFrame{
 		tabelaPredmeta.setAutoCreateRowSorter(true);
 		JScrollPane scrollpanePredmet=new JScrollPane(tabelaPredmeta);
 		tabbedPane.addTab("Predmeti",scrollpanePredmet);
-		
-		//tabelaPredmeta.getColumnModel().addColumnModelListener(new TableColumnModelListener1());
-		
 		
 		rowSorterTableStudent=new TableRowSorter<TableModel>(tabelaStudenata.getModel());	
 		tabelaStudenata.setRowSorter(rowSorterTableStudent);	

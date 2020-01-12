@@ -39,25 +39,5 @@ public class StudentTableModel extends AbstractTableModel{
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		return false;
 	}
-	
-	/*
-	@Override
-	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		Student student= StudenskaSluzba.getInstance().getListStudenata().get(rowIndex);
-		switch (columnIndex) {
-		case 0:
-			 student.setBrojIndeksa(aValue.toString());
-		case 1:
-			 student.setIme(aValue.toString());
-		case 2:
-			 student.setPrezime(aValue.toString());
-		case 3:
-			 student.setTrenutnaGodina(Integer.parseInt(aValue.toString()));
-		case 4:
-			 //student.setStatus();
-		case 5:
-			 student.setProsecnaOcena(Double.parseDouble(aValue.toString()));
-		
-		}
-	}*/
+
 }

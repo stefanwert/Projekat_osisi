@@ -7,12 +7,6 @@ import java.util.List;
 
 public class Student implements Serializable 
 {
-	
-	
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3383521977748553108L;
 
 	public enum Status{

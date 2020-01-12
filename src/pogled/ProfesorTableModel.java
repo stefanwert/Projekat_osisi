@@ -33,35 +33,5 @@ public class ProfesorTableModel extends AbstractTableModel{
 	public String getColumnName(int columnIndex) {
 		return StudenskaSluzba.getInstance().getColumnNameProfesora(columnIndex);
 	}
-	//ovi ide da je iscell editable true za neku kolonu
-	/*public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-		Profesor profesor= StudenskaSluzba.getInstance().getListProfesora().get(rowIndex);
-		switch (columnIndex) {
-		case 0:
-			
-		case 1:
-			
-		case 2:
-			
-		case 3:
-			
-		case 4:
-			
-		case 5:
-			
-		case 6:
-			
-		case 7:
-			
-		case 8:
-			
-		case 9:
-			
-			
-			 
-		
-		}
-	}*/
-	
 	
 }

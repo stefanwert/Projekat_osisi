@@ -29,5 +29,9 @@ public static final Color LIGHT_BLUE = new Color(100,205,255);
 		}
 		return c;
 	}
+	
+	public  int getTable(){
+		return this.getSelectedRow();
+	}
 
 }

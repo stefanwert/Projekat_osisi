@@ -25,11 +25,8 @@ import dialog.DialogStudent;
 import model.Student.Status;
 import pogled.MainFrame;
 
-public class StudenskaSluzba implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3454124951027584486L;
+public class StudenskaSluzba {
+	
 	List<Student> listaStudenata=new ArrayList<Student>();
 	List<Predmet> listaPredmeta=new ArrayList<Predmet>();
 	List<Profesor> listaProfesora=new ArrayList<Profesor>();
@@ -67,13 +64,7 @@ public class StudenskaSluzba implements Serializable{
 		kolonePredmeta.add("Godina studija");
 		kolonePredmeta.add("Profesor");
 		kolonePredmeta.add("Studenti");
-//		Predmet p=new Predmet("123","1234", 1, 1, 
-//				/*new Profesor("profa", "profic", new java.sql.Date(23), "novi safd", "nema", "ne'am jbg",
-//"123", "123", "Redovni profesor vandredni dekan", "asdf", null)*/null, null);
-//		p.setNazivPredmeta("dgsasdfgafd");
-//		listaPredmeta.add(p);
-		
-		
+
 		koloneStudenata = new ArrayList<String>();
 		koloneStudenata.add("Index");
 		koloneStudenata.add("Ime");
@@ -81,9 +72,6 @@ public class StudenskaSluzba implements Serializable{
 		koloneStudenata.add("Godina studija");
 		koloneStudenata.add("Status");
 		koloneStudenata.add("Prosek");
-//		Student s = new Student("Nemanja","Tamindzija",new Date(2018,12,01),"adresa","066/123-456","nemanja.tam@gmail.com",
-	//							"RA242-2018",new java.sql.Date(2018),3,Student.Status.B,7.5,listaPredmeta);
-		//listaStudenata.add(s);
 		
 		koloneProfesora= new ArrayList<String>();
 		koloneProfesora.add("Ime");
@@ -96,8 +84,7 @@ public class StudenskaSluzba implements Serializable{
 		koloneProfesora.add("Broj licne karte");
 		koloneProfesora.add("Titula");
 		koloneProfesora.add("Zvanje");
-		//listaProfesora.add(new Profesor("stefan","petrovic",new Date(2000,11,11),"adresa","tel","email","adresaKan","ovoJeKljuc","titula","zvanje",null));
-		
+
 		try {
 			serializeRead();
 		} catch (ClassNotFoundException | IOException e) {
@@ -105,6 +92,7 @@ public class StudenskaSluzba implements Serializable{
 		}
 		
 	}
+	
 	public void ucitajStudente() {
 		BufferedReader csvReader = null;
 		try {
@@ -236,53 +224,64 @@ public class StudenskaSluzba implements Serializable{
 		
 	}
 	
-	
 	public void serializeWrite() throws FileNotFoundException, IOException {
-		File f= new File("File/read.txt");
+		File f= new File("File/readPredmete.txt");
 		ObjectOutputStream oos=new ObjectOutputStream(
 				new BufferedOutputStream(new FileOutputStream(f)));
 		try {
 			oos.writeObject(listaPredmeta);
-			//oos.writeObject(instance);
 		} finally {
 			oos.close();
 		}
-		
+
 		//profesori
 		File f2= new File("File/readProfesore.txt");
 		ObjectOutputStream oos2=new ObjectOutputStream(
 				new BufferedOutputStream(new FileOutputStream(f2)));
 		try {
 			oos2.writeObject(listaProfesora);
-			//oos.writeObject(instance);
 		} finally {
 			oos2.close();
 		}
-		
+		//student
+		File f3= new File("File/readStudente.txt");
+		ObjectOutputStream oos3=new ObjectOutputStream(
+				new BufferedOutputStream(new FileOutputStream(f3)));
+		try {
+			oos3.writeObject(listaStudenata);
+		} finally {
+			oos3.close();
+		}
 	}
 	
 	public void serializeRead() throws FileNotFoundException, IOException, ClassNotFoundException {
-		File f= new File("File/read.txt");
+		File f= new File("File/readPredmete.txt");
 		ObjectInputStream ois=new ObjectInputStream(
 				new BufferedInputStream(new FileInputStream(f)));
 		try {
 			listaPredmeta= (List<Predmet>) ois.readObject();
-			//instance= (StudenskaSluzba) ois.readObject();
 		} finally {
 			ois.close();
 		}
-		
 		//profesor
-		
-		File f2= new File("File/readProfesore.txt");
-		ObjectInputStream ois2=new ObjectInputStream(
-				new BufferedInputStream(new FileInputStream(f2)));
-		try {
-			listaProfesora= (List<Profesor>) ois2.readObject();
-			//instance= (StudenskaSluzba) ois.readObject();
-		} finally {
-			ois2.close();
-		}
+
+				File f2= new File("File/readProfesore.txt");
+				ObjectInputStream ois2=new ObjectInputStream(
+						new BufferedInputStream(new FileInputStream(f2)));
+				try {
+					listaProfesora= (List<Profesor>) ois2.readObject();
+				} finally {
+					ois2.close();
+				}
+		//student
+				File f3= new File("File/readStudente.txt");
+				ObjectInputStream ois3=new ObjectInputStream(
+						new BufferedInputStream(new FileInputStream(f3)));
+				try {
+					listaStudenata= (List<Student>) ois3.readObject();
+				} finally {
+					ois3.close();
+				}
 	}
 	
 	//za studenta deo
@@ -335,7 +334,6 @@ public class StudenskaSluzba implements Serializable{
 			return null;
 		}
 	}
-	
 	
 	public boolean dodajStudenta(Student s) {
 		for (Student student : listaStudenata) {
@@ -498,10 +496,6 @@ public class StudenskaSluzba implements Serializable{
 		return kolonePredmeta.size();
 	}
 	
-	/*public List<Predmet> getPremet(){
-		return listaPredmeta;
-	}*/
-	
 	public void setPredmet(List<Predmet> predmeti) {
 		this.listaPredmeta=predmeti;
 	}
@@ -559,21 +553,19 @@ public class StudenskaSluzba implements Serializable{
 	}
 	
 	public void izmeniPredmet(String sifraStara,String sifraPredmeta, String nazivPredmeta, int semestar, int godinaStudija) {
-//		boolean jedistven=true;
-//		int i = MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
-		int i=0;
+		boolean jedistven=true;
+		int i = MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
 		for (Predmet predmet : listaPredmeta) {
 			if(predmet.getSifraPredmeta().equals(sifraStara)) {
-//				jedistven=false;
+				jedistven=false;
 				break;
-			}
-			i++; 
+			} 
 		}
-//		if(jedistven) {
+		if(jedistven) {
 			listaPredmeta.get(i).setSifraPredmeta(sifraPredmeta);
-//		}
-//		else
-//			System.out.println("pokuslai ste da promenite kljuc u kljuc koji vec postoji");
+		}
+		else
+		System.out.println("pokuslai ste da promenite kljuc u kljuc koji vec postoji");
 		listaPredmeta.get(i).setNazivPredmeta(nazivPredmeta);
 		listaPredmeta.get(i).setSemestar(semestar);
 		listaPredmeta.get(i).setGodinaStudija(godinaStudija);

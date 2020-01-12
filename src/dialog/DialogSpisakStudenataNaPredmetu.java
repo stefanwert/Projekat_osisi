@@ -11,8 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import kontroler.PredmetKontroler;
-import pogled.MainFrame;
 import pogled.StudentiNaPredmetuJTable;
+import pogled.StudentiNaPredmetuTableModel;
 
 public class DialogSpisakStudenataNaPredmetu extends JDialog{
 	
@@ -22,6 +22,7 @@ public class DialogSpisakStudenataNaPredmetu extends JDialog{
 			if(instance==null) {
 				instance=new DialogSpisakStudenataNaPredmetu();
 			}
+			
 			return instance;
 		}
 		public static void removeInstance() {
@@ -30,6 +31,10 @@ public class DialogSpisakStudenataNaPredmetu extends JDialog{
 		
 		private JTable tabelaStudenataNaPredmetu;
 		static private JButton obrisi;
+		public void updateTable(){
+			StudentiNaPredmetuTableModel model =(StudentiNaPredmetuTableModel) tabelaStudenataNaPredmetu.getModel();
+			model.fireTableDataChanged();
+		}
 		
 		public void call(Frame parent, String title, boolean modal) {
 			this.setLocationRelativeTo(parent);
@@ -63,6 +68,10 @@ public class DialogSpisakStudenataNaPredmetu extends JDialog{
 			
 			setVisible(true);
 			
+		}
+		
+		public JTable getTable(){
+			return tabelaStudenataNaPredmetu;
 		}
 
 }

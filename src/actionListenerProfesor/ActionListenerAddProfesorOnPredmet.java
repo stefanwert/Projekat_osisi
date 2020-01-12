@@ -3,7 +3,6 @@ package actionListenerProfesor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import dialog.DialogPredmet;
 import dialog.DialogAddProfesorToPredmet;
 import pogled.MainFrame;
 

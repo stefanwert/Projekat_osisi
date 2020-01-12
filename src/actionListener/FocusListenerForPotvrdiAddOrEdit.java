@@ -35,10 +35,7 @@ public class FocusListenerForPotvrdiAddOrEdit implements FocusListener{
 			}else {
 				b.setEnabled(true);
 			}
-	    }
-		
-		
-		
+	    }	
 	}
 
 	@Override

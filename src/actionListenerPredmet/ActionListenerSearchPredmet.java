@@ -28,11 +28,9 @@ public class ActionListenerSearchPredmet implements ActionListener{
 		for (String s : parts) {
 			parts2=s.split(":");
 			if(parts2[0].equalsIgnoreCase("sifra predmeta")) {
-				//rowSorter.setRowFilter(RowFilter.regexFilter(parts2[1],0));
 				filters.add(RowFilter.regexFilter(parts2[1],0));
 			}
 			else if(parts2[0].equalsIgnoreCase("naziv predmeta")) {
-				//rowSorter.setRowFilter(RowFilter.regexFilter(parts2[1],1));
 				filters.add(RowFilter.regexFilter(parts2[1],1));
 			}
 			else if(parts2[0].equalsIgnoreCase("semestar")) {

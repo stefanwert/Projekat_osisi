@@ -49,6 +49,8 @@ public class ButtonColumnStudenti extends AbstractCellEditor
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				DialogSpisakStudenataNaPredmetu.getInstance().call(MainFrame.getInstance(),"Spisak studenata na predmetu",true);
+				DialogSpisakStudenataNaPredmetu.getInstance().updateTable();
+				
 			}
 		});
 

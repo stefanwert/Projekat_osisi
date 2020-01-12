@@ -1,9 +1,12 @@
 package kontroler;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import dialog.DialogSpisakStudenataNaPredmetu;
 import model.*;
 import pogled.MainFrame;
+import pogled.StudentiNaPredmetuJTable;
 
 
 public class PredmetKontroler {
@@ -37,33 +40,46 @@ public class PredmetKontroler {
 		int i =MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
 		String s=(String)MainFrame.getInstance().getTabelPredmeta().getValueAt(i, 0);
 		i=0;
+		
 		for (Predmet predmet : StudenskaSluzba.getInstance().getListPredmeta()) {
 			if(s.equals(predmet.getSifraPredmeta())) {
 				break;
 			}
 			i++;
 		}
-		for (Student student : StudenskaSluzba.getInstance().getListStudenata()) {
-			if(student.getBrojIndeksa().equals(brojIndeksa)) {
-				
-				StudenskaSluzba.getInstance().getListPredmeta().get(i).getListaStudenata().add(student);
+		boolean postoji=false;
+		ArrayList<Student> studenti=(ArrayList<Student>) StudenskaSluzba.getInstance().getListPredmeta().get(i).getListaStudenata();
+		for (Student student : studenti) {
+			if(student.getBrojIndeksa().equals(brojIndeksa)){
+				postoji=true;
 			}
 		}
+		if(!postoji){
+			for (Student student : StudenskaSluzba.getInstance().getListStudenata()) {
+				if(student.getBrojIndeksa().equals(brojIndeksa)) {
+					StudenskaSluzba.getInstance().getListPredmeta().get(i).getListaStudenata().add(student);
+				}
+			}
+		}
+					
+			
 	}
 	
 	public void obrisiStudenta() {
 		int i =MainFrame.getInstance().getTabelPredmeta().getSelectedRow();
+		int j=DialogSpisakStudenataNaPredmetu.getInstance().getTable().getSelectedRow();
 		String s=(String)MainFrame.getInstance().getTabelPredmeta().getValueAt(i, 0);
 		i=0;
+		System.out.println(s);
 		for (Predmet predmet : StudenskaSluzba.getInstance().getListPredmeta()) {
 			if(s.equals(predmet.getSifraPredmeta())) {
 				break;
 			}
 			i++;
 		}
-		
-		StudenskaSluzba.getInstance().getListPredmeta().get(i).getListaStudenata().remove(i);
-		
+		System.out.println(i+" "+j);
+		StudenskaSluzba.getInstance().getListPredmeta().get(i).getListaStudenata().remove(j);
+		DialogSpisakStudenataNaPredmetu.getInstance().updateTable();
 	}
 	
 	public void dodajProfesora(String brLicne) {

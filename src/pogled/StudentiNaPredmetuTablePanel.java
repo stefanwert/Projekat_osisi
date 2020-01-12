@@ -11,7 +11,6 @@ public class StudentiNaPredmetuTablePanel extends JPanel{
 	private static final long serialVersionUID = -3777718742688152316L;
 
 	private JPanel leftPanel = new JPanel();
-	//private Component c;
 	private JPanel rightPanel = new JPanel();
 	
 	

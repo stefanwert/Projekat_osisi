@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import dialog.DialogProfesor;
 import dialog.DialogStudent;
 import kontroler.StudentKontroler;
 import model.Student;
