@@ -10,6 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import actionListener.windowListenerCloseDialogAddStudentaNaPredmet;
 import kontroler.PredmetKontroler;
 import pogled.StudentiNaPredmetuJTable;
 import pogled.StudentiNaPredmetuTableModel;
@@ -32,8 +33,11 @@ public class DialogSpisakStudenataNaPredmetu extends JDialog{
 		private JTable tabelaStudenataNaPredmetu;
 		static private JButton obrisi;
 		public void updateTable(){
-			StudentiNaPredmetuTableModel model =(StudentiNaPredmetuTableModel) tabelaStudenataNaPredmetu.getModel();
-			model.fireTableDataChanged();
+			if(tabelaStudenataNaPredmetu!=null){
+				StudentiNaPredmetuTableModel model =(StudentiNaPredmetuTableModel) tabelaStudenataNaPredmetu.getModel();
+				model.fireTableDataChanged();
+			}
+				
 		}
 		
 		public void call(Frame parent, String title, boolean modal) {
@@ -45,7 +49,7 @@ public class DialogSpisakStudenataNaPredmetu extends JDialog{
 			setLocationRelativeTo(parent);
 			setLayout(new BorderLayout(10,10));
 			setResizable(false);
-			
+			addWindowListener(new windowListenerCloseDialogAddStudentaNaPredmet());
 			tabelaStudenataNaPredmetu = new StudentiNaPredmetuJTable();
 			JScrollPane scrollPane = new JScrollPane(tabelaStudenataNaPredmetu);
 			add(scrollPane, BorderLayout.CENTER);
@@ -55,8 +59,10 @@ public class DialogSpisakStudenataNaPredmetu extends JDialog{
 				
 				public void actionPerformed(ActionEvent e) {
 					try {
+						System.out.println(tabelaStudenataNaPredmetu.getSelectedRow());
 						if(tabelaStudenataNaPredmetu.getSelectedRow()!=-1) {
 							PredmetKontroler.getInstance().obrisiStudenta();
+							DialogSpisakStudenataNaPredmetu.getInstance().updateTable();
 						}				
 					} catch (Exception e2) {
 						System.out.println("nista nije selektovano");

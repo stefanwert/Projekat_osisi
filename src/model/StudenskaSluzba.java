@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 
+import dialog.DialogSpisakStudenataNaPredmetu;
 import dialog.DialogStudent;
 import model.Student.Status;
 import pogled.MainFrame;
@@ -181,6 +183,107 @@ public class StudenskaSluzba {
 		}
 		MainFrame.getInstance().azurirajPrikaz();
 	}
+	
+	public void ucitajStudenteNaPredmet(){
+		BufferedReader csvReader = null;
+		
+		try {
+			csvReader=new BufferedReader(new InputStreamReader(new FileInputStream("File/StudentiNaPredmetu.csv"),"UTF-8") );
+			String row;
+			int i=0;
+			int indeksPredmet=0;
+			while((row=csvReader.readLine())!=null) {
+					indeksPredmet=0;
+					String[] data=row.split(",");
+					csvReader.readLine();
+					csvReader.readLine();
+					
+					for (Predmet predmet : StudenskaSluzba.getInstance().getListPredmeta()) {
+						if(data[1].equals(predmet.getSifraPredmeta())) {
+							break;
+						}
+						indeksPredmet++;
+					}
+					System.out.println(indeksPredmet);
+					
+					while((!(row=csvReader.readLine()).equals(",,,")) && row != null){
+						data=row.split(",");
+						for (Student student : listaStudenata) {
+							if(student.getBrojIndeksa().equals(data[1])){
+								listaPredmeta.get(indeksPredmet).getListaStudenata().add(student);
+							}
+						}
+					}
+					csvReader.readLine();
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
+		try {
+			csvReader.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+//		try {
+//			csvReader=new BufferedReader(new InputStreamReader(new FileInputStream("File/StudentiNaPredmetu.csv"),"UTF-8") );
+//			String row;
+//			int i=0;
+//			int indeksProfesora=0;
+//			while((row=csvReader.readLine())!=null) {
+//					String[] data=row.split(",");
+//					if(row.equals(",,,")){
+//						i=0;
+//					}
+//					else{
+//						if(i==0){
+//							indeksProfesora=0;
+//							System.out.println(data[1]);
+//							for (Predmet predmet : StudenskaSluzba.getInstance().getListPredmeta()) {
+//								if(data[1].equals(predmet.getSifraPredmeta())) {
+//									break;
+//								}
+//								indeksProfesora++;
+//							}
+//							System.out.println(indeksProfesora);
+//						}
+//						else if(i==1 || i==2){
+//							System.out.println("nista");
+//						}else{
+//							for (Student student : listaStudenata) {
+//								if(student.getBrojIndeksa().equals(data[1])){
+//									listaPredmeta.get(indeksProfesora).getListaStudenata().add(student);
+//								}
+//							}
+//						}
+//					}
+//				i++;	
+//			}
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (NumberFormatException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			csvReader.close();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		MainFrame.getInstance().azurirajPrikaz();
+		DialogSpisakStudenataNaPredmetu.getInstance().updateTable();
+	}
+	
 	
 	public void ucitajpredmete() {
 		BufferedReader csvReader = null;
