@@ -83,7 +83,7 @@ public class MainFrame extends JFrame{
 		JScrollPane scrollpanePredmet=new JScrollPane(tabelaPredmeta);
 		tabbedPane.addTab("Predmeti",scrollpanePredmet);
 		
-		tabelaPredmeta.getColumnModel().addColumnModelListener(new TableColumnModelListener1());
+		//tabelaPredmeta.getColumnModel().addColumnModelListener(new TableColumnModelListener1());
 		
 		
 		rowSorterTableStudent=new TableRowSorter<TableModel>(tabelaStudenata.getModel());	

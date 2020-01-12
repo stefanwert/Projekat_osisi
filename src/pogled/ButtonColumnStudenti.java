@@ -13,6 +13,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
+import dialog.DialogSpisakStudenataNaPredmetu;
 import dialog.DialogStudent;
 
 public class ButtonColumnStudenti extends AbstractCellEditor
@@ -47,7 +48,7 @@ public class ButtonColumnStudenti extends AbstractCellEditor
 			// mozemo odavde pozvati nas kontroler da se nesto smisleno odradi
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DialogStudent.getInstance().call(MainFrame.getInstance(),"Dodaj studenta",true);
+				DialogSpisakStudenataNaPredmetu.getInstance().call(MainFrame.getInstance(),"Dodaj studenta",true);
 			}
 		});
 

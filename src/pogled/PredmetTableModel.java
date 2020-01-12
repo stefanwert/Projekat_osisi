@@ -50,20 +50,7 @@ public class PredmetTableModel extends AbstractTableModel{
 		return false;
 	}
 
-	@Override
-	public Class<?> getColumnClass(int columnIndex) {
-		switch (columnIndex) {
-		case 0:
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
-			return JButton.class;
-		default:
-			return null;
-		}
-	}
+	
 
 	
 

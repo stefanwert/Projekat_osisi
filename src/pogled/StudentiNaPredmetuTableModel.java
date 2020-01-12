@@ -26,7 +26,7 @@ public class StudentiNaPredmetuTableModel extends AbstractTableModel{
 			i++;
 		}
 		ret=StudenskaSluzba.getInstance().getListPredmeta().get(i).getListaStudenata().size();
-		
+		System.out.println("rowcount "+ret);
 		return ret; 
 	}
 	

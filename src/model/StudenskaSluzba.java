@@ -128,7 +128,9 @@ public class StudenskaSluzba implements Serializable{
 					try {
 						datr = formatter.parse(pom1);
 						datu = formatter.parse(pom2);
-						Student s=new Student(data[0], data[1],datr, data[3].substring(1,data[3].length())+" "+data[4].substring(0,data[4].length()-1), data[5], data[6],data[7],datu, Integer.parseInt(data[9]),status,8.0, null);
+						Student s=new Student(data[0], data[1],datr, 
+								data[3].substring(1,data[3].length())+" "+data[4].substring(0,data[4].length()-1),
+								data[5], data[6],data[7],datu, Integer.parseInt(data[9]),status,8.0, new ArrayList<Predmet>());
 						dodajStudenta(s);
 					} catch (ParseException e) {
 						// TODO Auto-generated catch block
@@ -165,7 +167,10 @@ public class StudenskaSluzba implements Serializable{
 					Date dat;
 					try {
 						dat = formatter.parse(pom);
-						Profesor p=new Profesor(data[0], data[1],dat, data[3].substring(1,data[3].length())+" "+data[4].substring(0,data[4].length()-1), data[5], data[6],data[7].substring(1,data[7].length())+" "+data[8]+" "+data[9].substring(0,data[9].length()-1), data[10].substring(3, data[10].length()-3), data[11],data[12], null);
+						Profesor p=new Profesor(data[0], data[1],dat, 
+								data[3].substring(1,data[3].length())+" "+data[4].substring(0,data[4].length()-1),
+								data[5], data[6],data[7].substring(1,data[7].length())+" "+data[8]+" "+data[9].substring(0,data[9].length()-1),
+								data[10].substring(3, data[10].length()-3), data[11],data[12], new ArrayList<Predmet>());
 						
 						dodajProfesora(p);
 						//listaProfesora.add(p);
@@ -212,7 +217,7 @@ public class StudenskaSluzba implements Serializable{
 							pr=p;
 						}
 					}
-					Predmet p=new Predmet(data[0],data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3]),pr,null);
+					Predmet p=new Predmet(data[0],data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3]),pr,new ArrayList<Student>());
 					dodajPredmet(p);
 				}
 				i++;

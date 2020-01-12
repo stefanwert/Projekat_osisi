@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import dialog.DialogAddStudentToPredmet;
+import dialog.DialogSpisakStudenataNaPredmetu;
 import model.Predmet;
 import model.StudenskaSluzba;
 import pogled.*;
@@ -15,7 +16,8 @@ public class MainApp {
 		StudenskaSluzba.getInstance().ucitajpredmete();
 		StudenskaSluzba.getInstance().ucitajStudente();
 		
-		System.out.println(StudenskaSluzba.getInstance().getListProfesora().size());
+		
+		StudenskaSluzba.getInstance().getListPredmeta().get(0).getListaStudenata().add(StudenskaSluzba.getInstance().getListStudenata().get(0));
 		
 	}
 
