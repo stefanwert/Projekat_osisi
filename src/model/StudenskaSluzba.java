@@ -81,9 +81,9 @@ public class StudenskaSluzba implements Serializable{
 		koloneStudenata.add("Godina studija");
 		koloneStudenata.add("Status");
 		koloneStudenata.add("Prosek");
-		Student s = new Student("Nemanja","Tamindzija",new Date(2018,12,01),"adresa","066/123-456","nemanja.tam@gmail.com",
-				"RA242-2018",new java.sql.Date(2018),3,Student.Status.B,7.5,listaPredmeta);
-		listaStudenata.add(s);
+//		Student s = new Student("Nemanja","Tamindzija",new Date(2018,12,01),"adresa","066/123-456","nemanja.tam@gmail.com",
+	//							"RA242-2018",new java.sql.Date(2018),3,Student.Status.B,7.5,listaPredmeta);
+		//listaStudenata.add(s);
 		
 		koloneProfesora= new ArrayList<String>();
 		koloneProfesora.add("Ime");
@@ -116,16 +116,20 @@ public class StudenskaSluzba implements Serializable{
 					String[] data=row.split(",");
 					SimpleDateFormat formatter=new SimpleDateFormat("dd.MM.yyyy");
 					String pom1=data[2].substring(0,data[2].length()-1);
-					String pom2=data[2].substring(0,data[9].length()-1);
-					
+					String pom2=data[2].substring(0,data[8].length()-1);
+					Status status;
+					if(data[10].equals("B")) {
+						status=Status.B;
+					}else {
+						status=Status.S;
+					}
 					Date datr;
 					Date datu;
 					try {
 						datr = formatter.parse(pom1);
 						datu = formatter.parse(pom2);
-						//Student s=new Student(data[0], data[1],datr, data[3].substring(1,data[3].length())+" "+data[4].substring(0,data[4].length()-1), data[5], data[6],data[7].substring(1,data[7].length())+" "+data[8]),datu, Integer.parseInt(data[10]),data[11], null);
-						
-						//dodajStudenta(s);
+						Student s=new Student(data[0], data[1],datr, data[3].substring(1,data[3].length())+" "+data[4].substring(0,data[4].length()-1), data[5], data[6],data[7],datu, Integer.parseInt(data[9]),status,8.0, null);
+						dodajStudenta(s);
 					} catch (ParseException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

@@ -35,7 +35,7 @@ public class PredmetTableModel extends AbstractTableModel{
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		if (columnIndex < 5)
 			return StudenskaSluzba.getInstance().getValueAtPredmet(rowIndex, columnIndex);
-		else if (columnIndex == 5) {
+		else if (columnIndex == 5) { 
 			JButton btn = new JButton("" + rowIndex);
 			return btn;
 			}
@@ -44,6 +44,9 @@ public class PredmetTableModel extends AbstractTableModel{
 
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
+		if(columnIndex==5) {
+			return true;
+		}
 		return false;
 	}
 

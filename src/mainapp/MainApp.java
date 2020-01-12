@@ -13,6 +13,8 @@ public class MainApp {
 		MainFrame.getInstance();
 		StudenskaSluzba.getInstance().ucitajProfesore();
 		StudenskaSluzba.getInstance().ucitajpredmete();
+		StudenskaSluzba.getInstance().ucitajStudente();
+		
 		System.out.println(StudenskaSluzba.getInstance().getListProfesora().size());
 		
 	}

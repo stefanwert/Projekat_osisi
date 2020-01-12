@@ -47,7 +47,6 @@ public class ButtonColumnStudenti extends AbstractCellEditor
 			// mozemo odavde pozvati nas kontroler da se nesto smisleno odradi
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				fireEditingStopped();
 				DialogStudent.getInstance().call(MainFrame.getInstance(),"Dodaj studenta",true);
 			}
 		});
