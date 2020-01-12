@@ -17,7 +17,7 @@ public static final Color LIGHT_BLUE = new Color(100,205,255);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setRowHeight(20);	
-		this.setModel(new StudentTableModel());
+		this.setModel(new StudentiNaPredmetuTableModel());
 	}
 	@Override
 	public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {

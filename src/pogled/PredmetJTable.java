@@ -18,6 +18,7 @@ public class PredmetJTable extends JTable {
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new PredmetTableModel());
 		this.setRowHeight(20);
+		new ButtonColumnStudenti(this, 5);
 		//pozovi konstruktor za dugmice
 		
 	}

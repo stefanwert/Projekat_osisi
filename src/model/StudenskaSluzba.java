@@ -105,6 +105,86 @@ public class StudenskaSluzba implements Serializable{
 		}
 		
 	}
+	public void ucitajStudente() {
+		BufferedReader csvReader = null;
+		try {
+			csvReader=new BufferedReader(new InputStreamReader(new FileInputStream("File/Studenti.csv"),"UTF-8") );
+			String row;
+			int i=0;
+			while((row=csvReader.readLine())!=null) {
+				if(i!=0) {
+					String[] data=row.split(",");
+					SimpleDateFormat formatter=new SimpleDateFormat("dd.MM.yyyy");
+					String pom1=data[2].substring(0,data[2].length()-1);
+					String pom2=data[2].substring(0,data[9].length()-1);
+					
+					Date datr;
+					Date datu;
+					try {
+						datr = formatter.parse(pom1);
+						datu = formatter.parse(pom2);
+						//Student s=new Student(data[0], data[1],datr, data[3].substring(1,data[3].length())+" "+data[4].substring(0,data[4].length()-1), data[5], data[6],data[7].substring(1,data[7].length())+" "+data[8]),datu, Integer.parseInt(data[10]),data[11], null);
+						
+						//dodajStudenta(s);
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				i++;
+					
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			csvReader.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		MainFrame.getInstance().azurirajPrikaz();
+	}
+	
+	public void ucitajProfesore() {
+		BufferedReader csvReader = null;
+		try {
+			csvReader=new BufferedReader(new InputStreamReader(new FileInputStream("File/Profesori.csv"),"UTF-8") );
+			String row;
+			int i=0;
+			while((row=csvReader.readLine())!=null) {
+				if(i!=0) {
+					String[] data=row.split(",");
+					SimpleDateFormat formatter=new SimpleDateFormat("dd.MM.yyyy");
+					String pom=data[2].substring(0,data[2].length()-1);
+					  
+					Date dat;
+					try {
+						dat = formatter.parse(pom);
+						Profesor p=new Profesor(data[0], data[1],dat, data[3].substring(1,data[3].length())+" "+data[4].substring(0,data[4].length()-1), data[5], data[6],data[7].substring(1,data[7].length())+" "+data[8]+" "+data[9].substring(0,data[9].length()-1), data[10].substring(3, data[10].length()-3), data[11],data[12], null);
+						
+						dodajProfesora(p);
+						//listaProfesora.add(p);
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				i++;
+					
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			csvReader.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		MainFrame.getInstance().azurirajPrikaz();
+	}
+	
 	public void ucitajpredmete() {
 		BufferedReader csvReader = null;
 		try {
@@ -147,44 +227,7 @@ public class StudenskaSluzba implements Serializable{
 		
 	}
 	
-	public void ucitajProfesore() {
-		BufferedReader csvReader = null;
-		try {
-			csvReader=new BufferedReader(new InputStreamReader(new FileInputStream("File/Profesori.csv"),"UTF-8") );
-			String row;
-			int i=0;
-			while((row=csvReader.readLine())!=null) {
-				if(i!=0) {
-					String[] data=row.split(",");
-					SimpleDateFormat formatter=new SimpleDateFormat("dd.MM.yyyy");
-					String pom=data[2].substring(0,data[2].length()-1);
-					  
-					Date dat;
-					try {
-						dat = formatter.parse(pom);
-						Profesor p=new Profesor(data[0], data[1],dat, data[3].substring(1,data[3].length())+" "+data[4].substring(0,data[4].length()-1), data[5], data[6],data[7].substring(1,data[7].length())+" "+data[8]+" "+data[9].substring(0,data[9].length()-1), data[10].substring(3, data[10].length()-3), data[11],data[12], null);
-						
-						dodajProfesora(p);
-						//listaProfesora.add(p);
-					} catch (ParseException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-				i++;
-					
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		try {
-			csvReader.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		MainFrame.getInstance().azurirajPrikaz();
-	}
+	
 	public void serializeWrite() throws FileNotFoundException, IOException {
 		File f= new File("File/read.txt");
 		ObjectOutputStream oos=new ObjectOutputStream(

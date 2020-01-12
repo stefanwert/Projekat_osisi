@@ -505,6 +505,15 @@ public class DialogStudent extends JDialog {
 		panel.add(odustani,gbOdustani);
 		
 	}*/
+	static public void clearTxtFilds() {
+		txtIme.setText("");
+		txtPrezime.setText("");
+		txtDatumRodjenja.setText("");
+		txtAdresaStanovanja.setText("");
+		txtBrojTelefona.setText("");
+		txtBrojIndeksa.setText("");
+		txtProsecnaOcena.setText("");
+	}
 	
 	static public void setTxtFilds() {
 		int i = MainFrame.getInstance().getTabelStudenta().getSelectedRow();
@@ -520,7 +529,6 @@ public class DialogStudent extends JDialog {
 		txtBrojIndeksa.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 0));
 		txtIme.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 1));
 		txtPrezime.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 2));
-		System.out.println(StudenskaSluzba.getInstance().getValueAtStudent(i, 3));
 		if("1".equals(StudenskaSluzba.getInstance().getValueAtStudent(i, 3))){
 			cb.setSelectedIndex(0);
 		}
@@ -533,13 +541,6 @@ public class DialogStudent extends JDialog {
 		else {
 			cb.setSelectedIndex(3);
 		}
-		//cb.setSelectedItem(anObject);
-		//cb.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 3));
-		System.out.println(cb.getSelectedIndex());
-		txtProsecnaOcena.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 5));
-		txtDatumRodjenja.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 6));
-		txtAdresaStanovanja.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 7));
-		txtBrojTelefona.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 8));
 		if("B".equals(StudenskaSluzba.getInstance().getValueAtStudent(i, 4))){
 			status.setSelected(samofinansiranje.getModel(), false);
 			status.setSelected(budzet.getModel(), true);
@@ -547,6 +548,11 @@ public class DialogStudent extends JDialog {
 			status.setSelected(budzet.getModel(), false);
 			status.setSelected(samofinansiranje.getModel(), true);
 		}
+		System.out.println(cb.getSelectedIndex());
+		txtProsecnaOcena.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 5));
+		txtDatumRodjenja.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 6));
+		txtAdresaStanovanja.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 7));
+		txtBrojTelefona.setText(StudenskaSluzba.getInstance().getValueAtStudent(i, 8));
 		
 		ok.removeActionListener(ok.getActionListeners()[0]);
 		ok.addActionListener(new ActionListenerPotvrdiEditStudent());

@@ -5,8 +5,10 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
 
+import dialog.DialogSpisakStudenataNaPredmetu;
 import dialog.DialogStudent;
 import pogled.MainFrame;
+
 
 public class TableColumnModelListener1 implements TableColumnModelListener{
 
@@ -39,7 +41,7 @@ public class TableColumnModelListener1 implements TableColumnModelListener{
 		System.out.println(e.getFirstIndex()+"  "+e.getLastIndex());
 		if(e.getLastIndex()==5){
 			System.out.println("asdasdas");
-			DialogStudent.getInstance().call(MainFrame.getInstance(),"Dodaj studenta",true);
+			//DialogStudent.getInstance().call(MainFrame.getInstance(),"Dodaj studenta",true);
 			//ovde palis dijalog
 		}
 	}

@@ -5,7 +5,7 @@ import javax.swing.table.AbstractTableModel;
 import model.Predmet;
 import model.StudenskaSluzba;
 
-public class StudentiNaPredmetuJTableModel extends AbstractTableModel{
+public class StudentiNaPredmetuTableModel extends AbstractTableModel{
 
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
